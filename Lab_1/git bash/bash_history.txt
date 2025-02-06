@@ -1,0 +1,328 @@
+
+Rashid@Mohammad-Rashid MINGW64 ~ (master)
+$ git --version
+git version 2.47.1.windows.2
+
+Rashid@Mohammad-Rashid MINGW64 ~ (master)
+$ git config --global --list
+filter.lfs.clean=git-lfs clean -- %f
+filter.lfs.smudge=git-lfs smudge -- %f
+filter.lfs.process=git-lfs filter-process
+filter.lfs.required=true
+user.name=Pathan-Mohammad-Rashid
+user.email=mohammadrashid.pathan@iitgn.ac.in
+gui.recentrepo=C:/Urdu_LLM/github/urdu_LLM
+credential.helper=store
+
+Rashid@Mohammad-Rashid MINGW64 ~ (master)
+$ cd "C:\Users\Rashid\OneDrive\Desktop\STT"
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT (master)
+$ mkdir Labs
+mkdir: cannot create directory ‘Labs’: File exists
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT (master)
+$ mkdir Lab
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT (master)
+$ cd Lab
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab (master)
+$ mkdir Lab1
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab (master)
+$ cd Lab1/
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1 (master)
+$ git init
+Initialized empty Git repository in C:/Users/Rashid/OneDrive/Desktop/STT/Lab/Lab1/.git/
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1 (master)
+$ code .
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1 (master)
+$ git add README.md
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1 (master)
+$ git commit -m "Initial commit: Added README.md"
+[master (root-commit) 4044c9b] Initial commit: Added README.md
+ 1 file changed, 5 insertions(+)
+ create mode 100644 README.md
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1 (master)
+$ git log --oneline
+4044c9b (HEAD -> master) Initial commit: Added README.md
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1 (master)
+$ git remote add origin https://github.com/Pathan-Mohammad-Rashid/CS202_STT.git
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1 (master)
+$ git remote -v
+origin  https://github.com/Pathan-Mohammad-Rashid/CS202_STT.git (fetch)
+origin  https://github.com/Pathan-Mohammad-Rashid/CS202_STT.git (push)
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1 (master)
+$ git branch -M main
+git push -u origin main
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 385 bytes | 35.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/Pathan-Mohammad-Rashid/CS202_STT.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1 (main)
+$
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1 (main)
+$ git clone https://github.com/Pathan-Mohammad-Rashid/CS202_STT.git
+Cloning into 'CS202_STT'...
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 3 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (3/3), done.
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1 (main)
+$ git pull origin main
+From https://github.com/Pathan-Mohammad-Rashid/CS202_STT
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1 (main)
+$ ls
+CS202_STT/  README.md
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1 (main)
+$ cd CS202_STT/
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1/CS202_STT (main)
+$ mkdir -p .github/workflows
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1/CS202_STT (main)
+$ touch .github/workflows/pylint.yml
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1/CS202_STT (main)
+$ git add .
+git commit -m "Added Python script and Pylint workflow"
+[main 0e4f444] Added Python script and Pylint workflow
+ 1 file changed, 21 insertions(+)
+ create mode 100644 .github/workflows/pylint.yml
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1/CS202_STT (main)
+$ git push origin main
+To https://github.com/Pathan-Mohammad-Rashid/CS202_STT.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/Pathan-Mohammad-Rashid/CS202_STT.git'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1/CS202_STT (main)
+$ cd ..
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1 (main)
+$ git push origin main
+To https://github.com/Pathan-Mohammad-Rashid/CS202_STT.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'https://github.com/Pathan-Mohammad-Rashid/CS202_STT.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. If you want to integrate the remote changes,
+hint: use 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1 (main)
+$ mkdir -p .github/workflows
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1 (main)
+$ touch .github/workflows/pylint.yml
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1 (main)
+$ git add .
+warning: adding embedded git repository: CS202_STT
+hint: You've added another git repository inside your current repository.
+hint: Clones of the outer repository will not contain the contents of
+hint: the embedded repository and will not know how to obtain it.
+hint: If you meant to add a submodule, use:
+hint:
+hint:   git submodule add <url> CS202_STT
+hint:
+hint: If you added this path by mistake, you can remove it from the
+hint: index with:
+hint:
+hint:   git rm --cached CS202_STT
+hint:
+hint: See "git help submodule" for more information.
+hint: Disable this message with "git config advice.addEmbeddedRepo false"
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1 (main)
+$ ^C
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1 (main)
+$ git rm --cached CS202_STT
+error: the following file has staged content different from both the
+file and the HEAD:
+    CS202_STT
+(use -f to force removal)
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1 (main)
+$ git rm -f --cached CS202_STT
+rm 'CS202_STT'
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1 (main)
+$ git add .
+warning: adding embedded git repository: CS202_STT
+hint: You've added another git repository inside your current repository.
+hint: Clones of the outer repository will not contain the contents of
+hint: the embedded repository and will not know how to obtain it.
+hint: If you meant to add a submodule, use:
+hint:
+hint:   git submodule add <url> CS202_STT
+hint:
+hint: If you added this path by mistake, you can remove it from the
+hint: index with:
+hint:
+hint:   git rm --cached CS202_STT
+hint:
+hint: See "git help submodule" for more information.
+hint: Disable this message with "git config advice.addEmbeddedRepo false"
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1 (main)
+$ git add .
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1 (main)
+$ git commit -m "Added Python script and Pylint workflow"
+[main 656cce5] Added Python script and Pylint workflow
+ 1 file changed, 21 insertions(+)
+ create mode 100644 .github/workflows/pylint.yml
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1 (main)
+$ git push origin main
+To https://github.com/Pathan-Mohammad-Rashid/CS202_STT.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'https://github.com/Pathan-Mohammad-Rashid/CS202_STT.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. If you want to integrate the remote changes,
+hint: use 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1 (main)
+$ git fetch origin
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1 (main)
+$ git merge origin/main
+Auto-merging .github/workflows/pylint.yml
+CONFLICT (add/add): Merge conflict in .github/workflows/pylint.yml
+Automatic merge failed; fix conflicts and then commit the result.
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1 (main|MERGING)
+$ git merge origin/main
+error: Merging is not possible because you have unmerged files.
+hint: Fix them up in the work tree, and then use 'git add/rm <file>'
+hint: as appropriate to mark resolution and make a commit.
+fatal: Exiting because of an unresolved conflict.
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1 (main|MERGING)
+$ git push origin main
+To https://github.com/Pathan-Mohammad-Rashid/CS202_STT.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'https://github.com/Pathan-Mohammad-Rashid/CS202_STT.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. If you want to integrate the remote changes,
+hint: use 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1 (main|MERGING)
+$ git clone https://github.com/Pathan-Mohammad-Rashid/CS202_STT.git
+Cloning into 'CS202_STT'...
+remote: Enumerating objects: 14, done.
+remote: Counting objects: 100% (14/14), done.
+remote: Compressing objects: 100% (10/10), done.
+remote: Total 14 (delta 1), reused 3 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (14/14), done.
+Resolving deltas: 100% (1/1), done.
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1 (main|MERGING)
+$ git fetch origin
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1 (main|MERGING)
+$ git merge origin/main
+error: Merging is not possible because you have unmerged files.
+hint: Fix them up in the work tree, and then use 'git add/rm <file>'
+hint: as appropriate to mark resolution and make a commit.
+fatal: Exiting because of an unresolved conflict.
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1 (main|MERGING)
+$ git merge origin/main
+error: Merging is not possible because you have unmerged files.
+hint: Fix them up in the work tree, and then use 'git add/rm <file>'
+hint: as appropriate to mark resolution and make a commit.
+fatal: Exiting because of an unresolved conflict.
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1 (main|MERGING)
+$ git push --force origin main
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (5/5), 616 bytes | 308.00 KiB/s, done.
+Total 5 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/Pathan-Mohammad-Rashid/CS202_STT.git
+ + 5a32a3d...656cce5 main -> main (forced update)
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1 (main|MERGING)
+$ git fetch origin
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1 (main|MERGING)
+$ git merge origin/main
+error: Merging is not possible because you have unmerged files.
+hint: Fix them up in the work tree, and then use 'git add/rm <file>'
+hint: as appropriate to mark resolution and make a commit.
+fatal: Exiting because of an unresolved conflict.
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1 (main|MERGING)
+$ git push --force origin main
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/Pathan-Mohammad-Rashid/CS202_STT.git
+ + 1932ed2...656cce5 main -> main (forced update)
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1 (main|MERGING)
+$
+Ragit push --force origin main ~ (master)
+
+Ragit push --force origin main ~ (master)
+  git add quicksort.py
+git commit -m "Added QuickSort implementation"
+git push origin main
+fatal: pathspec 'quicksort.py' did not match any files
+U       .github/workflows/pylint.yml
+error: Committing is not possible because you have unmerged files.
+hint: Fix them up in the work tree, and then use 'git add/rm <file>'
+hint: as appropriate to mark resolution and make a commit.
+fatal: Exiting because of an unresolved conflict.
+To https://github.com/Pathan-Mohammad-Rashid/CS202_STT.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/Pathan-Mohammad-Rashid/CS202_STT.git'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab/Lab1 (main|MERGING)
+$ cd ..
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab (master)
+$ rm -rf Lab1
+rm: cannot remove 'Lab1': Device or resource busy
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab (master)
+$ rm -rf Lab1
+
+Rashid@Mohammad-Rashid MINGW64 ~/OneDrive/Desktop/STT/Lab (master)
+$
