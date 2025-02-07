@@ -5,6 +5,8 @@ Welcome to my CS202 repository! This is where I'll be tracking my progress, code
 ## 📌 Course Overview  
 CS202 is all about software tools and techniques used in software engineering and research. The focus is on version control, repository mining, code analysis, debugging, testing, and automation. Expect a lot of hands-on learning with real-world tools!  
 
+**Instructor:** Prof. Shouvick Mondal (IIT Gandhinagar)
+
 ## 🛠️ Topics Covered  
 - **Version Control & CI/CD** – Git workflows, GitHub Actions, Agile DevOps  
 - **Software Repository Mining** – Bug fix tracking, commit analysis, LLM-based bug inference  
