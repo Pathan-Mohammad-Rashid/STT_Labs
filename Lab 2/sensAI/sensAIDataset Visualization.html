@@ -1,0 +1,2239 @@
+<!-- templates/visualisation.html -->
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dataset Visualization</title>
+    <link rel="stylesheet" href="sensAIDataset%20Visualization_files/bootstrap.min.css">
+    <style>
+        /* Set the table width to 100% */
+        .clickable-link {
+            color: inherit; /* Use the default text color */
+            text-decoration: none; /* Add underline for indication */
+            cursor: pointer; /* Change cursor to pointer for interactivity */
+        }
+
+        /* Styling for the table container */
+        .table-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: auto;
+            padding-top: 40px; /* Adjust padding-top to accommodate fixed header */
+        }
+
+        /* Styling for the inner table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        /* Styling for the table header */
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Styling for the fixed header at the top */
+        .fixed-header {
+            position: sticky;
+            top: 0;
+            background-color: #f2f2f2;
+            z-index: 1;
+        }
+
+        /* Styling for the invisible spacer */
+        .spacer {
+            visibility: hidden;
+        }
+
+        .exit-link {
+            color: red; /* Change color as needed */
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    </style>
+
+    <script src="sensAIDataset%20Visualization_files/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Clone the table header and append to the container
+            var $tableHead = $('.table thead');
+            var $fixedHeader = $tableHead.clone().addClass('fixed-header').appendTo('.table-container');
+
+            // Add invisible spacer to preserve layout
+            var $spacer = $('<tr class="spacer"></tr>').prependTo($tableHead);
+
+            // Handle horizontal scrolling
+            $('.table-container').on('scroll', function () {
+                var scrollLeft = $(this).scrollLeft();
+                $tableHead.css('margin-left', -scrollLeft);
+                $fixedHeader.css('margin-left', -scrollLeft);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="table-container">
+        <h1 class="text-center">Dataset Visualization</h1>
+        <p class="text-center"><a href="http://127.0.0.1:5000/">Back to Dataset Analysis</a> | <a href="http://127.0.0.1:5000/exit_app">Exit</a></p>
+            <table class="table table-bordered">
+                <thead class="fixed-header" style="margin-left: 0px;"><tr class="spacer"></tr>
+                    <tr>
+                        
+                            
+                                
+                                    <th>Before Bug fix</th>
+                                
+                            
+                        
+                            
+                                
+                                    <th>After Bug fix</th>
+                                
+                            
+                        
+                            
+                                
+                                    <th>Location</th>
+                                
+                            
+                        
+                            
+                                
+                                    <th>Bug type</th>
+                                
+                            
+                        
+                            
+                                
+                                    <th>Commit Message</th>
+                                
+                            
+                        
+                            
+                        
+                            
+                                
+                                    <th>File Path</th>
+                                
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                
+                                    <th>Test File</th>
+                                
+                            
+                        
+                            
+                                
+                                    <th>Coding Effort</th>
+                                
+                            
+                        
+                            
+                                
+                                    <th><a class="clickable-link" href="https://en.wikipedia.org/wiki/Language_construct" target="_blank">Constructs</a></th>
+                                
+                            
+                        
+                            
+                                
+                                    <th><a class="clickable-link" href="https://en.wikipedia.org/wiki/Cyclomatic_complexity" target="_blank">Lizard Features Buggy</a></th>
+                                
+                            
+                        
+                            
+                                
+                                    <th><a class="clickable-link" href="https://en.wikipedia.org/wiki/Cyclomatic_complexity" target="_blank">Lizard Features Fixed</a></th>
+                                
+                            
+                        
+                            
+                                
+                                    <th>BLEU</th>
+                                
+                            
+                        
+                            
+                                
+                                    <th>crystalBLEU_score</th>
+                                
+                            
+                        
+                            
+                                
+                                    <th>BERT_score</th>
+                                
+                            
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                        <tr>
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        <a class="clickable-link" href="https://github.com/opcode81/sensAI/commit/0b967bd1478ddb96f9cc28abc294e470e77be4de" target="_blank">1&nbsp;from&nbsp;abc&nbsp;import&nbsp;ABC,&nbsp;abstractmethod<br>2&nbsp;from&nbsp;typing&nbsp;import&nbsp;Dict,&nbsp;Sequence,&nbsp;Generic,&nbsp;TypeVar<br>3&nbsp;<br>4&nbsp;from&nbsp;sensai.evaluation.eval_stats.eval_stats_clustering&nbsp;import&nbsp;ClusteringUnsupervisedEvalStats,&nbsp;\<br>5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ClusteringSupervisedEvalStats,&nbsp;ClusterLabelsEvalStats<br>6&nbsp;from&nbsp;.evaluator&nbsp;import&nbsp;MetricsDictProvider<br>7&nbsp;from&nbsp;..clustering&nbsp;import&nbsp;EuclideanClusterer<br>8&nbsp;from&nbsp;..util.tracking&nbsp;import&nbsp;timed<br></a>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        <a class="clickable-link" href="https://github.com/opcode81/sensAI/commit/0e6d18f951dcdc9a4307aa8fda44f7b818b8f793" target="_blank">1&nbsp;from&nbsp;abc&nbsp;import&nbsp;ABC,&nbsp;abstractmethod<br>2&nbsp;from&nbsp;typing&nbsp;import&nbsp;Dict,&nbsp;Sequence,&nbsp;Generic,&nbsp;TypeVar<br>3&nbsp;<br>4&nbsp;from&nbsp;.eval_stats.eval_stats_clustering&nbsp;import&nbsp;ClusteringUnsupervisedEvalStats,&nbsp;\<br>5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ClusteringSupervisedEvalStats,&nbsp;ClusterLabelsEvalStats<br>6&nbsp;from&nbsp;.evaluator&nbsp;import&nbsp;MetricsDictProvider<br>7&nbsp;from&nbsp;..clustering&nbsp;import&nbsp;EuclideanClusterer<br>8&nbsp;from&nbsp;..util.tracking&nbsp;import&nbsp;timed<br></a>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        Before: 4<br>After: 4
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>fix typo in src/sensai/evaluator/evaluator_clustering.py</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>Fixed absolute import</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                            
+                                
+                                <td>
+                                    
+                                        <pre>src/sensai/evaluation/evaluator_clustering.py</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                            
+                                
+                            
+                                
+                                <td>
+                                    
+                                        <pre>0</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>43</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'module': 1,
+'import_from_statement': 5,
+'from': 5,
+'dotted_name': 16,
+'identifier': 19,
+'import': 5,
+',': 6,
+'.': 6,
+'line_continuation': 1,
+'relative_import': 2,
+'import_prefix': 2}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'cyclomatic_complexity': 1,
+'nloc': 10,
+'token_count': 37,
+'name': '_computeMetrics',
+'long_name': '_computeMetrics( self ,
+model : EuclideanClusterer ,
+** kwargs )',
+'start_line': 15,
+'end_line': 24,
+'full_parameters': ['self',
+' model : EuclideanClusterer',
+' ** kwargs'],
+'filename': '/home/student/.local/lib/python3.8/site-packages/Minecpp/sensAI/prev/src/sensai/evaluation/evaluator_clustering.py',
+'top_nesting_level': 1,
+'fan_in': 0,
+'fan_out': 0,
+'general_fan_out': 0}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'cyclomatic_complexity': 1,
+'nloc': 10,
+'token_count': 37,
+'name': '_computeMetrics',
+'long_name': '_computeMetrics( self ,
+model : EuclideanClusterer ,
+** kwargs )',
+'start_line': 15,
+'end_line': 24,
+'full_parameters': ['self',
+' model : EuclideanClusterer',
+' ** kwargs'],
+'filename': '/home/student/.local/lib/python3.8/site-packages/Minecpp/sensAI/curr/src/sensai/evaluation/evaluator_clustering.py',
+'top_nesting_level': 1,
+'fan_in': 0,
+'fan_out': 0,
+'general_fan_out': 0}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        0.944
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        0.938
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        
+                                        0.987
+                                    
+                                </td>
+                            
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        <a class="clickable-link" href="https://github.com/opcode81/sensAI/commit/c9a6a0e50315e3a976f7b4c035a97e2e207cf9ca" target="_blank">167&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"""<br>168&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;createVectorModelCrossValidator(self.inputOutputData,&nbsp;model=model,&nbsp;isRegression=isRegression,&nbsp;**self.crossValidatorParams)<br>169&nbsp;<br>170&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;performSimpleEvaluation(self,&nbsp;model:&nbsp;TModel,&nbsp;createPlots=True,&nbsp;showPlots=False,&nbsp;logResults=True,&nbsp;resultWriter:&nbsp;ResultWriter&nbsp;=&nbsp;None,<br>171&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;additionalEvaluationOnTrainingData=False,&nbsp;fitModel=True,&nbsp;writeEvalStats=False)&nbsp;-
+&gt;&nbsp;TEvalData:<br>172&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;showPlots&nbsp;and&nbsp;not&nbsp;createPlots:<br>173&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;raise&nbsp;ValueError("showPlots=True&nbsp;requires&nbsp;createPlots=True")<br>174&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resultWriter&nbsp;=&nbsp;self._resultWriterForModel(resultWriter,&nbsp;model)<br>175&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;evaluator&nbsp;=&nbsp;self.createEvaluator(model)<br>176&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;log.info(f"Evaluating&nbsp;{model}&nbsp;via&nbsp;{evaluator}")<br>177&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;fitModel:<br>178&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;evaluator.fitModel(model)<br>179&nbsp;<br>180&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;gatherResults(evalResultData,&nbsp;resultWriter,&nbsp;subtitlePrefix=""):<br>181&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;strEvalResults&nbsp;=&nbsp;f"{model}\n\n"<br>182&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;predictedVarName&nbsp;in&nbsp;model.getPredictedVariableNames():<br>183&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;evalStats&nbsp;=&nbsp;evalResultData.getEvalStats(predictedVarName)<br>184&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;strEvalResult&nbsp;=&nbsp;str(evalStats)<br>185&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;logResults:<br>186&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;log.info(f"{subtitlePrefix}
+Evaluation&nbsp;results&nbsp;for&nbsp;{predictedVarName}:&nbsp;
+{strEvalResult}")<br>187&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;strEvalResults&nbsp;
++=&nbsp;predictedVarName&nbsp;+&nbsp;":&nbsp;"&nbsp;
++&nbsp;strEvalResult&nbsp;+&nbsp;"\n"<br>188&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;writeEvalStats&nbsp;and&nbsp;resultWriter&nbsp;is&nbsp;not&nbsp;None:<br>189&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resultWriter.writePickle(f"eval-
+stats-{predictedVarName}",&nbsp;evalStats)<br>190&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;resultWriter&nbsp;is&nbsp;not&nbsp;None:<br>191&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resultWriter.writeTextFile("evaluator-
+results",&nbsp;strEvalResults)<br>192&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;createPlots:<br>193&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.createPlots(evalResultData,&nbsp;showPlots=showPlots,&nbsp;resultWriter=resultWriter,&nbsp;subtitlePrefix=subtitlePrefix)<br>194&nbsp;<br>195&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;evalResultData&nbsp;=&nbsp;evaluator.evalModel(model)<br>196&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gatherResults(evalResultData,&nbsp;resultWriter)<br>197&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;additionalEvaluationOnTrainingData:<br>198&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;evalResultDataTrain&nbsp;=&nbsp;evaluator.evalModel(model,&nbsp;onTrainingData=True)<br>199&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;additionalResultWriter&nbsp;=&nbsp;resultWriter.childWithAddedPrefix("-
+onTrain-")&nbsp;if&nbsp;resultWriter&nbsp;is&nbsp;not&nbsp;None&nbsp;else&nbsp;None<br>200&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gatherResults(evalResultDataTrain,&nbsp;additionalResultWriter,&nbsp;subtitlePrefix="[onTrain]&nbsp;")<br>201&nbsp;<br>202&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;evalResultData<br>203&nbsp;<br>204&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@staticmethod<br></a>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        <a class="clickable-link" href="https://github.com/opcode81/sensAI/commit/d1534ae1866e1262370878fef27a359725d3f1e4" target="_blank">168&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"""<br>169&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;createVectorModelCrossValidator(self.inputOutputData,&nbsp;model=model,&nbsp;isRegression=isRegression,&nbsp;**self.crossValidatorParams)<br>170&nbsp;<br>171&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;performSimpleEvaluation(self,&nbsp;model:&nbsp;TModel,&nbsp;createPlots=True,&nbsp;showPlots=False,&nbsp;logResults=True,&nbsp;resultWriter:&nbsp;ResultWriter&nbsp;=&nbsp;None,<br>172&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;additionalEvaluationOnTrainingData=False,&nbsp;fitModel=True,&nbsp;writeEvalStats=False)&nbsp;-
+&gt;&nbsp;TEvalData:<br>173&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;showPlots&nbsp;and&nbsp;not&nbsp;createPlots:<br>174&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;raise&nbsp;ValueError("showPlots=True&nbsp;requires&nbsp;createPlots=True")<br>175&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resultWriter&nbsp;=&nbsp;self._resultWriterForModel(resultWriter,&nbsp;model)<br>176&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;evaluator&nbsp;=&nbsp;self.createEvaluator(model)<br>177&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;log.info(f"Evaluating&nbsp;{model}&nbsp;via&nbsp;{evaluator}")<br>178&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;fitModel:<br>179&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;evaluator.fitModel(model)<br>180&nbsp;<br>181&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;gatherResults(evalResultData,&nbsp;resultWriter,&nbsp;subtitlePrefix=""):<br>182&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;strEvalResults&nbsp;=&nbsp;""<br>183&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;predictedVarName&nbsp;in&nbsp;model.getPredictedVariableNames():<br>184&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;evalStats&nbsp;=&nbsp;evalResultData.getEvalStats(predictedVarName)<br>185&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;strEvalResult&nbsp;=&nbsp;str(evalStats)<br>186&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;logResults:<br>187&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;log.info(f"{subtitlePrefix}
+Evaluation&nbsp;results&nbsp;for&nbsp;{predictedVarName}:&nbsp;
+{strEvalResult}")<br>188&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;strEvalResults&nbsp;
++=&nbsp;predictedVarName&nbsp;+&nbsp;":&nbsp;"&nbsp;
++&nbsp;strEvalResult&nbsp;+&nbsp;"\n"<br>189&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;writeEvalStats&nbsp;and&nbsp;resultWriter&nbsp;is&nbsp;not&nbsp;None:<br>190&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resultWriter.writePickle(f"eval-
+stats-{predictedVarName}",&nbsp;evalStats)<br>191&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;strEvalResults&nbsp;
++=&nbsp;f"\n\n{prettyStringRepr(model)}"<br>192&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;resultWriter&nbsp;is&nbsp;not&nbsp;None:<br>193&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resultWriter.writeTextFile("evaluator-
+results",&nbsp;strEvalResults)<br>194&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;createPlots:<br>195&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.createPlots(evalResultData,&nbsp;showPlots=showPlots,&nbsp;resultWriter=resultWriter,&nbsp;subtitlePrefix=subtitlePrefix)<br>196&nbsp;<br>197&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;evalResultData&nbsp;=&nbsp;evaluator.evalModel(model)<br>198&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gatherResults(evalResultData,&nbsp;resultWriter)<br>199&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;additionalEvaluationOnTrainingData:<br>200&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;evalResultDataTrain&nbsp;=&nbsp;evaluator.evalModel(model,&nbsp;onTrainingData=True)<br>201&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;additionalResultWriter&nbsp;=&nbsp;resultWriter.childWithAddedPrefix("-
+onTrain-")&nbsp;if&nbsp;resultWriter&nbsp;is&nbsp;not&nbsp;None&nbsp;else&nbsp;None<br>202&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gatherResults(evalResultDataTrain,&nbsp;additionalResultWriter,&nbsp;subtitlePrefix="[onTrain]&nbsp;")<br>203&nbsp;<br>204&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;evalResultData<br>205&nbsp;<br>206&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@staticmethod<br></a>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        Before: 181<br>After: 182
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>fix eval_util.py for python3</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>Sync dcs</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                            
+                                
+                                <td>
+                                    
+                                        <pre>src/sensai/evaluation/eval_util.py</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                            
+                                
+                            
+                                
+                                <td>
+                                    
+                                        <pre>0</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>1721</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'ERROR': 1,
+'string_start': 1,
+'string_content': 1,
+'escape_sequence': 3,
+')': 1,
+'return': 1,
+'identifier': 1}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'cyclomatic_complexity': 6,
+'nloc': 7,
+'token_count': 61,
+'name': '_isRegression',
+'long_name': '_isRegression( model : Optional [ VectorModel ] ,
+isRegression : Optional [ bool ] )',
+'start_line': 41,
+'end_line': 48,
+'full_parameters': ['model : Optional [ VectorModel ]',
+' isRegression : Optional [ bool ]'],
+'filename': '/home/student/.local/lib/python3.8/site-packages/Minecpp/sensAI/prev/src/sensai/evaluation/eval_util.py',
+'top_nesting_level': 0,
+'fan_in': 0,
+'fan_out': 0,
+'general_fan_out': 0}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'cyclomatic_complexity': 6,
+'nloc': 7,
+'token_count': 61,
+'name': '_isRegression',
+'long_name': '_isRegression( model : Optional [ VectorModel ] ,
+isRegression : Optional [ bool ] )',
+'start_line': 42,
+'end_line': 49,
+'full_parameters': ['model : Optional [ VectorModel ]',
+' isRegression : Optional [ bool ]'],
+'filename': '/home/student/.local/lib/python3.8/site-packages/Minecpp/sensAI/curr/src/sensai/evaluation/eval_util.py',
+'top_nesting_level': 0,
+'fan_in': 0,
+'fan_out': 0,
+'general_fan_out': 0}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        0.713
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        0.713
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        
+                                        0.981
+                                    
+                                </td>
+                            
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        <a class="clickable-link" href="https://github.com/opcode81/sensAI/commit/c9a6a0e50315e3a976f7b4c035a97e2e207cf9ca" target="_blank">114&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;log.info(f"{prefix}:&nbsp;is&nbsp;picklable")<br>115&nbsp;<br>116&nbsp;<br>117&nbsp;def&nbsp;setstate(cls,&nbsp;obj,&nbsp;state:&nbsp;Dict[str,&nbsp;Any])&nbsp;-&gt;&nbsp;None:<br>118&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"""<br>119&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Helper&nbsp;function&nbsp;for&nbsp;safe&nbsp;implementations&nbsp;of&nbsp;__setstate__&nbsp;in&nbsp;classes,&nbsp;which&nbsp;appropriately&nbsp;handles&nbsp;the&nbsp;cases&nbsp;where<br>120&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;parent&nbsp;class&nbsp;already&nbsp;implements&nbsp;__setstate__&nbsp;and&nbsp;where&nbsp;it&nbsp;does&nbsp;not.&nbsp;Call&nbsp;this&nbsp;function&nbsp;whenever&nbsp;you&nbsp;would&nbsp;actually<br>121&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;like&nbsp;to&nbsp;call&nbsp;the&nbsp;super-class'&nbsp;implementation.<br>122&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unfortunately,&nbsp;__setstate__&nbsp;is&nbsp;not&nbsp;implemented&nbsp;in&nbsp;object,&nbsp;rendering&nbsp;super().__setstate__(state)&nbsp;invalid&nbsp;in&nbsp;the&nbsp;general&nbsp;case.<br>123&nbsp;<br>124&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:param&nbsp;cls:&nbsp;the&nbsp;class&nbsp;in&nbsp;which&nbsp;you&nbsp;are&nbsp;implementing&nbsp;__setstate__<br>125&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:param&nbsp;obj:&nbsp;the&nbsp;instance&nbsp;of&nbsp;cls<br>126&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:param&nbsp;state:&nbsp;the&nbsp;state&nbsp;dictionary<br>127&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"""<br>128&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s&nbsp;=&nbsp;super(cls,&nbsp;obj)<br>129&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;hasattr(s,&nbsp;'__setstate__'):<br>130&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s.__setstate__(state)<br>131&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:<br>132&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;obj.__dict__&nbsp;=&nbsp;state<br>133&nbsp;<br>134&nbsp;<br></a>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        <a class="clickable-link" href="https://github.com/opcode81/sensAI/commit/d1534ae1866e1262370878fef27a359725d3f1e4" target="_blank">114&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;log.info(f"{prefix}:&nbsp;is&nbsp;picklable")<br>115&nbsp;<br>116&nbsp;<br>117&nbsp;def&nbsp;setstate(cls,&nbsp;obj,&nbsp;state:&nbsp;Dict[str,&nbsp;Any],&nbsp;renamedProperties:&nbsp;Dict[str,&nbsp;str]&nbsp;=&nbsp;None,&nbsp;newOptionalProperties:&nbsp;List[str]&nbsp;=&nbsp;None)&nbsp;-
+&gt;&nbsp;None:<br>118&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"""<br>119&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Helper&nbsp;function&nbsp;for&nbsp;safe&nbsp;implementations&nbsp;of&nbsp;__setstate__&nbsp;in&nbsp;classes,&nbsp;which&nbsp;appropriately&nbsp;handles&nbsp;the&nbsp;cases&nbsp;where<br>120&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;parent&nbsp;class&nbsp;already&nbsp;implements&nbsp;__setstate__&nbsp;and&nbsp;where&nbsp;it&nbsp;does&nbsp;not.&nbsp;Call&nbsp;this&nbsp;function&nbsp;whenever&nbsp;you&nbsp;would&nbsp;actually<br>121&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;like&nbsp;to&nbsp;call&nbsp;the&nbsp;super-class'&nbsp;implementation.<br>122&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unfortunately,&nbsp;__setstate__&nbsp;is&nbsp;not&nbsp;implemented&nbsp;in&nbsp;object,&nbsp;rendering&nbsp;super().__setstate__(state)&nbsp;invalid&nbsp;in&nbsp;the&nbsp;general&nbsp;case.<br>123&nbsp;<br>124&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:param&nbsp;cls:&nbsp;the&nbsp;class&nbsp;in&nbsp;which&nbsp;you&nbsp;are&nbsp;implementing&nbsp;__setstate__<br>125&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:param&nbsp;obj:&nbsp;the&nbsp;instance&nbsp;of&nbsp;cls<br>126&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:param&nbsp;state:&nbsp;the&nbsp;state&nbsp;dictionary<br>127&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:param&nbsp;renamedProperties:&nbsp;a&nbsp;mapping&nbsp;from&nbsp;old&nbsp;property&nbsp;names&nbsp;to&nbsp;new&nbsp;property&nbsp;names<br>128&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:param&nbsp;newOptionalProperties:&nbsp;a&nbsp;list&nbsp;of&nbsp;names&nbsp;of&nbsp;new&nbsp;property&nbsp;names,&nbsp;which,&nbsp;if&nbsp;not&nbsp;present,&nbsp;shall&nbsp;be&nbsp;initialised&nbsp;with&nbsp;None<br>129&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"""<br>130&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;handle&nbsp;new/changed&nbsp;properties<br>131&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;renamedProperties&nbsp;is&nbsp;not&nbsp;None:<br>132&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;mOld,&nbsp;mNew&nbsp;in&nbsp;renamedProperties.items():<br>133&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;mOld&nbsp;in&nbsp;state:<br>134&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;state[mNew]&nbsp;=&nbsp;state[mOld]<br>135&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;del&nbsp;state[mOld]<br>136&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;newOptionalProperties&nbsp;is&nbsp;not&nbsp;None:<br>137&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;mNew&nbsp;in&nbsp;newOptionalProperties:<br>138&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;mNew&nbsp;not&nbsp;in&nbsp;state:<br>139&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;state[mNew]&nbsp;=&nbsp;None<br>140&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;call&nbsp;super&nbsp;implementation,&nbsp;if&nbsp;any<br>141&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s&nbsp;=&nbsp;super(cls,&nbsp;obj)<br>142&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;hasattr(s,&nbsp;'__setstate__'):<br>143&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s.__setstate__(state)<br>144&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:<br>145&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;obj.__dict__&nbsp;=&nbsp;state<br>146&nbsp;<br>147&nbsp;<br></a>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        Before: 117<br>After: 117
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>fix pickling of new/changed properties</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>Sync dcs</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                            
+                                
+                                <td>
+                                    
+                                        <pre>src/sensai/util/pickle.py</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                            
+                                
+                            
+                                
+                                <td>
+                                    
+                                        <pre>0</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>952</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'module': 1,
+'expression_statement': 5,
+'call': 4,
+'attribute': 3,
+'identifier': 22,
+'.': 3,
+'argument_list': 4,
+'(': 5,
+'string': 3,
+'string_start': 3,
+'interpolation': 1,
+'{': 1,
+'}': 1,
+'string_content': 3,
+'string_end': 3,
+')': 5,
+'function_definition': 1,
+'def': 1,
+'parameters': 1,
+',': 5,
+'typed_parameter': 1,
+':': 4,
+'type': 4,
+'generic_type': 1,
+'type_parameter': 1,
+'[': 1,
+']': 1,
+'-&gt;': 1,
+'none': 1,
+'block': 3,
+'assignment': 2,
+'=': 2,
+'if_statement': 1,
+'if': 1,
+'else_clause': 1,
+'else': 1}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'cyclomatic_complexity': 3,
+'nloc': 8,
+'token_count': 51,
+'name': 'loadPickle',
+'long_name': 'loadPickle( path ,
+backend = "pickle" )',
+'start_line': 11,
+'end_line': 18,
+'full_parameters': ['path',
+' backend = "pickle"'],
+'filename': '/home/student/.local/lib/python3.8/site-packages/Minecpp/sensAI/prev/src/sensai/util/pickle.py',
+'top_nesting_level': 0,
+'fan_in': 0,
+'fan_out': 0,
+'general_fan_out': 0}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'cyclomatic_complexity': 3,
+'nloc': 8,
+'token_count': 51,
+'name': 'loadPickle',
+'long_name': 'loadPickle( path ,
+backend = "pickle" )',
+'start_line': 11,
+'end_line': 18,
+'full_parameters': ['path',
+' backend = "pickle"'],
+'filename': '/home/student/.local/lib/python3.8/site-packages/Minecpp/sensAI/curr/src/sensai/util/pickle.py',
+'top_nesting_level': 0,
+'fan_in': 0,
+'fan_out': 0,
+'general_fan_out': 0}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        0.51
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        0.505
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        
+                                        0.88
+                                    
+                                </td>
+                            
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        <a class="clickable-link" href="https://github.com/opcode81/sensAI/commit/c9a6a0e50315e3a976f7b4c035a97e2e207cf9ca" target="_blank">14&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;brackets[:1]&nbsp;
++&nbsp;",&nbsp;".join((toString(x)&nbsp;for&nbsp;x&nbsp;in&nbsp;l))&nbsp;
++&nbsp;brackets[-1:]<br>15&nbsp;<br>16&nbsp;<br>17&nbsp;def&nbsp;toString(x):<br>18&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;type(x)&nbsp;==&nbsp;list:<br>19&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;listString(x)<br>20&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;type(x)&nbsp;==&nbsp;tuple:<br>21&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;listString(x,&nbsp;brackets="()")<br>22&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;type(x)&nbsp;==&nbsp;dict:<br>23&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;dictString(x,&nbsp;brackets="{}")<br>24&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:<br>25&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;str(x)<br>26&nbsp;<br>27&nbsp;<br></a>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        <a class="clickable-link" href="https://github.com/opcode81/sensAI/commit/d1534ae1866e1262370878fef27a359725d3f1e4" target="_blank">17&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;brackets[:1]&nbsp;
++&nbsp;",&nbsp;".join((toString(x)&nbsp;for&nbsp;x&nbsp;in&nbsp;l))&nbsp;
++&nbsp;brackets[-1:]<br>18&nbsp;<br>19&nbsp;<br>20&nbsp;def&nbsp;toString(x):<br>21&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;type(x)&nbsp;==&nbsp;list:<br>22&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;listString(x)<br>23&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;type(x)&nbsp;==&nbsp;tuple:<br>24&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;listString(x,&nbsp;brackets="()")<br>25&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;type(x)&nbsp;==&nbsp;dict:<br>26&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;dictString(x,&nbsp;brackets="{}")<br>27&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:<br>28&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s&nbsp;=&nbsp;str(x)<br>29&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s&nbsp;=&nbsp;reCommaWhitespacePotentiallyBreaks.sub(",&nbsp;",&nbsp;s)&nbsp;&nbsp;#&nbsp;remove&nbsp;any&nbsp;unwanted&nbsp;line&nbsp;breaks&nbsp;and&nbsp;indentation&nbsp;after&nbsp;commas&nbsp;
+(as&nbsp;generated,&nbsp;for&nbsp;example,&nbsp;by&nbsp;sklearn&nbsp;objects)<br>30&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;s<br>31&nbsp;<br>32&nbsp;<br></a>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        Before: 25<br>After: 28, 29, 30
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>add support for sklearn objects in string</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>Sync dcs</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                            
+                                
+                                <td>
+                                    
+                                        <pre>src/sensai/util/string.py</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                            
+                                
+                            
+                                
+                                <td>
+                                    
+                                        <pre>0</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>321</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'module': 1,
+'return_statement': 5,
+'return': 5,
+'binary_operator': 2,
+'subscript': 2,
+'identifier': 28,
+'[': 2,
+'slice': 2,
+':': 7,
+'integer': 2,
+']': 2,
+'+': 2,
+'call': 9,
+'attribute': 1,
+'string': 3,
+'string_start': 3,
+'string_content': 3,
+'string_end': 3,
+'.': 1,
+'argument_list': 9,
+'(': 11,
+'generator_expression': 1,
+')': 11,
+'for_in_clause': 1,
+'for': 1,
+'in': 1,
+'unary_operator': 1,
+'-': 1,
+'function_definition': 1,
+'def': 1,
+'parameters': 1,
+'block': 5,
+'if_statement': 1,
+'if': 1,
+'comparison_operator': 3,
+'==': 3,
+'elif_clause': 2,
+'elif': 2,
+',': 2,
+'keyword_argument': 2,
+'=': 2,
+'else_clause': 1,
+'else': 1}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'cyclomatic_complexity': 3,
+'nloc': 6,
+'token_count': 62,
+'name': 'dictString',
+'long_name': 'dictString( d : Dict ,
+brackets : Optional [ str ] = None )',
+'start_line': 5,
+'end_line': 10,
+'full_parameters': ['d : Dict',
+' brackets : Optional [ str ] = None'],
+'filename': '/home/student/.local/lib/python3.8/site-packages/Minecpp/sensAI/prev/src/sensai/util/string.py',
+'top_nesting_level': 0,
+'fan_in': 0,
+'fan_out': 0,
+'general_fan_out': 0}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'cyclomatic_complexity': 3,
+'nloc': 6,
+'token_count': 62,
+'name': 'dictString',
+'long_name': 'dictString( d : Dict ,
+brackets : Optional [ str ] = None )',
+'start_line': 8,
+'end_line': 13,
+'full_parameters': ['d : Dict',
+' brackets : Optional [ str ] = None'],
+'filename': '/home/student/.local/lib/python3.8/site-packages/Minecpp/sensAI/curr/src/sensai/util/string.py',
+'top_nesting_level': 0,
+'fan_in': 0,
+'fan_out': 0,
+'general_fan_out': 0}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        0.556
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        0.515
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        
+                                        0.897
+                                    
+                                </td>
+                            
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        <a class="clickable-link" href="https://github.com/opcode81/sensAI/commit/c9a6a0e50315e3a976f7b4c035a97e2e207cf9ca" target="_blank">52&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;_toStringClassName(self):<br>53&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;type(self).__qualname__<br>54&nbsp;<br>55&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;_toStringProperties(self,&nbsp;exclude:&nbsp;Optional[Union[str,&nbsp;Iterable[str]]]&nbsp;=&nbsp;None,&nbsp;include:&nbsp;Optional[Union[str,&nbsp;Iterable[str]]]&nbsp;=&nbsp;None,<br>56&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**additionalEntries)&nbsp;-&gt;&nbsp;str:<br>57&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"""<br>58&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates&nbsp;a&nbsp;string&nbsp;of&nbsp;the&nbsp;class&nbsp;attributes,&nbsp;with&nbsp;optional&nbsp;exclusions/
+inclusions/additions.<br>59&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exclusions&nbsp;take&nbsp;precedence&nbsp;over&nbsp;inclusions.<br>60&nbsp;<br>61&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:param&nbsp;exclude:&nbsp;attributes&nbsp;to&nbsp;be&nbsp;excluded<br>62&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:param&nbsp;include:&nbsp;attributes&nbsp;to&nbsp;be&nbsp;included;&nbsp;if&nbsp;None/
+empty,&nbsp;include&nbsp;all&nbsp;that&nbsp;are&nbsp;not&nbsp;excluded<br>63&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:param&nbsp;additionalEntries:&nbsp;additional&nbsp;key-
+value-
+pairs&nbsp;which&nbsp;are&nbsp;added&nbsp;to&nbsp;the&nbsp;string&nbsp;just&nbsp;like&nbsp;the&nbsp;other&nbsp;attributes<br>64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:return:&nbsp;a&nbsp;string&nbsp;containing&nbsp;attribute&nbsp;names&nbsp;and&nbsp;values<br>65&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"""<br>66&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;mklist(x):<br>67&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;x&nbsp;is&nbsp;None:<br>68&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[]<br>69&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;type(x)&nbsp;==&nbsp;str:<br>70&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[x]<br>71&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;x<br>72&nbsp;<br>73&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exclude&nbsp;=&nbsp;mklist(exclude)<br>74&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;include&nbsp;=&nbsp;mklist(include)<br>75&nbsp;<br>76&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;len(include)&nbsp;==&nbsp;0:<br>77&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attributeDict&nbsp;=&nbsp;self.__dict__<br>78&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;self._toStringExcludePrivate():<br>79&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attributeDict&nbsp;=&nbsp;
+{k:&nbsp;v&nbsp;for&nbsp;k,&nbsp;v&nbsp;in&nbsp;attributeDict.items()&nbsp;if&nbsp;not&nbsp;k.startswith("_")}<br>80&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:<br>81&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attributeDict&nbsp;=&nbsp;
+{k:&nbsp;getattr(self,&nbsp;k)&nbsp;for&nbsp;k&nbsp;in&nbsp;include&nbsp;if&nbsp;hasattr(self,&nbsp;k)}<br>82&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d&nbsp;=&nbsp;
+{k:&nbsp;v&nbsp;for&nbsp;k,&nbsp;v&nbsp;in&nbsp;attributeDict.items()&nbsp;if&nbsp;k&nbsp;not&nbsp;in&nbsp;exclude}<br>83&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d.update(additionalEntries)<br>84&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;dictString(d)<br>85&nbsp;<br>86&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;_toStringObjectInfo(self)&nbsp;-&gt;&nbsp;str:<br></a>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        <a class="clickable-link" href="https://github.com/opcode81/sensAI/commit/d1534ae1866e1262370878fef27a359725d3f1e4" target="_blank">57&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;_toStringClassName(self):<br>58&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;type(self).__qualname__<br>59&nbsp;<br>60&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;_toStringProperties(self,&nbsp;exclude:&nbsp;Optional[Union[str,&nbsp;Iterable[str]]]&nbsp;=&nbsp;None,&nbsp;include:&nbsp;Optional[Union[str,&nbsp;Iterable[str]]]&nbsp;=&nbsp;None,<br>61&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;excludeExceptions:&nbsp;Optional[List[str]]&nbsp;=&nbsp;None,&nbsp;includeForced:&nbsp;Optional[List[str]]&nbsp;=&nbsp;None,<br>62&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;additionalEntries:&nbsp;Dict[str,&nbsp;Any]&nbsp;=&nbsp;None)&nbsp;-
+&gt;&nbsp;str:<br>63&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"""<br>64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates&nbsp;a&nbsp;string&nbsp;of&nbsp;the&nbsp;class&nbsp;attributes,&nbsp;with&nbsp;optional&nbsp;exclusions/
+inclusions/additions.<br>65&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exclusions&nbsp;take&nbsp;precedence&nbsp;over&nbsp;inclusions.<br>66&nbsp;<br>67&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:param&nbsp;exclude:&nbsp;attributes&nbsp;to&nbsp;be&nbsp;excluded<br>68&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:param&nbsp;include:&nbsp;attributes&nbsp;to&nbsp;be&nbsp;included;&nbsp;if&nbsp;None/
+empty,&nbsp;include&nbsp;all&nbsp;that&nbsp;are&nbsp;not&nbsp;excluded<br>69&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:param&nbsp;additionalEntries:&nbsp;additional&nbsp;key-
+value-
+pairs&nbsp;which&nbsp;are&nbsp;added&nbsp;to&nbsp;the&nbsp;string&nbsp;just&nbsp;like&nbsp;the&nbsp;other&nbsp;attributes<br>70&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:return:&nbsp;a&nbsp;string&nbsp;containing&nbsp;attribute&nbsp;names&nbsp;and&nbsp;values<br>71&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"""<br>72&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;mklist(x):<br>73&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;x&nbsp;is&nbsp;None:<br>74&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[]<br>75&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;type(x)&nbsp;==&nbsp;str:<br>76&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[x]<br>77&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;x<br>78&nbsp;<br>79&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exclude&nbsp;=&nbsp;mklist(exclude)<br>80&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;include&nbsp;=&nbsp;mklist(include)<br>81&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;includeForced&nbsp;=&nbsp;mklist(includeForced)<br>82&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;excludeExceptions&nbsp;=&nbsp;mklist(excludeExceptions)<br>83&nbsp;<br>84&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;isExcluded(k):<br>85&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;k&nbsp;in&nbsp;includeForced&nbsp;or&nbsp;k&nbsp;in&nbsp;excludeExceptions:<br>86&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;False<br>87&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;k&nbsp;in&nbsp;exclude:<br>88&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;True<br>89&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;self._toStringExcludePrivate():<br>90&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;isPrivate&nbsp;=&nbsp;k.startswith("_")<br>91&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;isPrivate<br>92&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:<br>93&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;False<br>94&nbsp;<br>95&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;determine&nbsp;relevant&nbsp;attribute&nbsp;dictionary<br>96&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;len(include)&nbsp;==&nbsp;0:&nbsp;&nbsp;#&nbsp;exclude&nbsp;semantics&nbsp;
+(include&nbsp;everything&nbsp;by&nbsp;default)<br>97&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attributeDict&nbsp;=&nbsp;self.__dict__<br>98&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:&nbsp;&nbsp;#&nbsp;include&nbsp;semantics&nbsp;
+(include&nbsp;only&nbsp;inclusions)<br>99&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attributeDict&nbsp;=&nbsp;
+{k:&nbsp;getattr(self,&nbsp;k)&nbsp;for&nbsp;k&nbsp;in&nbsp;set(include&nbsp;
++&nbsp;includeForced)&nbsp;if&nbsp;hasattr(self,&nbsp;k)}<br>100&nbsp;<br>101&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;apply&nbsp;exclusions&nbsp;and&nbsp;remove&nbsp;underscores&nbsp;from&nbsp;attribute&nbsp;names<br>102&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d&nbsp;=&nbsp;
+{k.strip("_"):&nbsp;v&nbsp;for&nbsp;k,&nbsp;v&nbsp;in&nbsp;attributeDict.items()&nbsp;if&nbsp;not&nbsp;isExcluded(k)}<br>103&nbsp;<br>104&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;additionalEntries&nbsp;is&nbsp;not&nbsp;None:<br>105&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d.update(additionalEntries)<br>106&nbsp;<br>107&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;dictString(d)<br>108&nbsp;<br>109&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;_toStringObjectInfo(self)&nbsp;-&gt;&nbsp;str:<br></a>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        Before: 56<br>After: 61, 62
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>add support for sklearn objects in string</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>Sync dcs</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                            
+                                
+                                <td>
+                                    
+                                        <pre>src/sensai/util/string.py</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                            
+                                
+                            
+                                
+                                <td>
+                                    
+                                        <pre>0</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>605</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'module': 1,
+'function_definition': 3,
+'def': 3,
+'identifier': 75,
+'parameters': 3,
+'(': 16,
+')': 16,
+':': 13,
+'block': 8,
+'return_statement': 5,
+'return': 5,
+'attribute': 7,
+'call': 13,
+'argument_list': 13,
+'.': 7,
+',': 9,
+'typed_default_parameter': 2,
+'type': 11,
+'generic_type': 6,
+'type_parameter': 6,
+'[': 8,
+']': 8,
+'=': 8,
+'none': 3,
+'dictionary_splat_pattern': 1,
+'**': 1,
+'-&gt;': 1,
+'expression_statement': 8,
+'string': 2,
+'string_start': 2,
+'string_content': 2,
+'string_end': 2,
+'if_statement': 4,
+'if': 7,
+'comparison_operator': 4,
+'is': 1,
+'list': 2,
+'==': 2,
+'assignment': 6,
+'integer': 1,
+'dictionary_comprehension': 3,
+'{': 3,
+'pair': 3,
+'for_in_clause': 3,
+'for': 3,
+'pattern_list': 2,
+'in': 3,
+'if_clause': 3,
+'not_operator': 1,
+'not': 1,
+'}': 3,
+'else_clause': 1,
+'else': 1,
+'not in': 2}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'cyclomatic_complexity': 3,
+'nloc': 6,
+'token_count': 62,
+'name': 'dictString',
+'long_name': 'dictString( d : Dict ,
+brackets : Optional [ str ] = None )',
+'start_line': 5,
+'end_line': 10,
+'full_parameters': ['d : Dict',
+' brackets : Optional [ str ] = None'],
+'filename': '/home/student/.local/lib/python3.8/site-packages/Minecpp/sensAI/prev/src/sensai/util/string.py',
+'top_nesting_level': 0,
+'fan_in': 0,
+'fan_out': 0,
+'general_fan_out': 0}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'cyclomatic_complexity': 3,
+'nloc': 6,
+'token_count': 62,
+'name': 'dictString',
+'long_name': 'dictString( d : Dict ,
+brackets : Optional [ str ] = None )',
+'start_line': 8,
+'end_line': 13,
+'full_parameters': ['d : Dict',
+' brackets : Optional [ str ] = None'],
+'filename': '/home/student/.local/lib/python3.8/site-packages/Minecpp/sensAI/curr/src/sensai/util/string.py',
+'top_nesting_level': 0,
+'fan_in': 0,
+'fan_out': 0,
+'general_fan_out': 0}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        0.485
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        0.481
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        
+                                        0.905
+                                    
+                                </td>
+                            
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        <a class="clickable-link" href="https://github.com/opcode81/sensAI/commit/c9a6a0e50315e3a976f7b4c035a97e2e207cf9ca" target="_blank">52&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;_toStringClassName(self):<br>53&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;type(self).__qualname__<br>54&nbsp;<br>55&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;_toStringProperties(self,&nbsp;exclude:&nbsp;Optional[Union[str,&nbsp;Iterable[str]]]&nbsp;=&nbsp;None,&nbsp;include:&nbsp;Optional[Union[str,&nbsp;Iterable[str]]]&nbsp;=&nbsp;None,<br>56&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**additionalEntries)&nbsp;-&gt;&nbsp;str:<br>57&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"""<br>58&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates&nbsp;a&nbsp;string&nbsp;of&nbsp;the&nbsp;class&nbsp;attributes,&nbsp;with&nbsp;optional&nbsp;exclusions/
+inclusions/additions.<br>59&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exclusions&nbsp;take&nbsp;precedence&nbsp;over&nbsp;inclusions.<br>60&nbsp;<br>61&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:param&nbsp;exclude:&nbsp;attributes&nbsp;to&nbsp;be&nbsp;excluded<br>62&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:param&nbsp;include:&nbsp;attributes&nbsp;to&nbsp;be&nbsp;included;&nbsp;if&nbsp;None/
+empty,&nbsp;include&nbsp;all&nbsp;that&nbsp;are&nbsp;not&nbsp;excluded<br>63&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:param&nbsp;additionalEntries:&nbsp;additional&nbsp;key-
+value-
+pairs&nbsp;which&nbsp;are&nbsp;added&nbsp;to&nbsp;the&nbsp;string&nbsp;just&nbsp;like&nbsp;the&nbsp;other&nbsp;attributes<br>64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:return:&nbsp;a&nbsp;string&nbsp;containing&nbsp;attribute&nbsp;names&nbsp;and&nbsp;values<br>65&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"""<br>66&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;mklist(x):<br>67&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;x&nbsp;is&nbsp;None:<br>68&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[]<br>69&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;type(x)&nbsp;==&nbsp;str:<br>70&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[x]<br>71&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;x<br>72&nbsp;<br>73&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exclude&nbsp;=&nbsp;mklist(exclude)<br>74&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;include&nbsp;=&nbsp;mklist(include)<br>75&nbsp;<br>76&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;len(include)&nbsp;==&nbsp;0:<br>77&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attributeDict&nbsp;=&nbsp;self.__dict__<br>78&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;self._toStringExcludePrivate():<br>79&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attributeDict&nbsp;=&nbsp;
+{k:&nbsp;v&nbsp;for&nbsp;k,&nbsp;v&nbsp;in&nbsp;attributeDict.items()&nbsp;if&nbsp;not&nbsp;k.startswith("_")}<br>80&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:<br>81&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attributeDict&nbsp;=&nbsp;
+{k:&nbsp;getattr(self,&nbsp;k)&nbsp;for&nbsp;k&nbsp;in&nbsp;include&nbsp;if&nbsp;hasattr(self,&nbsp;k)}<br>82&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d&nbsp;=&nbsp;
+{k:&nbsp;v&nbsp;for&nbsp;k,&nbsp;v&nbsp;in&nbsp;attributeDict.items()&nbsp;if&nbsp;k&nbsp;not&nbsp;in&nbsp;exclude}<br>83&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d.update(additionalEntries)<br>84&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;dictString(d)<br>85&nbsp;<br>86&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;_toStringObjectInfo(self)&nbsp;-&gt;&nbsp;str:<br></a>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        <a class="clickable-link" href="https://github.com/opcode81/sensAI/commit/d1534ae1866e1262370878fef27a359725d3f1e4" target="_blank">57&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;_toStringClassName(self):<br>58&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;type(self).__qualname__<br>59&nbsp;<br>60&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;_toStringProperties(self,&nbsp;exclude:&nbsp;Optional[Union[str,&nbsp;Iterable[str]]]&nbsp;=&nbsp;None,&nbsp;include:&nbsp;Optional[Union[str,&nbsp;Iterable[str]]]&nbsp;=&nbsp;None,<br>61&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;excludeExceptions:&nbsp;Optional[List[str]]&nbsp;=&nbsp;None,&nbsp;includeForced:&nbsp;Optional[List[str]]&nbsp;=&nbsp;None,<br>62&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;additionalEntries:&nbsp;Dict[str,&nbsp;Any]&nbsp;=&nbsp;None)&nbsp;-
+&gt;&nbsp;str:<br>63&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"""<br>64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates&nbsp;a&nbsp;string&nbsp;of&nbsp;the&nbsp;class&nbsp;attributes,&nbsp;with&nbsp;optional&nbsp;exclusions/
+inclusions/additions.<br>65&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exclusions&nbsp;take&nbsp;precedence&nbsp;over&nbsp;inclusions.<br>66&nbsp;<br>67&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:param&nbsp;exclude:&nbsp;attributes&nbsp;to&nbsp;be&nbsp;excluded<br>68&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:param&nbsp;include:&nbsp;attributes&nbsp;to&nbsp;be&nbsp;included;&nbsp;if&nbsp;None/
+empty,&nbsp;include&nbsp;all&nbsp;that&nbsp;are&nbsp;not&nbsp;excluded<br>69&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:param&nbsp;additionalEntries:&nbsp;additional&nbsp;key-
+value-
+pairs&nbsp;which&nbsp;are&nbsp;added&nbsp;to&nbsp;the&nbsp;string&nbsp;just&nbsp;like&nbsp;the&nbsp;other&nbsp;attributes<br>70&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:return:&nbsp;a&nbsp;string&nbsp;containing&nbsp;attribute&nbsp;names&nbsp;and&nbsp;values<br>71&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"""<br>72&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;mklist(x):<br>73&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;x&nbsp;is&nbsp;None:<br>74&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[]<br>75&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;type(x)&nbsp;==&nbsp;str:<br>76&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[x]<br>77&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;x<br>78&nbsp;<br>79&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exclude&nbsp;=&nbsp;mklist(exclude)<br>80&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;include&nbsp;=&nbsp;mklist(include)<br>81&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;includeForced&nbsp;=&nbsp;mklist(includeForced)<br>82&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;excludeExceptions&nbsp;=&nbsp;mklist(excludeExceptions)<br>83&nbsp;<br>84&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;isExcluded(k):<br>85&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;k&nbsp;in&nbsp;includeForced&nbsp;or&nbsp;k&nbsp;in&nbsp;excludeExceptions:<br>86&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;False<br>87&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;k&nbsp;in&nbsp;exclude:<br>88&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;True<br>89&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;self._toStringExcludePrivate():<br>90&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;isPrivate&nbsp;=&nbsp;k.startswith("_")<br>91&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;isPrivate<br>92&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:<br>93&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;False<br>94&nbsp;<br>95&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;determine&nbsp;relevant&nbsp;attribute&nbsp;dictionary<br>96&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;len(include)&nbsp;==&nbsp;0:&nbsp;&nbsp;#&nbsp;exclude&nbsp;semantics&nbsp;
+(include&nbsp;everything&nbsp;by&nbsp;default)<br>97&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attributeDict&nbsp;=&nbsp;self.__dict__<br>98&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:&nbsp;&nbsp;#&nbsp;include&nbsp;semantics&nbsp;
+(include&nbsp;only&nbsp;inclusions)<br>99&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attributeDict&nbsp;=&nbsp;
+{k:&nbsp;getattr(self,&nbsp;k)&nbsp;for&nbsp;k&nbsp;in&nbsp;set(include&nbsp;
++&nbsp;includeForced)&nbsp;if&nbsp;hasattr(self,&nbsp;k)}<br>100&nbsp;<br>101&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;apply&nbsp;exclusions&nbsp;and&nbsp;remove&nbsp;underscores&nbsp;from&nbsp;attribute&nbsp;names<br>102&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d&nbsp;=&nbsp;
+{k.strip("_"):&nbsp;v&nbsp;for&nbsp;k,&nbsp;v&nbsp;in&nbsp;attributeDict.items()&nbsp;if&nbsp;not&nbsp;isExcluded(k)}<br>103&nbsp;<br>104&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;additionalEntries&nbsp;is&nbsp;not&nbsp;None:<br>105&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d.update(additionalEntries)<br>106&nbsp;<br>107&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;dictString(d)<br>108&nbsp;<br>109&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;_toStringObjectInfo(self)&nbsp;-&gt;&nbsp;str:<br></a>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        Before: 76<br>After: 95, 96
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>add support for sklearn objects in string</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>Sync dcs</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                            
+                                
+                                <td>
+                                    
+                                        <pre>src/sensai/util/string.py</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                            
+                                
+                            
+                                
+                                <td>
+                                    
+                                        <pre>0</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>687</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'module': 1,
+'function_definition': 3,
+'def': 3,
+'identifier': 75,
+'parameters': 3,
+'(': 16,
+')': 16,
+':': 13,
+'block': 8,
+'return_statement': 5,
+'return': 5,
+'attribute': 7,
+'call': 13,
+'argument_list': 13,
+'.': 7,
+',': 9,
+'typed_default_parameter': 2,
+'type': 11,
+'generic_type': 6,
+'type_parameter': 6,
+'[': 8,
+']': 8,
+'=': 8,
+'none': 3,
+'dictionary_splat_pattern': 1,
+'**': 1,
+'-&gt;': 1,
+'expression_statement': 8,
+'string': 2,
+'string_start': 2,
+'string_content': 2,
+'string_end': 2,
+'if_statement': 4,
+'if': 7,
+'comparison_operator': 4,
+'is': 1,
+'list': 2,
+'==': 2,
+'assignment': 6,
+'integer': 1,
+'dictionary_comprehension': 3,
+'{': 3,
+'pair': 3,
+'for_in_clause': 3,
+'for': 3,
+'pattern_list': 2,
+'in': 3,
+'if_clause': 3,
+'not_operator': 1,
+'not': 1,
+'}': 3,
+'else_clause': 1,
+'else': 1,
+'not in': 2}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'cyclomatic_complexity': 3,
+'nloc': 6,
+'token_count': 62,
+'name': 'dictString',
+'long_name': 'dictString( d : Dict ,
+brackets : Optional [ str ] = None )',
+'start_line': 5,
+'end_line': 10,
+'full_parameters': ['d : Dict',
+' brackets : Optional [ str ] = None'],
+'filename': '/home/student/.local/lib/python3.8/site-packages/Minecpp/sensAI/prev/src/sensai/util/string.py',
+'top_nesting_level': 0,
+'fan_in': 0,
+'fan_out': 0,
+'general_fan_out': 0}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'cyclomatic_complexity': 3,
+'nloc': 6,
+'token_count': 62,
+'name': 'dictString',
+'long_name': 'dictString( d : Dict ,
+brackets : Optional [ str ] = None )',
+'start_line': 8,
+'end_line': 13,
+'full_parameters': ['d : Dict',
+' brackets : Optional [ str ] = None'],
+'filename': '/home/student/.local/lib/python3.8/site-packages/Minecpp/sensAI/curr/src/sensai/util/string.py',
+'top_nesting_level': 0,
+'fan_in': 0,
+'fan_out': 0,
+'general_fan_out': 0}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        0.485
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        0.481
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        
+                                        0.905
+                                    
+                                </td>
+                            
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        <a class="clickable-link" href="https://github.com/opcode81/sensAI/commit/c9a6a0e50315e3a976f7b4c035a97e2e207cf9ca" target="_blank">52&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;_toStringClassName(self):<br>53&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;type(self).__qualname__<br>54&nbsp;<br>55&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;_toStringProperties(self,&nbsp;exclude:&nbsp;Optional[Union[str,&nbsp;Iterable[str]]]&nbsp;=&nbsp;None,&nbsp;include:&nbsp;Optional[Union[str,&nbsp;Iterable[str]]]&nbsp;=&nbsp;None,<br>56&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**additionalEntries)&nbsp;-&gt;&nbsp;str:<br>57&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"""<br>58&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates&nbsp;a&nbsp;string&nbsp;of&nbsp;the&nbsp;class&nbsp;attributes,&nbsp;with&nbsp;optional&nbsp;exclusions/
+inclusions/additions.<br>59&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exclusions&nbsp;take&nbsp;precedence&nbsp;over&nbsp;inclusions.<br>60&nbsp;<br>61&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:param&nbsp;exclude:&nbsp;attributes&nbsp;to&nbsp;be&nbsp;excluded<br>62&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:param&nbsp;include:&nbsp;attributes&nbsp;to&nbsp;be&nbsp;included;&nbsp;if&nbsp;None/
+empty,&nbsp;include&nbsp;all&nbsp;that&nbsp;are&nbsp;not&nbsp;excluded<br>63&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:param&nbsp;additionalEntries:&nbsp;additional&nbsp;key-
+value-
+pairs&nbsp;which&nbsp;are&nbsp;added&nbsp;to&nbsp;the&nbsp;string&nbsp;just&nbsp;like&nbsp;the&nbsp;other&nbsp;attributes<br>64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:return:&nbsp;a&nbsp;string&nbsp;containing&nbsp;attribute&nbsp;names&nbsp;and&nbsp;values<br>65&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"""<br>66&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;mklist(x):<br>67&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;x&nbsp;is&nbsp;None:<br>68&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[]<br>69&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;type(x)&nbsp;==&nbsp;str:<br>70&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[x]<br>71&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;x<br>72&nbsp;<br>73&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exclude&nbsp;=&nbsp;mklist(exclude)<br>74&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;include&nbsp;=&nbsp;mklist(include)<br>75&nbsp;<br>76&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;len(include)&nbsp;==&nbsp;0:<br>77&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attributeDict&nbsp;=&nbsp;self.__dict__<br>78&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;self._toStringExcludePrivate():<br>79&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attributeDict&nbsp;=&nbsp;
+{k:&nbsp;v&nbsp;for&nbsp;k,&nbsp;v&nbsp;in&nbsp;attributeDict.items()&nbsp;if&nbsp;not&nbsp;k.startswith("_")}<br>80&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:<br>81&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attributeDict&nbsp;=&nbsp;
+{k:&nbsp;getattr(self,&nbsp;k)&nbsp;for&nbsp;k&nbsp;in&nbsp;include&nbsp;if&nbsp;hasattr(self,&nbsp;k)}<br>82&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d&nbsp;=&nbsp;
+{k:&nbsp;v&nbsp;for&nbsp;k,&nbsp;v&nbsp;in&nbsp;attributeDict.items()&nbsp;if&nbsp;k&nbsp;not&nbsp;in&nbsp;exclude}<br>83&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d.update(additionalEntries)<br>84&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;dictString(d)<br>85&nbsp;<br>86&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;_toStringObjectInfo(self)&nbsp;-&gt;&nbsp;str:<br></a>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        <a class="clickable-link" href="https://github.com/opcode81/sensAI/commit/d1534ae1866e1262370878fef27a359725d3f1e4" target="_blank">57&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;_toStringClassName(self):<br>58&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;type(self).__qualname__<br>59&nbsp;<br>60&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;_toStringProperties(self,&nbsp;exclude:&nbsp;Optional[Union[str,&nbsp;Iterable[str]]]&nbsp;=&nbsp;None,&nbsp;include:&nbsp;Optional[Union[str,&nbsp;Iterable[str]]]&nbsp;=&nbsp;None,<br>61&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;excludeExceptions:&nbsp;Optional[List[str]]&nbsp;=&nbsp;None,&nbsp;includeForced:&nbsp;Optional[List[str]]&nbsp;=&nbsp;None,<br>62&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;additionalEntries:&nbsp;Dict[str,&nbsp;Any]&nbsp;=&nbsp;None)&nbsp;-
+&gt;&nbsp;str:<br>63&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"""<br>64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates&nbsp;a&nbsp;string&nbsp;of&nbsp;the&nbsp;class&nbsp;attributes,&nbsp;with&nbsp;optional&nbsp;exclusions/
+inclusions/additions.<br>65&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exclusions&nbsp;take&nbsp;precedence&nbsp;over&nbsp;inclusions.<br>66&nbsp;<br>67&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:param&nbsp;exclude:&nbsp;attributes&nbsp;to&nbsp;be&nbsp;excluded<br>68&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:param&nbsp;include:&nbsp;attributes&nbsp;to&nbsp;be&nbsp;included;&nbsp;if&nbsp;None/
+empty,&nbsp;include&nbsp;all&nbsp;that&nbsp;are&nbsp;not&nbsp;excluded<br>69&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:param&nbsp;additionalEntries:&nbsp;additional&nbsp;key-
+value-
+pairs&nbsp;which&nbsp;are&nbsp;added&nbsp;to&nbsp;the&nbsp;string&nbsp;just&nbsp;like&nbsp;the&nbsp;other&nbsp;attributes<br>70&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:return:&nbsp;a&nbsp;string&nbsp;containing&nbsp;attribute&nbsp;names&nbsp;and&nbsp;values<br>71&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"""<br>72&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;mklist(x):<br>73&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;x&nbsp;is&nbsp;None:<br>74&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[]<br>75&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;type(x)&nbsp;==&nbsp;str:<br>76&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[x]<br>77&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;x<br>78&nbsp;<br>79&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exclude&nbsp;=&nbsp;mklist(exclude)<br>80&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;include&nbsp;=&nbsp;mklist(include)<br>81&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;includeForced&nbsp;=&nbsp;mklist(includeForced)<br>82&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;excludeExceptions&nbsp;=&nbsp;mklist(excludeExceptions)<br>83&nbsp;<br>84&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;isExcluded(k):<br>85&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;k&nbsp;in&nbsp;includeForced&nbsp;or&nbsp;k&nbsp;in&nbsp;excludeExceptions:<br>86&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;False<br>87&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;k&nbsp;in&nbsp;exclude:<br>88&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;True<br>89&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;self._toStringExcludePrivate():<br>90&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;isPrivate&nbsp;=&nbsp;k.startswith("_")<br>91&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;isPrivate<br>92&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:<br>93&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;False<br>94&nbsp;<br>95&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;determine&nbsp;relevant&nbsp;attribute&nbsp;dictionary<br>96&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;len(include)&nbsp;==&nbsp;0:&nbsp;&nbsp;#&nbsp;exclude&nbsp;semantics&nbsp;
+(include&nbsp;everything&nbsp;by&nbsp;default)<br>97&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attributeDict&nbsp;=&nbsp;self.__dict__<br>98&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:&nbsp;&nbsp;#&nbsp;include&nbsp;semantics&nbsp;
+(include&nbsp;only&nbsp;inclusions)<br>99&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attributeDict&nbsp;=&nbsp;
+{k:&nbsp;getattr(self,&nbsp;k)&nbsp;for&nbsp;k&nbsp;in&nbsp;set(include&nbsp;
++&nbsp;includeForced)&nbsp;if&nbsp;hasattr(self,&nbsp;k)}<br>100&nbsp;<br>101&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;apply&nbsp;exclusions&nbsp;and&nbsp;remove&nbsp;underscores&nbsp;from&nbsp;attribute&nbsp;names<br>102&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d&nbsp;=&nbsp;
+{k.strip("_"):&nbsp;v&nbsp;for&nbsp;k,&nbsp;v&nbsp;in&nbsp;attributeDict.items()&nbsp;if&nbsp;not&nbsp;isExcluded(k)}<br>103&nbsp;<br>104&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;additionalEntries&nbsp;is&nbsp;not&nbsp;None:<br>105&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d.update(additionalEntries)<br>106&nbsp;<br>107&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;dictString(d)<br>108&nbsp;<br>109&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;_toStringObjectInfo(self)&nbsp;-&gt;&nbsp;str:<br></a>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        Before: 78, 79, 80, 81, 82, 83<br>After: 98, 99, 100, 101, 102, 103, 104, 105, 106
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>add support for sklearn objects in string</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>Sync dcs</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                            
+                                
+                                <td>
+                                    
+                                        <pre>src/sensai/util/string.py</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                            
+                                
+                            
+                                
+                                <td>
+                                    
+                                        <pre>0</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>707</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'module': 1,
+'function_definition': 3,
+'def': 3,
+'identifier': 75,
+'parameters': 3,
+'(': 16,
+')': 16,
+':': 13,
+'block': 8,
+'return_statement': 5,
+'return': 5,
+'attribute': 7,
+'call': 13,
+'argument_list': 13,
+'.': 7,
+',': 9,
+'typed_default_parameter': 2,
+'type': 11,
+'generic_type': 6,
+'type_parameter': 6,
+'[': 8,
+']': 8,
+'=': 8,
+'none': 3,
+'dictionary_splat_pattern': 1,
+'**': 1,
+'-&gt;': 1,
+'expression_statement': 8,
+'string': 2,
+'string_start': 2,
+'string_content': 2,
+'string_end': 2,
+'if_statement': 4,
+'if': 7,
+'comparison_operator': 4,
+'is': 1,
+'list': 2,
+'==': 2,
+'assignment': 6,
+'integer': 1,
+'dictionary_comprehension': 3,
+'{': 3,
+'pair': 3,
+'for_in_clause': 3,
+'for': 3,
+'pattern_list': 2,
+'in': 3,
+'if_clause': 3,
+'not_operator': 1,
+'not': 1,
+'}': 3,
+'else_clause': 1,
+'else': 1,
+'not in': 2}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'cyclomatic_complexity': 3,
+'nloc': 6,
+'token_count': 62,
+'name': 'dictString',
+'long_name': 'dictString( d : Dict ,
+brackets : Optional [ str ] = None )',
+'start_line': 5,
+'end_line': 10,
+'full_parameters': ['d : Dict',
+' brackets : Optional [ str ] = None'],
+'filename': '/home/student/.local/lib/python3.8/site-packages/Minecpp/sensAI/prev/src/sensai/util/string.py',
+'top_nesting_level': 0,
+'fan_in': 0,
+'fan_out': 0,
+'general_fan_out': 0}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'cyclomatic_complexity': 3,
+'nloc': 6,
+'token_count': 62,
+'name': 'dictString',
+'long_name': 'dictString( d : Dict ,
+brackets : Optional [ str ] = None )',
+'start_line': 8,
+'end_line': 13,
+'full_parameters': ['d : Dict',
+' brackets : Optional [ str ] = None'],
+'filename': '/home/student/.local/lib/python3.8/site-packages/Minecpp/sensAI/curr/src/sensai/util/string.py',
+'top_nesting_level': 0,
+'fan_in': 0,
+'fan_out': 0,
+'general_fan_out': 0}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        0.485
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        0.481
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        
+                                        0.905
+                                    
+                                </td>
+                            
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        <a class="clickable-link" href="https://github.com/opcode81/sensAI/commit/c9a6a0e50315e3a976f7b4c035a97e2e207cf9ca" target="_blank">83&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d.update(additionalEntries)<br>84&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;dictString(d)<br>85&nbsp;<br>86&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;_toStringObjectInfo(self)&nbsp;-&gt;&nbsp;str:<br>87&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"""<br>88&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates&nbsp;a&nbsp;string&nbsp;containing&nbsp;information&nbsp;on&nbsp;the&nbsp;objects&nbsp;state,&nbsp;which&nbsp;is&nbsp;the&nbsp;name&nbsp;and&nbsp;value&nbsp;of&nbsp;all&nbsp;attributes<br>89&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;without&nbsp;the&nbsp;attributes&nbsp;that&nbsp;are&nbsp;in&nbsp;the&nbsp;list&nbsp;provided&nbsp;by&nbsp;_toStringExclusions.&nbsp;It&nbsp;is&nbsp;used&nbsp;by&nbsp;the&nbsp;methods&nbsp;__str__<br>90&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;__repr__.&nbsp;This&nbsp;method&nbsp;can&nbsp;be&nbsp;overwritten&nbsp;by&nbsp;sub-
+classes&nbsp;to&nbsp;provide&nbsp;a&nbsp;custom&nbsp;string.<br>91&nbsp;<br>92&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:return:&nbsp;a&nbsp;string&nbsp;containing&nbsp;all&nbsp;attribute&nbsp;names&nbsp;and&nbsp;values<br>93&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"""<br>94&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;self._toStringProperties(exclude=self._toStringExcludes(),&nbsp;include=self._toStringIncludes(),&nbsp;**self._toStringAdditionalEntries())<br>95&nbsp;<br>96&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;_toStringExcludes(self)&nbsp;-&gt;&nbsp;List[str]:<br></a>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        <a class="clickable-link" href="https://github.com/opcode81/sensAI/commit/d1534ae1866e1262370878fef27a359725d3f1e4" target="_blank">106&nbsp;<br>107&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;dictString(d)<br>108&nbsp;<br>109&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;_toStringObjectInfo(self)&nbsp;-&gt;&nbsp;str:<br>110&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"""<br>111&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates&nbsp;a&nbsp;string&nbsp;containing&nbsp;information&nbsp;on&nbsp;the&nbsp;object&nbsp;instance&nbsp;which&nbsp;is&nbsp;to&nbsp;appear&nbsp;between&nbsp;the&nbsp;square&nbsp;brackets&nbsp;in&nbsp;the&nbsp;string<br>112&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;representation,&nbsp;i.e.&nbsp;if&nbsp;the&nbsp;class&nbsp;name&nbsp;is&nbsp;Foo,&nbsp;then&nbsp;it&nbsp;is&nbsp;the&nbsp;asterisk&nbsp;in&nbsp;"Foo[*]".<br>113&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;By&nbsp;default&nbsp;will&nbsp;make&nbsp;use&nbsp;of&nbsp;all&nbsp;the&nbsp;exclusions/
+inclusions&nbsp;that&nbsp;are&nbsp;specified&nbsp;by&nbsp;other&nbsp;member&nbsp;functions.<br>114&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This&nbsp;method&nbsp;can&nbsp;be&nbsp;overwritten&nbsp;by&nbsp;sub-
+classes&nbsp;to&nbsp;provide&nbsp;a&nbsp;custom&nbsp;string.<br>115&nbsp;<br>116&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:return:&nbsp;a&nbsp;string&nbsp;containing&nbsp;the&nbsp;desired&nbsp;content<br>117&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"""<br>118&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;self._toStringProperties(exclude=self._toStringExcludes(),&nbsp;include=self._toStringIncludes(),<br>119&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;excludeExceptions=self._toStringExcludeExceptions(),&nbsp;includeForced=self._toStringIncludesForced(),<br>120&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;additionalEntries=self._toStringAdditionalEntries())<br>121&nbsp;<br>122&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;_toStringExcludes(self)&nbsp;-&gt;&nbsp;List[str]:<br></a>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        Before: 88, 89, 90<br>After: 111, 112, 113, 114
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>add support for sklearn objects in string</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>Sync dcs</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                            
+                                
+                                <td>
+                                    
+                                        <pre>src/sensai/util/string.py</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                            
+                                
+                            
+                                
+                                <td>
+                                    
+                                        <pre>0</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>875</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'module': 1,
+'expression_statement': 2,
+'call': 6,
+'attribute': 5,
+'identifier': 18,
+'.': 5,
+'argument_list': 6,
+'(': 7,
+')': 7,
+'return_statement': 2,
+'return': 2,
+'function_definition': 1,
+'def': 1,
+'parameters': 1,
+'-&gt;': 1,
+'type': 1,
+':': 1,
+'block': 1,
+'string': 1,
+'string_start': 1,
+'string_content': 1,
+'string_end': 1,
+'keyword_argument': 2,
+'=': 2,
+',': 2,
+'dictionary_splat': 1,
+'**': 1}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'cyclomatic_complexity': 3,
+'nloc': 6,
+'token_count': 62,
+'name': 'dictString',
+'long_name': 'dictString( d : Dict ,
+brackets : Optional [ str ] = None )',
+'start_line': 5,
+'end_line': 10,
+'full_parameters': ['d : Dict',
+' brackets : Optional [ str ] = None'],
+'filename': '/home/student/.local/lib/python3.8/site-packages/Minecpp/sensAI/prev/src/sensai/util/string.py',
+'top_nesting_level': 0,
+'fan_in': 0,
+'fan_out': 0,
+'general_fan_out': 0}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'cyclomatic_complexity': 3,
+'nloc': 6,
+'token_count': 62,
+'name': 'dictString',
+'long_name': 'dictString( d : Dict ,
+brackets : Optional [ str ] = None )',
+'start_line': 8,
+'end_line': 13,
+'full_parameters': ['d : Dict',
+' brackets : Optional [ str ] = None'],
+'filename': '/home/student/.local/lib/python3.8/site-packages/Minecpp/sensAI/curr/src/sensai/util/string.py',
+'top_nesting_level': 0,
+'fan_in': 0,
+'fan_out': 0,
+'general_fan_out': 0}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        0.395
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        0.375
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        
+                                        0.859
+                                    
+                                </td>
+                            
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        <a class="clickable-link" href="https://github.com/opcode81/sensAI/commit/c9a6a0e50315e3a976f7b4c035a97e2e207cf9ca" target="_blank">83&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d.update(additionalEntries)<br>84&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;dictString(d)<br>85&nbsp;<br>86&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;_toStringObjectInfo(self)&nbsp;-&gt;&nbsp;str:<br>87&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"""<br>88&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates&nbsp;a&nbsp;string&nbsp;containing&nbsp;information&nbsp;on&nbsp;the&nbsp;objects&nbsp;state,&nbsp;which&nbsp;is&nbsp;the&nbsp;name&nbsp;and&nbsp;value&nbsp;of&nbsp;all&nbsp;attributes<br>89&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;without&nbsp;the&nbsp;attributes&nbsp;that&nbsp;are&nbsp;in&nbsp;the&nbsp;list&nbsp;provided&nbsp;by&nbsp;_toStringExclusions.&nbsp;It&nbsp;is&nbsp;used&nbsp;by&nbsp;the&nbsp;methods&nbsp;__str__<br>90&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;__repr__.&nbsp;This&nbsp;method&nbsp;can&nbsp;be&nbsp;overwritten&nbsp;by&nbsp;sub-
+classes&nbsp;to&nbsp;provide&nbsp;a&nbsp;custom&nbsp;string.<br>91&nbsp;<br>92&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:return:&nbsp;a&nbsp;string&nbsp;containing&nbsp;all&nbsp;attribute&nbsp;names&nbsp;and&nbsp;values<br>93&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"""<br>94&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;self._toStringProperties(exclude=self._toStringExcludes(),&nbsp;include=self._toStringIncludes(),&nbsp;**self._toStringAdditionalEntries())<br>95&nbsp;<br>96&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;_toStringExcludes(self)&nbsp;-&gt;&nbsp;List[str]:<br></a>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        <a class="clickable-link" href="https://github.com/opcode81/sensAI/commit/d1534ae1866e1262370878fef27a359725d3f1e4" target="_blank">106&nbsp;<br>107&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;dictString(d)<br>108&nbsp;<br>109&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;_toStringObjectInfo(self)&nbsp;-&gt;&nbsp;str:<br>110&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"""<br>111&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates&nbsp;a&nbsp;string&nbsp;containing&nbsp;information&nbsp;on&nbsp;the&nbsp;object&nbsp;instance&nbsp;which&nbsp;is&nbsp;to&nbsp;appear&nbsp;between&nbsp;the&nbsp;square&nbsp;brackets&nbsp;in&nbsp;the&nbsp;string<br>112&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;representation,&nbsp;i.e.&nbsp;if&nbsp;the&nbsp;class&nbsp;name&nbsp;is&nbsp;Foo,&nbsp;then&nbsp;it&nbsp;is&nbsp;the&nbsp;asterisk&nbsp;in&nbsp;"Foo[*]".<br>113&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;By&nbsp;default&nbsp;will&nbsp;make&nbsp;use&nbsp;of&nbsp;all&nbsp;the&nbsp;exclusions/
+inclusions&nbsp;that&nbsp;are&nbsp;specified&nbsp;by&nbsp;other&nbsp;member&nbsp;functions.<br>114&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This&nbsp;method&nbsp;can&nbsp;be&nbsp;overwritten&nbsp;by&nbsp;sub-
+classes&nbsp;to&nbsp;provide&nbsp;a&nbsp;custom&nbsp;string.<br>115&nbsp;<br>116&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:return:&nbsp;a&nbsp;string&nbsp;containing&nbsp;the&nbsp;desired&nbsp;content<br>117&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"""<br>118&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;self._toStringProperties(exclude=self._toStringExcludes(),&nbsp;include=self._toStringIncludes(),<br>119&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;excludeExceptions=self._toStringExcludeExceptions(),&nbsp;includeForced=self._toStringIncludesForced(),<br>120&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;additionalEntries=self._toStringAdditionalEntries())<br>121&nbsp;<br>122&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;_toStringExcludes(self)&nbsp;-&gt;&nbsp;List[str]:<br></a>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        Before: 92<br>After: 116
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>add support for sklearn objects in string</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>Sync dcs</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                            
+                                
+                                <td>
+                                    
+                                        <pre>src/sensai/util/string.py</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                            
+                                
+                            
+                                
+                                <td>
+                                    
+                                        <pre>0</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>935</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'module': 1,
+'expression_statement': 2,
+'call': 6,
+'attribute': 5,
+'identifier': 18,
+'.': 5,
+'argument_list': 6,
+'(': 7,
+')': 7,
+'return_statement': 2,
+'return': 2,
+'function_definition': 1,
+'def': 1,
+'parameters': 1,
+'-&gt;': 1,
+'type': 1,
+':': 1,
+'block': 1,
+'string': 1,
+'string_start': 1,
+'string_content': 1,
+'string_end': 1,
+'keyword_argument': 2,
+'=': 2,
+',': 2,
+'dictionary_splat': 1,
+'**': 1}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'cyclomatic_complexity': 3,
+'nloc': 6,
+'token_count': 62,
+'name': 'dictString',
+'long_name': 'dictString( d : Dict ,
+brackets : Optional [ str ] = None )',
+'start_line': 5,
+'end_line': 10,
+'full_parameters': ['d : Dict',
+' brackets : Optional [ str ] = None'],
+'filename': '/home/student/.local/lib/python3.8/site-packages/Minecpp/sensAI/prev/src/sensai/util/string.py',
+'top_nesting_level': 0,
+'fan_in': 0,
+'fan_out': 0,
+'general_fan_out': 0}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'cyclomatic_complexity': 3,
+'nloc': 6,
+'token_count': 62,
+'name': 'dictString',
+'long_name': 'dictString( d : Dict ,
+brackets : Optional [ str ] = None )',
+'start_line': 8,
+'end_line': 13,
+'full_parameters': ['d : Dict',
+' brackets : Optional [ str ] = None'],
+'filename': '/home/student/.local/lib/python3.8/site-packages/Minecpp/sensAI/curr/src/sensai/util/string.py',
+'top_nesting_level': 0,
+'fan_in': 0,
+'fan_out': 0,
+'general_fan_out': 0}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        0.395
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        0.375
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        
+                                        0.859
+                                    
+                                </td>
+                            
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        <a class="clickable-link" href="https://github.com/opcode81/sensAI/commit/c9a6a0e50315e3a976f7b4c035a97e2e207cf9ca" target="_blank">83&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d.update(additionalEntries)<br>84&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;dictString(d)<br>85&nbsp;<br>86&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;_toStringObjectInfo(self)&nbsp;-&gt;&nbsp;str:<br>87&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"""<br>88&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates&nbsp;a&nbsp;string&nbsp;containing&nbsp;information&nbsp;on&nbsp;the&nbsp;objects&nbsp;state,&nbsp;which&nbsp;is&nbsp;the&nbsp;name&nbsp;and&nbsp;value&nbsp;of&nbsp;all&nbsp;attributes<br>89&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;without&nbsp;the&nbsp;attributes&nbsp;that&nbsp;are&nbsp;in&nbsp;the&nbsp;list&nbsp;provided&nbsp;by&nbsp;_toStringExclusions.&nbsp;It&nbsp;is&nbsp;used&nbsp;by&nbsp;the&nbsp;methods&nbsp;__str__<br>90&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;__repr__.&nbsp;This&nbsp;method&nbsp;can&nbsp;be&nbsp;overwritten&nbsp;by&nbsp;sub-
+classes&nbsp;to&nbsp;provide&nbsp;a&nbsp;custom&nbsp;string.<br>91&nbsp;<br>92&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:return:&nbsp;a&nbsp;string&nbsp;containing&nbsp;all&nbsp;attribute&nbsp;names&nbsp;and&nbsp;values<br>93&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"""<br>94&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;self._toStringProperties(exclude=self._toStringExcludes(),&nbsp;include=self._toStringIncludes(),&nbsp;**self._toStringAdditionalEntries())<br>95&nbsp;<br>96&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;_toStringExcludes(self)&nbsp;-&gt;&nbsp;List[str]:<br></a>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        <a class="clickable-link" href="https://github.com/opcode81/sensAI/commit/d1534ae1866e1262370878fef27a359725d3f1e4" target="_blank">106&nbsp;<br>107&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;dictString(d)<br>108&nbsp;<br>109&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;_toStringObjectInfo(self)&nbsp;-&gt;&nbsp;str:<br>110&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"""<br>111&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates&nbsp;a&nbsp;string&nbsp;containing&nbsp;information&nbsp;on&nbsp;the&nbsp;object&nbsp;instance&nbsp;which&nbsp;is&nbsp;to&nbsp;appear&nbsp;between&nbsp;the&nbsp;square&nbsp;brackets&nbsp;in&nbsp;the&nbsp;string<br>112&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;representation,&nbsp;i.e.&nbsp;if&nbsp;the&nbsp;class&nbsp;name&nbsp;is&nbsp;Foo,&nbsp;then&nbsp;it&nbsp;is&nbsp;the&nbsp;asterisk&nbsp;in&nbsp;"Foo[*]".<br>113&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;By&nbsp;default&nbsp;will&nbsp;make&nbsp;use&nbsp;of&nbsp;all&nbsp;the&nbsp;exclusions/
+inclusions&nbsp;that&nbsp;are&nbsp;specified&nbsp;by&nbsp;other&nbsp;member&nbsp;functions.<br>114&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This&nbsp;method&nbsp;can&nbsp;be&nbsp;overwritten&nbsp;by&nbsp;sub-
+classes&nbsp;to&nbsp;provide&nbsp;a&nbsp;custom&nbsp;string.<br>115&nbsp;<br>116&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:return:&nbsp;a&nbsp;string&nbsp;containing&nbsp;the&nbsp;desired&nbsp;content<br>117&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"""<br>118&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;self._toStringProperties(exclude=self._toStringExcludes(),&nbsp;include=self._toStringIncludes(),<br>119&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;excludeExceptions=self._toStringExcludeExceptions(),&nbsp;includeForced=self._toStringIncludesForced(),<br>120&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;additionalEntries=self._toStringAdditionalEntries())<br>121&nbsp;<br>122&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;_toStringExcludes(self)&nbsp;-&gt;&nbsp;List[str]:<br></a>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        Before: 94<br>After: 118, 119, 120, 124
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>add support for sklearn objects in string</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>Sync dcs</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                            
+                                
+                                <td>
+                                    
+                                        <pre>src/sensai/util/string.py</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                            
+                                
+                            
+                                
+                                <td>
+                                    
+                                        <pre>0</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>898</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'module': 1,
+'expression_statement': 2,
+'call': 6,
+'attribute': 5,
+'identifier': 18,
+'.': 5,
+'argument_list': 6,
+'(': 7,
+')': 7,
+'return_statement': 2,
+'return': 2,
+'function_definition': 1,
+'def': 1,
+'parameters': 1,
+'-&gt;': 1,
+'type': 1,
+':': 1,
+'block': 1,
+'string': 1,
+'string_start': 1,
+'string_content': 1,
+'string_end': 1,
+'keyword_argument': 2,
+'=': 2,
+',': 2,
+'dictionary_splat': 1,
+'**': 1}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'cyclomatic_complexity': 3,
+'nloc': 6,
+'token_count': 62,
+'name': 'dictString',
+'long_name': 'dictString( d : Dict ,
+brackets : Optional [ str ] = None )',
+'start_line': 5,
+'end_line': 10,
+'full_parameters': ['d : Dict',
+' brackets : Optional [ str ] = None'],
+'filename': '/home/student/.local/lib/python3.8/site-packages/Minecpp/sensAI/prev/src/sensai/util/string.py',
+'top_nesting_level': 0,
+'fan_in': 0,
+'fan_out': 0,
+'general_fan_out': 0}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'cyclomatic_complexity': 3,
+'nloc': 6,
+'token_count': 62,
+'name': 'dictString',
+'long_name': 'dictString( d : Dict ,
+brackets : Optional [ str ] = None )',
+'start_line': 8,
+'end_line': 13,
+'full_parameters': ['d : Dict',
+' brackets : Optional [ str ] = None'],
+'filename': '/home/student/.local/lib/python3.8/site-packages/Minecpp/sensAI/curr/src/sensai/util/string.py',
+'top_nesting_level': 0,
+'fan_in': 0,
+'fan_out': 0,
+'general_fan_out': 0}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        0.395
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        0.375
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        
+                                        0.859
+                                    
+                                </td>
+                            
+                            
+                        </tr>
+                    
+                </tbody>
+            </table>
+        
+        
+            <a href="http://127.0.0.1:5000/visualization/2" class="btn btn-primary mt-3">More</a>
+        
+    <thead class="fixed-header" style="margin-left: 0px;">
+                    <tr>
+                        
+                            
+                                
+                                    <th>Before Bug fix</th>
+                                
+                            
+                        
+                            
+                                
+                                    <th>After Bug fix</th>
+                                
+                            
+                        
+                            
+                                
+                                    <th>Location</th>
+                                
+                            
+                        
+                            
+                                
+                                    <th>Bug type</th>
+                                
+                            
+                        
+                            
+                                
+                                    <th>Commit Message</th>
+                                
+                            
+                        
+                            
+                        
+                            
+                                
+                                    <th>File Path</th>
+                                
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                
+                                    <th>Test File</th>
+                                
+                            
+                        
+                            
+                                
+                                    <th>Coding Effort</th>
+                                
+                            
+                        
+                            
+                                
+                                    <th><a class="clickable-link" href="https://en.wikipedia.org/wiki/Language_construct" target="_blank">Constructs</a></th>
+                                
+                            
+                        
+                            
+                                
+                                    <th><a class="clickable-link" href="https://en.wikipedia.org/wiki/Cyclomatic_complexity" target="_blank">Lizard Features Buggy</a></th>
+                                
+                            
+                        
+                            
+                                
+                                    <th><a class="clickable-link" href="https://en.wikipedia.org/wiki/Cyclomatic_complexity" target="_blank">Lizard Features Fixed</a></th>
+                                
+                            
+                        
+                            
+                                
+                                    <th>BLEU</th>
+                                
+                            
+                        
+                            
+                                
+                                    <th>crystalBLEU_score</th>
+                                
+                            
+                        
+                            
+                                
+                                    <th>BERT_score</th>
+                                
+                            
+                        
+                    </tr>
+                </thead></div>
+
+</body></html>
