@@ -1,0 +1,831 @@
+Record the Commit Hash:
+
+git rev-parse HEAD
+
+cad4754bc71742c2d6fcbd3b92ae74834d359844
+
+Copy the hash and include it in your lab documentation.
+
+
+(stt_labs) PS C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\algorithms> python .\test1-10.py
+Run 1:
+================================= test session starts ==================================
+platform win32 -- Python 3.12.3, pytest-8.3.4, pluggy-1.5.0
+rootdir: C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\algorithms
+plugins: run-parallel-0.3.1, xdist-3.6.1
+collected 416 items                                                                     
+
+tests\test_array.py ..................s...s......                                 [  6%]
+tests\test_automata.py .                                                          [  7%] 
+tests\test_backtrack.py .........................                                 [ 13%]
+tests\test_bfs.py ...                                                             [ 13%]
+tests\test_bit.py .............................                                   [ 20%]
+tests\test_compression.py .....                                                   [ 22%]
+tests\test_dfs.py ........                                                        [ 24%]
+tests\test_dp.py ...............................                                  [ 31%]
+tests\test_graph.py ....................                                          [ 36%]
+tests\test_greedy.py .                                                            [ 36%] 
+tests\test_heap.py .....                                                          [ 37%]
+tests\test_histogram.py .                                                         [ 37%] 
+tests\test_iterative_segment_tree.py .........                                    [ 40%]
+tests\test_linkedlist.py ............                                             [ 43%]
+tests\test_map.py .........................                                       [ 49%]
+tests\test_maths.py ..................................................            [ 61%]
+tests\test_matrix.py .............                                                [ 64%]
+tests\test_ml.py ..                                                               [ 64%] 
+tests\test_monomial.py ........                                                   [ 66%]
+tests\test_polynomial.py .......                                                  [ 68%]
+tests\test_queues.py .....                                                        [ 69%] 
+tests\test_search.py .............                                                [ 72%]
+tests\test_set.py .                                                               [ 72%] 
+tests\test_sort.py ....................                                           [ 77%]
+tests\test_stack.py ..........                                                    [ 80%] 
+tests\test_streaming.py ....                                                      [ 81%]
+tests\test_strings.py ........................................................... [ 95%]
+.....                                                                             [ 96%]
+tests\test_tree.py ...........                                                    [ 99%]
+tests\test_unix.py s.s.                                                           [100%] 
+
+============================ 412 passed, 4 skipped in 5.42s ============================ 
+Run 2:
+================================= test session starts ==================================
+platform win32 -- Python 3.12.3, pytest-8.3.4, pluggy-1.5.0
+rootdir: C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\algorithms
+plugins: run-parallel-0.3.1, xdist-3.6.1
+collected 416 items                                                                     
+
+tests\test_array.py ..................s...s......                                 [  6%]
+tests\test_automata.py .                                                          [  7%] 
+tests\test_backtrack.py .........................                                 [ 13%]
+tests\test_bfs.py ...                                                             [ 13%]
+tests\test_bit.py .............................                                   [ 20%]
+tests\test_compression.py .....                                                   [ 22%]
+tests\test_dfs.py ........                                                        [ 24%] 
+tests\test_dp.py ...............................                                  [ 31%]
+tests\test_graph.py ....................                                          [ 36%]
+tests\test_greedy.py .                                                            [ 36%] 
+tests\test_heap.py .....                                                          [ 37%]
+tests\test_histogram.py .                                                         [ 37%] 
+tests\test_iterative_segment_tree.py .........                                    [ 40%]
+tests\test_linkedlist.py ............                                             [ 43%]
+tests\test_map.py .........................                                       [ 49%]
+tests\test_maths.py ..................................................            [ 61%]
+tests\test_matrix.py .............                                                [ 64%] 
+tests\test_ml.py ..                                                               [ 64%]
+tests\test_monomial.py ........                                                   [ 66%] 
+tests\test_polynomial.py .......                                                  [ 68%]
+tests\test_queues.py .....                                                        [ 69%] 
+tests\test_search.py .............                                                [ 72%]
+tests\test_set.py .                                                               [ 72%]
+tests\test_sort.py ....................                                           [ 77%]
+tests\test_stack.py ..........                                                    [ 80%]
+tests\test_streaming.py ....                                                      [ 81%] 
+tests\test_strings.py ........................................................... [ 95%]
+.....                                                                             [ 96%]
+tests\test_tree.py ...........                                                    [ 99%]
+tests\test_unix.py s.s.                                                           [100%] 
+
+============================ 412 passed, 4 skipped in 5.44s ============================ 
+Run 3:
+================================= test session starts ==================================
+platform win32 -- Python 3.12.3, pytest-8.3.4, pluggy-1.5.0
+rootdir: C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\algorithms
+plugins: run-parallel-0.3.1, xdist-3.6.1
+collected 416 items                                                                     
+
+tests\test_array.py ..................s...s......                                 [  6%]
+tests\test_automata.py .                                                          [  7%] 
+tests\test_backtrack.py .........................                                 [ 13%]
+tests\test_bfs.py ...                                                             [ 13%]
+tests\test_bit.py .............................                                   [ 20%]
+tests\test_compression.py .....                                                   [ 22%]
+tests\test_dfs.py ........                                                        [ 24%]
+tests\test_dp.py ...............................                                  [ 31%]
+tests\test_graph.py ....................                                          [ 36%]
+tests\test_greedy.py .                                                            [ 36%] 
+tests\test_heap.py .....                                                          [ 37%]
+tests\test_histogram.py .                                                         [ 37%] 
+tests\test_iterative_segment_tree.py .........                                    [ 40%]
+tests\test_linkedlist.py ............                                             [ 43%]
+tests\test_map.py .........................                                       [ 49%]
+tests\test_maths.py ..................................................            [ 61%]
+tests\test_matrix.py .............                                                [ 64%] 
+tests\test_ml.py ..                                                               [ 64%]
+tests\test_monomial.py ........                                                   [ 66%] 
+tests\test_polynomial.py .......                                                  [ 68%]
+tests\test_queues.py .....                                                        [ 69%] 
+tests\test_search.py .............                                                [ 72%]
+tests\test_set.py .                                                               [ 72%] 
+tests\test_sort.py ....................                                           [ 77%]
+tests\test_stack.py ..........                                                    [ 80%] 
+tests\test_streaming.py ....                                                      [ 81%]
+tests\test_strings.py ........................................................... [ 95%]
+.....                                                                             [ 96%] 
+tests\test_tree.py ...........                                                    [ 99%]
+tests\test_unix.py s.s.                                                           [100%] 
+
+============================ 412 passed, 4 skipped in 5.53s ============================ 
+Run 4:
+================================= test session starts ==================================
+platform win32 -- Python 3.12.3, pytest-8.3.4, pluggy-1.5.0
+rootdir: C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\algorithms
+plugins: run-parallel-0.3.1, xdist-3.6.1
+collected 416 items                                                                     
+
+tests\test_array.py ..................s...s......                                 [  6%]
+tests\test_automata.py .                                                          [  7%] 
+tests\test_backtrack.py .........................                                 [ 13%]
+tests\test_bfs.py ...                                                             [ 13%] 
+tests\test_bit.py .............................                                   [ 20%]
+tests\test_compression.py .....                                                   [ 22%]
+tests\test_dfs.py ........                                                        [ 24%]
+tests\test_dp.py ...............................                                  [ 31%]
+tests\test_graph.py ....................                                          [ 36%]
+tests\test_greedy.py .                                                            [ 36%] 
+tests\test_heap.py .....                                                          [ 37%] 
+tests\test_histogram.py .                                                         [ 37%] 
+tests\test_iterative_segment_tree.py .........                                    [ 40%]
+tests\test_linkedlist.py ............                                             [ 43%] 
+tests\test_map.py .........................                                       [ 49%]
+tests\test_maths.py ..................................................            [ 61%]
+tests\test_matrix.py .............                                                [ 64%]
+tests\test_ml.py ..                                                               [ 64%]
+tests\test_monomial.py ........                                                   [ 66%] 
+tests\test_polynomial.py .......                                                  [ 68%]
+tests\test_queues.py .....                                                        [ 69%] 
+tests\test_search.py .............                                                [ 72%]
+tests\test_set.py .                                                               [ 72%] 
+tests\test_sort.py ....................                                           [ 77%]
+tests\test_stack.py ..........                                                    [ 80%] 
+tests\test_streaming.py ....                                                      [ 81%]
+tests\test_strings.py ........................................................... [ 95%]
+.....                                                                             [ 96%] 
+tests\test_tree.py ...........                                                    [ 99%]
+tests\test_unix.py s.s.                                                           [100%] 
+
+============================ 412 passed, 4 skipped in 5.36s ============================ 
+Run 5:
+================================= test session starts ==================================
+platform win32 -- Python 3.12.3, pytest-8.3.4, pluggy-1.5.0
+rootdir: C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\algorithms
+plugins: run-parallel-0.3.1, xdist-3.6.1
+collected 416 items                                                                     
+
+tests\test_array.py ..................s...s......                                 [  6%]
+tests\test_automata.py .                                                          [  7%]
+tests\test_backtrack.py .........................                                 [ 13%]
+tests\test_bfs.py ...                                                             [ 13%] 
+tests\test_bit.py .............................                                   [ 20%]
+tests\test_compression.py .....                                                   [ 22%]
+tests\test_dfs.py ........                                                        [ 24%]
+tests\test_dp.py ...............................                                  [ 31%]
+tests\test_graph.py ....................                                          [ 36%]
+tests\test_greedy.py .                                                            [ 36%]
+tests\test_heap.py .....                                                          [ 37%]
+tests\test_histogram.py .                                                         [ 37%] 
+tests\test_iterative_segment_tree.py .........                                    [ 40%]
+tests\test_linkedlist.py ............                                             [ 43%]
+tests\test_map.py .........................                                       [ 49%]
+tests\test_maths.py ..................................................            [ 61%]
+tests\test_matrix.py .............                                                [ 64%]
+tests\test_ml.py ..                                                               [ 64%] 
+tests\test_monomial.py ........                                                   [ 66%]
+tests\test_polynomial.py .......                                                  [ 68%]
+tests\test_queues.py .....                                                        [ 69%] 
+tests\test_search.py .............                                                [ 72%]
+tests\test_set.py .                                                               [ 72%] 
+tests\test_sort.py ....................                                           [ 77%]
+tests\test_stack.py ..........                                                    [ 80%]
+tests\test_streaming.py ....                                                      [ 81%]
+tests\test_strings.py ........................................................... [ 95%]
+.....                                                                             [ 96%] 
+tests\test_tree.py ...........                                                    [ 99%]
+tests\test_unix.py s.s.                                                           [100%] 
+
+============================ 412 passed, 4 skipped in 5.32s ============================ 
+Run 6:
+================================= test session starts ==================================
+platform win32 -- Python 3.12.3, pytest-8.3.4, pluggy-1.5.0
+rootdir: C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\algorithms
+plugins: run-parallel-0.3.1, xdist-3.6.1
+collected 416 items                                                                     
+
+tests\test_array.py ..................s...s......                                 [  6%]
+tests\test_automata.py .                                                          [  7%] 
+tests\test_backtrack.py .........................                                 [ 13%]
+tests\test_bfs.py ...                                                             [ 13%]
+tests\test_bit.py .............................                                   [ 20%]
+tests\test_compression.py .....                                                   [ 22%]
+tests\test_dfs.py ........                                                        [ 24%]
+tests\test_dp.py ...............................                                  [ 31%]
+tests\test_graph.py ....................                                          [ 36%]
+tests\test_greedy.py .                                                            [ 36%] 
+tests\test_heap.py .....                                                          [ 37%]
+tests\test_histogram.py .                                                         [ 37%]
+tests\test_iterative_segment_tree.py .........                                    [ 40%]
+tests\test_linkedlist.py ............                                             [ 43%]
+tests\test_map.py .........................                                       [ 49%]
+tests\test_maths.py ..................................................            [ 61%]
+tests\test_matrix.py .............                                                [ 64%]
+tests\test_ml.py ..                                                               [ 64%] 
+tests\test_monomial.py ........                                                   [ 66%]
+tests\test_polynomial.py .......                                                  [ 68%]
+tests\test_queues.py .....                                                        [ 69%]
+tests\test_search.py .............                                                [ 72%]
+tests\test_set.py .                                                               [ 72%] 
+tests\test_sort.py ....................                                           [ 77%]
+tests\test_stack.py ..........                                                    [ 80%]
+tests\test_streaming.py ....                                                      [ 81%] 
+tests\test_strings.py ........................................................... [ 95%]
+.....                                                                             [ 96%]
+tests\test_tree.py ...........                                                    [ 99%]
+tests\test_unix.py s.s.                                                           [100%] 
+
+============================ 412 passed, 4 skipped in 8.13s ============================ 
+Run 7:
+================================= test session starts ==================================
+platform win32 -- Python 3.12.3, pytest-8.3.4, pluggy-1.5.0
+rootdir: C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\algorithms
+plugins: run-parallel-0.3.1, xdist-3.6.1
+collected 416 items                                                                     
+
+tests\test_array.py ..................s...s......                                 [  6%]
+tests\test_automata.py .                                                          [  7%]
+tests\test_backtrack.py .........................                                 [ 13%]
+tests\test_bfs.py ...                                                             [ 13%] 
+tests\test_bit.py .............................                                   [ 20%]
+tests\test_compression.py .....                                                   [ 22%]
+tests\test_dfs.py ........                                                        [ 24%]
+tests\test_dp.py ...............................                                  [ 31%]
+tests\test_graph.py ....................                                          [ 36%]
+tests\test_greedy.py .                                                            [ 36%] 
+tests\test_heap.py .....                                                          [ 37%]
+tests\test_histogram.py .                                                         [ 37%] 
+tests\test_iterative_segment_tree.py .........                                    [ 40%]
+tests\test_linkedlist.py ............                                             [ 43%]
+tests\test_map.py .........................                                       [ 49%]
+tests\test_maths.py ..................................................            [ 61%]
+tests\test_matrix.py .............                                                [ 64%]
+tests\test_ml.py ..                                                               [ 64%] 
+tests\test_monomial.py ........                                                   [ 66%]
+tests\test_polynomial.py .......                                                  [ 68%] 
+tests\test_queues.py .....                                                        [ 69%]
+tests\test_search.py .............                                                [ 72%]
+tests\test_set.py .                                                               [ 72%] 
+tests\test_sort.py ....................                                           [ 77%]
+tests\test_stack.py ..........                                                    [ 80%]
+tests\test_streaming.py ....                                                      [ 81%] 
+tests\test_strings.py ........................................................... [ 95%]
+.....                                                                             [ 96%] 
+tests\test_tree.py ...........                                                    [ 99%]
+tests\test_unix.py s.s.                                                           [100%] 
+
+============================ 412 passed, 4 skipped in 6.12s ============================ 
+Run 8:
+================================= test session starts ==================================
+platform win32 -- Python 3.12.3, pytest-8.3.4, pluggy-1.5.0
+rootdir: C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\algorithms
+plugins: run-parallel-0.3.1, xdist-3.6.1
+collected 416 items                                                                     
+
+tests\test_array.py ..................s...s......                                 [  6%]
+tests\test_automata.py .                                                          [  7%] 
+tests\test_backtrack.py .........................                                 [ 13%]
+tests\test_bfs.py ...                                                             [ 13%]
+tests\test_bit.py .............................                                   [ 20%]
+tests\test_compression.py .....                                                   [ 22%]
+tests\test_dfs.py ........                                                        [ 24%]
+tests\test_dp.py ...............................                                  [ 31%]
+tests\test_graph.py ....................                                          [ 36%]
+tests\test_greedy.py .                                                            [ 36%]
+tests\test_heap.py .....                                                          [ 37%]
+tests\test_histogram.py .                                                         [ 37%] 
+tests\test_iterative_segment_tree.py .........                                    [ 40%]
+tests\test_linkedlist.py ............                                             [ 43%]
+tests\test_map.py .........................                                       [ 49%]
+tests\test_maths.py ..................................................            [ 61%]
+tests\test_matrix.py .............                                                [ 64%]
+tests\test_ml.py ..                                                               [ 64%]
+tests\test_monomial.py ........                                                   [ 66%] 
+tests\test_polynomial.py .......                                                  [ 68%]
+tests\test_queues.py .....                                                        [ 69%]
+tests\test_search.py .............                                                [ 72%]
+tests\test_set.py .                                                               [ 72%] 
+tests\test_sort.py ....................                                           [ 77%]
+tests\test_stack.py ..........                                                    [ 80%]
+tests\test_streaming.py ....                                                      [ 81%]
+tests\test_strings.py ........................................................... [ 95%]
+.....                                                                             [ 96%]
+tests\test_tree.py ...........                                                    [ 99%]
+tests\test_unix.py s.s.                                                           [100%] 
+
+============================ 412 passed, 4 skipped in 6.56s ============================ 
+Run 9:
+================================= test session starts ==================================
+platform win32 -- Python 3.12.3, pytest-8.3.4, pluggy-1.5.0
+rootdir: C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\algorithms
+plugins: run-parallel-0.3.1, xdist-3.6.1
+collected 416 items                                                                     
+
+tests\test_array.py ..................s...s......                                 [  6%]
+tests\test_automata.py .                                                          [  7%]
+tests\test_backtrack.py .........................                                 [ 13%]
+tests\test_bfs.py ...                                                             [ 13%]
+tests\test_bit.py .............................                                   [ 20%]
+tests\test_compression.py .....                                                   [ 22%]
+tests\test_dfs.py ........                                                        [ 24%]
+tests\test_dp.py ...............................                                  [ 31%]
+tests\test_graph.py ....................                                          [ 36%]
+tests\test_greedy.py .                                                            [ 36%] 
+tests\test_heap.py .....                                                          [ 37%]
+tests\test_histogram.py .                                                         [ 37%] 
+tests\test_iterative_segment_tree.py .........                                    [ 40%]
+tests\test_linkedlist.py ............                                             [ 43%]
+tests\test_map.py .........................                                       [ 49%]
+tests\test_maths.py ..................................................            [ 61%]
+tests\test_matrix.py .............                                                [ 64%]
+tests\test_ml.py ..                                                               [ 64%] 
+tests\test_monomial.py ........                                                   [ 66%]
+tests\test_polynomial.py .......                                                  [ 68%]
+tests\test_queues.py .....                                                        [ 69%] 
+tests\test_search.py .............                                                [ 72%]
+tests\test_set.py .                                                               [ 72%] 
+tests\test_sort.py ....................                                           [ 77%]
+tests\test_stack.py ..........                                                    [ 80%]
+tests\test_streaming.py ....                                                      [ 81%] 
+tests\test_strings.py ........................................................... [ 95%]
+.....                                                                             [ 96%] 
+tests\test_tree.py ...........                                                    [ 99%]
+tests\test_unix.py s.s.                                                           [100%] 
+
+============================ 412 passed, 4 skipped in 6.44s ============================ 
+Run 10:
+================================= test session starts ==================================
+platform win32 -- Python 3.12.3, pytest-8.3.4, pluggy-1.5.0
+rootdir: C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\algorithms
+plugins: run-parallel-0.3.1, xdist-3.6.1
+collected 416 items                                                                     
+
+tests\test_array.py ..................s...s......                                 [  6%]
+tests\test_automata.py .                                                          [  7%] 
+tests\test_backtrack.py .........................                                 [ 13%]
+tests\test_bfs.py ...                                                             [ 13%]
+tests\test_bit.py .............................                                   [ 20%]
+tests\test_compression.py .....                                                   [ 22%]
+tests\test_dfs.py ........                                                        [ 24%]
+tests\test_dp.py ...............................                                  [ 31%]
+tests\test_graph.py ....................                                          [ 36%]
+tests\test_greedy.py .                                                            [ 36%] 
+tests\test_heap.py .....                                                          [ 37%]
+tests\test_histogram.py .                                                         [ 37%]
+tests\test_iterative_segment_tree.py .........                                    [ 40%]
+tests\test_linkedlist.py ............                                             [ 43%]
+tests\test_map.py .........................                                       [ 49%]
+tests\test_maths.py ..................................................            [ 61%]
+tests\test_matrix.py .............                                                [ 64%]
+tests\test_ml.py ..                                                               [ 64%]
+tests\test_monomial.py ........                                                   [ 66%]
+tests\test_polynomial.py .......                                                  [ 68%]
+tests\test_queues.py .....                                                        [ 69%]
+tests\test_search.py .............                                                [ 72%]
+tests\test_set.py .                                                               [ 72%] 
+tests\test_sort.py ....................                                           [ 77%]
+tests\test_stack.py ..........                                                    [ 80%]
+tests\test_streaming.py ....                                                      [ 81%]
+tests\test_strings.py ........................................................... [ 95%]
+.....                                                                             [ 96%] 
+tests\test_tree.py ...........                                                    [ 99%]
+tests\test_unix.py s.s.                                                           [100%] 
+
+============================ 412 passed, 4 skipped in 7.81s ============================
+
+
+(stt_labs) PS C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\algorithms> python run_sequential_tests.py
+Sequential Run 1
+Run time: 6.77 seconds
+
+Sequential Run 2
+Run time: 5.23 seconds
+
+Sequential Run 3
+Run time: 5.66 seconds
+
+Average sequential time (T_seq): 5.89 seconds
+(stt_labs) PS C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\algorithms> pytest -n auto --dist=load
+================================= test session starts ==================================
+platform win32 -- Python 3.12.3, pytest-8.3.4, pluggy-1.5.0
+rootdir: C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\algorithms
+plugins: run-parallel-0.3.1, xdist-3.6.1
+12 workers [416 items]    
+.................................s...............s............................... [ 19%]
+................................................................................. [ 38%]
+................................................................................. [ 58%]
+................................................................................. [ 77%]
+......................................................................s.......... [ 97%]
+..s........                                                                       [100%]
+============================ 412 passed, 4 skipped in 9.69s ============================
+(stt_labs) PS C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\algorithms> pytest -n auto --dist=no
+================================= test session starts ==================================
+platform win32 -- Python 3.12.3, pytest-8.3.4, pluggy-1.5.0
+rootdir: C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\algorithms
+plugins: run-parallel-0.3.1, xdist-3.6.1
+12 workers [416 items]    
+..................................s....................................s......... [ 19%]
+................................................................................. [ 38%]
+................................................................................. [ 58%]
+................................................................................. [ 77%]
+.......................................................................s......... [ 97%]
+....s......                                                                       [100%]
+=========================== 412 passed, 4 skipped in 10.16s ============================
+(stt_labs) PS C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\algorithms> pytest -n auto --dist=load
+================================= test session starts ==================================
+platform win32 -- Python 3.12.3, pytest-8.3.4, pluggy-1.5.0
+rootdir: C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\algorithms
+plugins: run-parallel-0.3.1, xdist-3.6.1
+12 workers [416 items]    
+.......................................s..............................s.......... [ 19%]
+................................................................................. [ 38%]
+................................................................................. [ 58%]
+................................................................................. [ 77%]
+.......................................................................s......... [ 97%]
+....s......                                                                       [100%]
+============================ 412 passed, 4 skipped in 8.10s ============================
+(stt_labs) PS C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\algorithms> pytest -n auto --dist=no      
+================================= test session starts ==================================
+platform win32 -- Python 3.12.3, pytest-8.3.4, pluggy-1.5.0
+rootdir: C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\algorithms
+plugins: run-parallel-0.3.1, xdist-3.6.1
+12 workers [416 items]    
+...............................s...........s..................................... [ 19%]
+................................................................................. [ 38%]
+................................................................................. [ 58%]
+................................................................................. [ 77%]
+.....................................................................s......s.... [ 97%]
+...........                                                                       [100%]
+============================ 412 passed, 4 skipped in 8.45s ============================
+(stt_labs) PS C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\algorithms> pytest -n auto --dist=load
+================================= test session starts ==================================
+platform win32 -- Python 3.12.3, pytest-8.3.4, pluggy-1.5.0
+rootdir: C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\algorithms
+plugins: run-parallel-0.3.1, xdist-3.6.1
+12 workers [416 items]    
+..............................................s..........................s....... [ 19%]
+................................................................................. [ 38%]
+................................................................................. [ 58%]
+................................................................................. [ 77%]
+.......................................................................s..s...... [ 97%]
+...........                                                                       [100%]
+============================ 412 passed, 4 skipped in 9.84s ============================
+(stt_labs) PS C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\algorithms> pytest -n auto --dist=no  
+================================= test session starts ==================================
+platform win32 -- Python 3.12.3, pytest-8.3.4, pluggy-1.5.0
+rootdir: C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\algorithms
+plugins: run-parallel-0.3.1, xdist-3.6.1
+12 workers [416 items]    
+.......................................s......................s.................. [ 19%]
+................................................................................. [ 38%]
+................................................................................. [ 58%]
+................................................................................. [ 77%]
+.......................................................................s......... [ 97%]
+......s....                                                                       [100%]
+=========================== 412 passed, 4 skipped in 10.90s ============================
+
+
+(stt_labs) PS C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\algorithms> pytest -n auto --parallel-threads=auto --dist=load
+================================= test session starts ==================================
+platform win32 -- Python 3.12.3, pytest-8.3.4, pluggy-1.5.0
+rootdir: C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\algorithms
+plugins: run-parallel-0.3.1, xdist-3.6.1
+12 workers [416 items]    
+.................s................................s.............................. [ 19%]
+................................................................................. [ 38%]
+..................................F......F..F.................................... [ 58%]
+................................................................................. [ 77%]
+....................................................s.................F...s...... [ 97%]
+...........                                                                       [100%]
+======================================= FAILURES =======================================
+______________________________ TestBinaryHeap.test_insert ______________________________ 
+[gw0] win32 -- Python 3.12.3 C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\stt_labs\Scripts\python.exe
+
+self = <test_heap.TestBinaryHeap testMethod=test_insert>
+
+    def test_insert(self):
+        # Before insert 2: [0, 4, 50, 7, 55, 90, 87]
+        # After insert:  [0, 2, 50, 4, 55, 90, 87, 7]
+        self.min_heap.insert(2)
+>       self.assertEqual([0, 2, 50, 4, 55, 90, 87, 7],
+                         self.min_heap.heap)
+E       AssertionError: Lists differ: [0, 2, 50, 4, 55, 90, 87, 7] != [0, 2, 2, 4, 50, 90, 87, 7, 55]
+E       
+E       First differing element 2:
+E       50
+E       2
+E       
+E       Second list contains 1 additional elements.
+E       First extra element 8:
+E       55
+E       
+E       - [0, 2, 50, 4, 55, 90, 87, 7]
+E       + [0, 2, 2, 4, 50, 90, 87, 7, 55]
+
+tests\test_heap.py:29: AssertionError
+____________________________ TestBinaryHeap.test_remove_min ____________________________ 
+[gw0] win32 -- Python 3.12.3 C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\stt_labs\Scripts\python.exe
+
+self = <test_heap.TestBinaryHeap testMethod=test_remove_min>
+
+    def test_remove_min(self):
+        ret = self.min_heap.remove_min()
+        # Before remove_min : [0, 4, 50, 7, 55, 90, 87]
+        # After remove_min: [7, 50, 87, 55, 90]
+        # Test return value
+>       self.assertEqual(4, ret)
+E       AssertionError: 4 != 7
+
+tests\test_heap.py:38: AssertionError
+_____________________________ TestSuite.test_is_palindrome _____________________________ 
+[gw6] win32 -- Python 3.12.3 C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\stt_labs\Scripts\python.exe
+
+self = <test_linkedlist.TestSuite testMethod=test_is_palindrome>
+
+    def test_is_palindrome(self):
+>       self.assertTrue(is_palindrome(self.l))
+E       AssertionError: False is not true
+
+tests\test_linkedlist.py:167: AssertionError
+________________________ TestHuffmanCoding.test_huffman_coding _________________________ 
+[gw10] win32 -- Python 3.12.3 C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\stt_labs\Scripts\python.exe
+
+self = <test_compression.TestHuffmanCoding testMethod=test_huffman_coding>
+
+    def test_huffman_coding(self):
+        HuffmanCoding.encode_file(self.file_in_name, self.file_out_bin_name)
+        HuffmanCoding.decode_file(self.file_out_bin_name, self.file_out_name)
+
+        with open(self.file_in_name, "rb") as file_1, open(self.file_out_name, "rb") as file_2:
+            content_1 = file_1.read()
+            content_2 = file_2.read()
+
+>           self.assertEqual(content_1, content_2)
+E           AssertionError: b'G\xf4\xb2\xda\x9c/4?\xf8\x8b\x17B\x98Z\xe[28793 chars]qE]?' != b''
+
+tests\test_compression.py:30: AssertionError
+--------------------------------- Captured stdout call --------------------------------- 
+File encoded.
+File decoded.
+File encoded.
+File encoded.
+File decoded.
+File decoded.
+File encoded.
+File encoded.
+File decoded.
+File decoded.
+File encoded.
+File encoded.
+File decoded.
+File encoded.
+File decoded.
+File decoded.
+File encoded.
+File encoded.
+File decoded.
+File encoded.
+File encoded.
+File decoded.
+File decoded.
+File decoded.
+=============================== short test summary info ================================ 
+FAILED tests/test_heap.py::TestBinaryHeap::test_insert - AssertionError: Lists differ: [0, 2, 50, 4, 55, 90, 87, 7] != [0, 2, 2, 4, 50, 90, 8...
+FAILED tests/test_heap.py::TestBinaryHeap::test_remove_min - AssertionError: 4 != 7      
+FAILED tests/test_linkedlist.py::TestSuite::test_is_palindrome - AssertionError: False is not true
+FAILED tests/test_compression.py::TestHuffmanCoding::test_huffman_coding - AssertionError: b'G\xf4\xb2\xda\x9c/4?\xf8\x8b\x17B\x98Z\xe[28793 chars]qE]?' != b''
+====================== 4 failed, 408 passed, 4 skipped in 42.60s ======================= 
+(stt_labs) PS C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\algorithms> pytest -n auto --parallel-threads=auto --dist=load
+================================= test session starts ================================== 
+platform win32 -- Python 3.12.3, pytest-8.3.4, pluggy-1.5.0
+rootdir: C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\algorithms
+plugins: run-parallel-0.3.1, xdist-3.6.1
+12 workers [416 items]    
+.................s............................s.................................. [ 19%] 
+................................................................................. [ 38%] 
+.................................................F...F.....F..................... [ 58%] 
+................................................................................. [ 77%] 
+..................................................ss..................F.......... [ 97%] 
+...........                                                                       [100%]
+======================================= FAILURES =======================================
+_____________________________ TestSuite.test_is_palindrome _____________________________
+[gw6] win32 -- Python 3.12.3 C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\stt_labs\Scripts\python.exe
+
+self = <test_linkedlist.TestSuite testMethod=test_is_palindrome>
+
+    def test_is_palindrome(self):
+>       self.assertTrue(is_palindrome(self.l))
+E       AssertionError: False is not true
+
+tests\test_linkedlist.py:167: AssertionError
+______________________________ TestBinaryHeap.test_insert ______________________________ 
+[gw7] win32 -- Python 3.12.3 C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\stt_labs\Scripts\python.exe
+
+self = <test_heap.TestBinaryHeap testMethod=test_insert>
+
+    def test_insert(self):
+        # Before insert 2: [0, 4, 50, 7, 55, 90, 87]
+        # After insert:  [0, 2, 50, 4, 55, 90, 87, 7]
+        self.min_heap.insert(2)
+>       self.assertEqual([0, 2, 50, 4, 55, 90, 87, 7],
+                         self.min_heap.heap)
+E       AssertionError: Lists differ: [0, 2, 50, 4, 55, 90, 87, 7] != [0, 2, 2, 4, 50, 90, 87, 7, 55]
+E       
+E       First differing element 2:
+E       50
+E       2
+E       
+E       Second list contains 1 additional elements.
+E       First extra element 8:
+E       55
+E       
+E       - [0, 2, 50, 4, 55, 90, 87, 7]
+E       + [0, 2, 2, 4, 50, 90, 87, 7, 55]
+
+tests\test_heap.py:29: AssertionError
+____________________________ TestBinaryHeap.test_remove_min ____________________________
+[gw7] win32 -- Python 3.12.3 C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\stt_labs\Scripts\python.exe
+
+self = <test_heap.TestBinaryHeap testMethod=test_remove_min>
+
+    def test_remove_min(self):
+        ret = self.min_heap.remove_min()
+        # Before remove_min : [0, 4, 50, 7, 55, 90, 87]
+        # After remove_min: [7, 50, 87, 55, 90]
+        # Test return value
+>       self.assertEqual(4, ret)
+E       AssertionError: 4 != 7
+
+tests\test_heap.py:38: AssertionError
+________________________ TestHuffmanCoding.test_huffman_coding _________________________ 
+[gw10] win32 -- Python 3.12.3 C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\stt_labs\Scripts\python.exe
+
+self = <test_compression.TestHuffmanCoding testMethod=test_huffman_coding>
+
+    def test_huffman_coding(self):
+        HuffmanCoding.encode_file(self.file_in_name, self.file_out_bin_name)
+        HuffmanCoding.decode_file(self.file_out_bin_name, self.file_out_name)
+
+        with open(self.file_in_name, "rb") as file_1, open(self.file_out_name, "rb") as file_2:
+            content_1 = file_1.read()
+            content_2 = file_2.read()
+
+>           self.assertEqual(content_1, content_2)
+E           AssertionError: b'G\xf4\xb2\xda\x9c/4?\xf8\x8b\x17B\x98Z\xe[28793 chars]qE]?' != b''
+
+tests\test_compression.py:30: AssertionError
+--------------------------------- Captured stdout call --------------------------------- 
+File encoded.
+File encoded.
+File decoded.
+File decoded.
+File encoded.
+File encoded.
+File decoded.
+File decoded.
+File encoded.
+File encoded.
+File decoded.
+File decoded.
+File encoded.
+File encoded.
+File decoded.
+File decoded.
+File encoded.
+File encoded.
+File encoded.
+File decoded.
+File decoded.
+File encoded.File decoded.
+
+File decoded.
+=============================== short test summary info ================================
+FAILED tests/test_linkedlist.py::TestSuite::test_is_palindrome - AssertionError: False is not true
+FAILED tests/test_heap.py::TestBinaryHeap::test_insert - AssertionError: Lists differ: [0, 2, 50, 4, 55, 90, 87, 7] != [0, 2, 2, 4, 50, 90, 8...
+FAILED tests/test_heap.py::TestBinaryHeap::test_remove_min - AssertionError: 4 != 7      
+FAILED tests/test_compression.py::TestHuffmanCoding::test_huffman_coding - AssertionError: b'G\xf4\xb2\xda\x9c/4?\xf8\x8b\x17B\x98Z\xe[28793 chars]qE]?' != b''
+====================== 4 failed, 408 passed, 4 skipped in 54.21s ======================= 
+(stt_labs) PS C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\algorithms> pytest -n auto --parallel-threads=auto --dist=load
+================================= test session starts ==================================
+platform win32 -- Python 3.12.3, pytest-8.3.4, pluggy-1.5.0
+rootdir: C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\algorithms
+plugins: run-parallel-0.3.1, xdist-3.6.1
+12 workers [416 items]    
+.................s..............................s................................ [ 19%]
+................................................................................. [ 38%]
+................................................................................. [ 58%]
+................................................................F.........F...... [ 77%]
+...................................................................sF.F.......s.. [ 97%]
+...........                                                                       [100%]
+======================================= FAILURES =======================================
+______________________________ TestBinaryHeap.test_insert ______________________________ 
+[gw0] win32 -- Python 3.12.3 C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\stt_labs\Scripts\python.exe
+
+self = <test_heap.TestBinaryHeap testMethod=test_insert>
+
+    def test_insert(self):
+        # Before insert 2: [0, 4, 50, 7, 55, 90, 87]
+        # After insert:  [0, 2, 50, 4, 55, 90, 87, 7]
+        self.min_heap.insert(2)
+>       self.assertEqual([0, 2, 50, 4, 55, 90, 87, 7],
+                         self.min_heap.heap)
+E       AssertionError: Lists differ: [0, 2, 50, 4, 55, 90, 87, 7] != [0, 2, 2, 4, 50, 90, 87, 7, 55]
+E       
+E       First differing element 2:
+E       50
+E       2
+E       
+E       Second list contains 1 additional elements.
+E       First extra element 8:
+E       55
+E       
+E       - [0, 2, 50, 4, 55, 90, 87, 7]
+E       + [0, 2, 2, 4, 50, 90, 87, 7, 55]
+
+tests\test_heap.py:29: AssertionError
+____________________________ TestBinaryHeap.test_remove_min ____________________________ 
+[gw0] win32 -- Python 3.12.3 C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\stt_labs\Scripts\python.exe
+
+self = <test_heap.TestBinaryHeap testMethod=test_remove_min>
+
+    def test_remove_min(self):
+        ret = self.min_heap.remove_min()
+        # Before remove_min : [0, 4, 50, 7, 55, 90, 87]
+        # After remove_min: [7, 50, 87, 55, 90]
+        # Test return value
+>       self.assertEqual(4, ret)
+E       AssertionError: 4 != 7
+
+tests\test_heap.py:38: AssertionError
+________________________ TestHuffmanCoding.test_huffman_coding _________________________ 
+[gw10] win32 -- Python 3.12.3 C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\stt_labs\Scripts\python.exe
+
+self = <test_compression.TestHuffmanCoding testMethod=test_huffman_coding>
+
+    def test_huffman_coding(self):
+        HuffmanCoding.encode_file(self.file_in_name, self.file_out_bin_name)
+        HuffmanCoding.decode_file(self.file_out_bin_name, self.file_out_name)
+
+        with open(self.file_in_name, "rb") as file_1, open(self.file_out_name, "rb") as file_2:
+            content_1 = file_1.read()
+            content_2 = file_2.read()
+
+>           self.assertEqual(content_1, content_2)
+E           AssertionError: b'G\xf4\xb2\xda\x9c/4?\xf8\x8b\x17B\x98Z\xe[28793 chars]qE]?' != b''
+
+tests\test_compression.py:30: AssertionError
+--------------------------------- Captured stdout call --------------------------------- 
+File encoded.File encoded.
+
+File decoded.
+File decoded.
+File encoded.
+File decoded.
+File encoded.
+File encoded.
+File decoded.
+File decoded.
+File encoded.
+File encoded.
+File decoded.
+File encoded.
+File decoded.
+File decoded.
+File encoded.
+File encoded.
+File decoded.
+File encoded.
+File encoded.
+File decoded.
+File decoded.
+
+self = <test_linkedlist.TestSuite testMethod=test_is_palindrome>
+
+    def test_is_palindrome(self):
+>       self.assertTrue(is_palindrome(self.l))
+E       AssertionError: False is not true
+
+tests\test_linkedlist.py:167: AssertionError
+=============================== short test summary info ================================
+FAILED tests/test_heap.py::TestBinaryHeap::test_insert - AssertionError: Lists differ: [0, 2, 50, 4, 55, 90, 87, 7] != [0, 2, 2, 4, 50, 90, 8...
+FAILED tests/test_heap.py::TestBinaryHeap::test_remove_min - AssertionError: 4 != 7
+FAILED tests/test_compression.py::TestHuffmanCoding::test_huffman_coding - AssertionError: b'G\xf4\xb2\xda\x9c/4?\xf8\x8b\x17B\x98Z\xe[28793 chars]qE]?' != b''
+FAILED tests/test_linkedlist.py::TestSuite::test_is_palindrome - AssertionError: False is not true
+================= 4 failed, 408 passed, 4 skipped in 65.80s (0:01:05) ==================
+
+
+
+(stt_labs) PS C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\algorithms> python .\report_calculation.py
+Execution Matrix:
+                                   Configuration  Average Time (s)   Speedup
+0                                     Sequential          5.886667  1.000000
+1                       pytest-xdist --dist=load          9.210000  0.639160
+2                         pytest-xdist --dist=no          9.836667  0.598441
+3  pytest-run-parallel (--parallel-threads=auto)         54.203333  0.108603
+(stt_labs) PS C:\Users\Rashid\OneDrive\Desktop\STT\Labs\Lab_6\algorithms> 
