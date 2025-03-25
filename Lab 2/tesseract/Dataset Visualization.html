@@ -1,0 +1,2172 @@
+<!-- templates/visualisation.html -->
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dataset Visualization</title>
+    <link rel="stylesheet" href="Dataset%20Visualization_files/bootstrap.min.css">
+    <style>
+        /* Set the table width to 100% */
+        .clickable-link {
+            color: inherit; /* Use the default text color */
+            text-decoration: none; /* Add underline for indication */
+            cursor: pointer; /* Change cursor to pointer for interactivity */
+        }
+
+        /* Styling for the table container */
+        .table-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: auto;
+            padding-top: 40px; /* Adjust padding-top to accommodate fixed header */
+        }
+
+        /* Styling for the inner table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        /* Styling for the table header */
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Styling for the fixed header at the top */
+        .fixed-header {
+            position: sticky;
+            top: 0;
+            background-color: #f2f2f2;
+            z-index: 1;
+        }
+
+        /* Styling for the invisible spacer */
+        .spacer {
+            visibility: hidden;
+        }
+
+        .exit-link {
+            color: red; /* Change color as needed */
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    </style>
+
+    <script src="Dataset%20Visualization_files/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Clone the table header and append to the container
+            var $tableHead = $('.table thead');
+            var $fixedHeader = $tableHead.clone().addClass('fixed-header').appendTo('.table-container');
+
+            // Add invisible spacer to preserve layout
+            var $spacer = $('<tr class="spacer"></tr>').prependTo($tableHead);
+
+            // Handle horizontal scrolling
+            $('.table-container').on('scroll', function () {
+                var scrollLeft = $(this).scrollLeft();
+                $tableHead.css('margin-left', -scrollLeft);
+                $fixedHeader.css('margin-left', -scrollLeft);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="table-container">
+        <h1 class="text-center">Dataset Visualization</h1>
+        <p class="text-center"><a href="http://127.0.0.1:5000/">Back to Dataset Analysis</a> | <a href="http://127.0.0.1:5000/exit_app">Exit</a></p>
+            <table class="table table-bordered">
+                <thead class="fixed-header" style="margin-left: 0px;"><tr class="spacer"></tr>
+                    <tr>
+                        
+                            
+                                
+                                    <th>Before Bug fix</th>
+                                
+                            
+                        
+                            
+                                
+                                    <th>After Bug fix</th>
+                                
+                            
+                        
+                            
+                                
+                                    <th>Location</th>
+                                
+                            
+                        
+                            
+                                
+                                    <th>Bug type</th>
+                                
+                            
+                        
+                            
+                                
+                                    <th>Commit Message</th>
+                                
+                            
+                        
+                            
+                        
+                            
+                                
+                                    <th>File Path</th>
+                                
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                
+                                    <th>Test File</th>
+                                
+                            
+                        
+                            
+                                
+                                    <th>Coding Effort</th>
+                                
+                            
+                        
+                            
+                                
+                                    <th><a class="clickable-link" href="https://en.wikipedia.org/wiki/Language_construct" target="_blank">Constructs</a></th>
+                                
+                            
+                        
+                            
+                                
+                                    <th><a class="clickable-link" href="https://en.wikipedia.org/wiki/Cyclomatic_complexity" target="_blank">Lizard Features Buggy</a></th>
+                                
+                            
+                        
+                            
+                                
+                                    <th><a class="clickable-link" href="https://en.wikipedia.org/wiki/Cyclomatic_complexity" target="_blank">Lizard Features Fixed</a></th>
+                                
+                            
+                        
+                            
+                                
+                                    <th>BLEU</th>
+                                
+                            
+                        
+                            
+                                
+                                    <th>crystalBLEU_score</th>
+                                
+                            
+                        
+                            
+                                
+                                    <th>BERT_score</th>
+                                
+                            
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                        <tr>
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        <a class="clickable-link" href="https://github.com/tesseract-ocr/tesseract/commit/ad149844f07ce629eaf45cc303cdf033064ec8db" target="_blank">88&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;The&nbsp;main&nbsp;program&nbsp;loop.&nbsp;Basically&nbsp;loops&nbsp;trough&nbsp;receiving&nbsp;messages&nbsp;and<br>89&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;processing&nbsp;them&nbsp;and&nbsp;then&nbsp;sending&nbsp;messages&nbsp;
+(if&nbsp;there&nbsp;are&nbsp;any).<br>90&nbsp;&nbsp;&nbsp;&nbsp;*/<br>91&nbsp;&nbsp;&nbsp;private&nbsp;static&nbsp;void&nbsp;IOLoop()&nbsp;{<br>92&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;inputLine;<br>93&nbsp;<br>94&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{<br>95&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;
+(!socket.isClosed()&nbsp;&amp;&amp;&nbsp;!
+socket.isInputShutdown()&nbsp;&amp;&amp;<br>96&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;!socket.isOutputShutdown()&nbsp;&amp;&amp;<br>97&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;socket.isConnected()&nbsp;&amp;&amp;&nbsp;socket.isBound())&nbsp;
+{<br>98&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inputLine&nbsp;=&nbsp;receiveMessage();<br>99&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nrInputLines++;<br>100&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(debugViewNetworkTraffic)&nbsp;{<br>101&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("(c-
+&gt;S,"&nbsp;+&nbsp;nrInputLines&nbsp;+&nbsp;")"&nbsp;+&nbsp;inputLine);<br>102&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>103&nbsp;<br>104&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(polylineSize&nbsp;&gt;&nbsp;polylineScanned)&nbsp;{<br>105&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;We&nbsp;are&nbsp;processing&nbsp;a&nbsp;polyline.<br>106&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+&nbsp;Read&nbsp;pairs&nbsp;of&nbsp;coordinates&nbsp;separated&nbsp;by&nbsp;commas.<br>107&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolean&nbsp;first&nbsp;=&nbsp;true;<br>108&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;
+(String&nbsp;coordStr&nbsp;:&nbsp;inputLine.split(","))&nbsp;{<br>109&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;coord&nbsp;=&nbsp;Integer.parseInt(coordStr);<br>110&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(first)&nbsp;{<br>111&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;polylineXCoords[polylineScanned]&nbsp;=&nbsp;coord;<br>112&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br>113&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;polylineYCoords[polylineScanned+
++]&nbsp;=&nbsp;coord;<br>114&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>115&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;first&nbsp;=&nbsp;!first;<br>116&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>117&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assert&nbsp;first;<br>118&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;else&nbsp;if&nbsp;
+(SVImageHandler.getReadImageData()&nbsp;==&nbsp;false)&nbsp;{<br>119&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+&nbsp;If&nbsp;we&nbsp;are&nbsp;currently&nbsp;not&nbsp;transmitting&nbsp;an&nbsp;image,&nbsp;process&nbsp;this<br>120&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;normally.<br>121&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;processInput(inputLine);<br>122&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>123&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+&nbsp;We&nbsp;are&nbsp;still&nbsp;transmitting&nbsp;image&nbsp;data,&nbsp;but&nbsp;there&nbsp;seems&nbsp;to&nbsp;be&nbsp;some<br>124&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;command&nbsp;at&nbsp;the<br>125&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+&nbsp;end&nbsp;of&nbsp;the&nbsp;message&nbsp;attached&nbsp;as&nbsp;well.&nbsp;Thus,&nbsp;we&nbsp;have&nbsp;to&nbsp;split&nbsp;it<br>126&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;accordingly&nbsp;and<br>127&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+&nbsp;first&nbsp;generate&nbsp;the&nbsp;image&nbsp;and&nbsp;afterwards&nbsp;process&nbsp;the&nbsp;remaining<br>128&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;message.<br>129&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;if&nbsp;(inputLine.length()&nbsp;&gt;<br>130&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SVImageHandler.getMissingRemainingBytes())&nbsp;
+{<br>131&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;luaCmd&nbsp;=&nbsp;inputLine.substring(<br>132&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SVImageHandler.getMissingRemainingBytes());<br>133&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;imgData&nbsp;=&nbsp;inputLine.substring(0,<br>134&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SVImageHandler.getMissingRemainingBytes());<br>135&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SVImageHandler.parseData(imgData);<br>136&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;processInput(luaCmd);<br>137&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;else&nbsp;{&nbsp;//
+&nbsp;We&nbsp;are&nbsp;still&nbsp;in&nbsp;the&nbsp;middle&nbsp;of&nbsp;image&nbsp;data&nbsp;and&nbsp;have&nbsp;not<br>138&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+&nbsp;reached&nbsp;the&nbsp;end&nbsp;yet.<br>139&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SVImageHandler.parseData(inputLine);<br>140&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>141&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>142&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>143&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Some&nbsp;connection&nbsp;error<br>144&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;catch&nbsp;(IOException&nbsp;e)&nbsp;{<br>145&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Connection&nbsp;error.&nbsp;Quitting&nbsp;ScrollView&nbsp;Server...");<br>146&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>147&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.exit(0);<br>148&nbsp;&nbsp;&nbsp;}<br>149&nbsp;<br>150&nbsp;&nbsp;&nbsp;//
+&nbsp;Parse&nbsp;a&nbsp;comma-
+separated&nbsp;list&nbsp;of&nbsp;arguments&nbsp;into&nbsp;ArrayLists&nbsp;of&nbsp;the<br></a>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        <a class="clickable-link" href="https://github.com/tesseract-ocr/tesseract/commit/99e1f059521a9c3cb031350712ed09c1bfb194f7" target="_blank">88&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;The&nbsp;main&nbsp;program&nbsp;loop.&nbsp;Basically&nbsp;loops&nbsp;trough&nbsp;receiving&nbsp;messages&nbsp;and<br>89&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;processing&nbsp;them&nbsp;and&nbsp;then&nbsp;sending&nbsp;messages&nbsp;
+(if&nbsp;there&nbsp;are&nbsp;any).<br>90&nbsp;&nbsp;&nbsp;&nbsp;*/<br>91&nbsp;&nbsp;&nbsp;private&nbsp;static&nbsp;void&nbsp;IOLoop()&nbsp;{<br>92&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;inputLine;<br>93&nbsp;<br>94&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{<br>95&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;
+(!socket.isClosed()&nbsp;&amp;&amp;&nbsp;!
+socket.isInputShutdown()&nbsp;&amp;&amp;<br>96&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;!socket.isOutputShutdown()&nbsp;&amp;&amp;<br>97&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;socket.isConnected()&nbsp;&amp;&amp;&nbsp;socket.isBound())&nbsp;
+{<br>98&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inputLine&nbsp;=&nbsp;receiveMessage();<br>99&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nrInputLines++;<br>100&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(debugViewNetworkTraffic)&nbsp;{<br>101&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("(c-
+&gt;S,"&nbsp;+&nbsp;nrInputLines&nbsp;+&nbsp;")"&nbsp;+&nbsp;inputLine);<br>102&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>103&nbsp;<br>104&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(polylineSize&nbsp;&gt;&nbsp;polylineScanned)&nbsp;{<br>105&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;We&nbsp;are&nbsp;processing&nbsp;a&nbsp;polyline.<br>106&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+&nbsp;Read&nbsp;pairs&nbsp;of&nbsp;coordinates&nbsp;separated&nbsp;by&nbsp;commas.<br>107&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolean&nbsp;first&nbsp;=&nbsp;true;<br>108&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;
+(String&nbsp;coordStr&nbsp;:&nbsp;inputLine.split(","))&nbsp;{<br>109&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;coord&nbsp;=&nbsp;Integer.parseInt(coordStr);<br>110&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(first)&nbsp;{<br>111&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;polylineXCoords[polylineScanned]&nbsp;=&nbsp;coord;<br>112&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br>113&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;polylineYCoords[polylineScanned+
++]&nbsp;=&nbsp;coord;<br>114&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>115&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;first&nbsp;=&nbsp;!first;<br>116&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>117&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assert&nbsp;first;<br>118&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br>119&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Process&nbsp;this&nbsp;normally.<br>120&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;processInput(inputLine);<br>121&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>122&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>123&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>124&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Some&nbsp;connection&nbsp;error<br>125&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;catch&nbsp;(IOException&nbsp;e)&nbsp;{<br>126&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Connection&nbsp;error.&nbsp;Quitting&nbsp;ScrollView&nbsp;Server...");<br>127&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>128&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.exit(0);<br>129&nbsp;&nbsp;&nbsp;}<br>130&nbsp;<br>131&nbsp;&nbsp;&nbsp;//
+&nbsp;Parse&nbsp;a&nbsp;comma-
+separated&nbsp;list&nbsp;of&nbsp;arguments&nbsp;into&nbsp;ArrayLists&nbsp;of&nbsp;the<br></a>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        Before: 118, 119, 120<br>After: 118, 119
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>simplify the code in scrollview.java</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>Fixed bugs in scrollview and upgraded piccolo to 3.0</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                            
+                                
+                                <td>
+                                    
+                                        <pre>java/com/google/scrollview/ScrollView.java</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                            
+                                
+                            
+                                
+                                <td>
+                                    
+                                        <pre>0</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>781</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'program': 1,
+'ERROR': 6,
+'*': 3,
+'local_variable_declaration': 7,
+'type_identifier': 11,
+'variable_declarator': 7,
+'identifier': 89,
+';': 21,
+'.': 23,
+'expression_statement': 13,
+'binary_expression': 12,
+'method_invocation': 24,
+'argument_list': 24,
+'(': 32,
+')': 32,
+'/': 1,
+'void_type': 1,
+'block': 12,
+'{': 12,
+'try_statement': 1,
+'try': 1,
+'while_statement': 1,
+'while': 1,
+'condition': 6,
+'unary_expression': 4,
+'!': 4,
+'&amp;&amp;': 4,
+'assignment_expression': 4,
+'=': 8,
+'update_expression': 2,
+'++': 2,
+'if_statement': 5,
+'if': 5,
+'field_access': 2,
+'string_literal': 4,
+'"': 8,
+'string_fragment': 4,
+'+': 3,
+'}': 12,
+'&gt;': 2,
+'line_comment': 13,
+'boolean_type': 1,
+'true': 1,
+'enhanced_for_statement': 1,
+'for': 1,
+':': 1,
+'integral_type': 1,
+'int': 1,
+'array_access': 2,
+'[': 2,
+']': 2,
+'else': 4,
+'assert_statement': 1,
+'assert': 1,
+'==': 1,
+'false': 1,
+'decimal_integer_literal': 2,
+',': 1,
+'catch_clause': 1,
+'catch': 1,
+'catch_formal_parameter': 1,
+'catch_type': 1}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'cyclomatic_complexity': 4,
+'nloc': 19,
+'token_count': 129,
+'name': 'ScrollView::addMessage',
+'long_name': 'ScrollView::addMessage( SVEvent e)',
+'start_line': 60,
+'end_line': 80,
+'full_parameters': ['SVEvent e'],
+'filename': '/home/student/.local/lib/python3.8/site-packages/Minecpp/tesseract/prev/java/com/google/scrollview/ScrollView.java',
+'top_nesting_level': 1,
+'fan_in': 0,
+'fan_out': 0,
+'general_fan_out': 0}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'cyclomatic_complexity': 4,
+'nloc': 19,
+'token_count': 129,
+'name': 'ScrollView::addMessage',
+'long_name': 'ScrollView::addMessage( SVEvent e)',
+'start_line': 60,
+'end_line': 80,
+'full_parameters': ['SVEvent e'],
+'filename': '/home/student/.local/lib/python3.8/site-packages/Minecpp/tesseract/curr/java/com/google/scrollview/ScrollView.java',
+'top_nesting_level': 1,
+'fan_in': 0,
+'fan_out': 0,
+'general_fan_out': 0}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        0.521
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        0.52
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        
+                                        0.921
+                                    
+                                </td>
+                            
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        <a class="clickable-link" href="https://github.com/tesseract-ocr/tesseract/commit/ad149844f07ce629eaf45cc303cdf033064ec8db" target="_blank">227&nbsp;&nbsp;&nbsp;}<br>228&nbsp;<br>229&nbsp;&nbsp;&nbsp;/**&nbsp;Executes&nbsp;the&nbsp;LUA&nbsp;command&nbsp;parsed&nbsp;as&nbsp;parameter.&nbsp;*/<br>230&nbsp;&nbsp;&nbsp;private&nbsp;static&nbsp;void&nbsp;processInput(String&nbsp;inputLine)&nbsp;{<br>231&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+&nbsp;Execute&nbsp;a&nbsp;function&nbsp;encoded&nbsp;as&nbsp;a&nbsp;LUA&nbsp;statement!
+&nbsp;Yuk!<br>232&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(inputLine.charAt(0)&nbsp;==&nbsp;'w')&nbsp;{<br>233&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+&nbsp;This&nbsp;is&nbsp;a&nbsp;method&nbsp;call&nbsp;on&nbsp;a&nbsp;window.&nbsp;Parse&nbsp;it.<br>234&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;noWLine&nbsp;=&nbsp;inputLine.substring(1);<br>235&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String[]&nbsp;idStrs&nbsp;=&nbsp;noWLine.split("[&nbsp;:]",&nbsp;2);<br>236&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;windowID&nbsp;=&nbsp;Integer.parseInt(idStrs[0]);<br>237&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Find&nbsp;the&nbsp;parentheses.<br>238&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;start&nbsp;=&nbsp;inputLine.indexOf('(');<br>239&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;end&nbsp;=&nbsp;inputLine.lastIndexOf(')');<br>240&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Parse&nbsp;the&nbsp;args.<br>241&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ArrayList<integer>&nbsp;intList&nbsp;=&nbsp;new&nbsp;ArrayList<integer>(4);<br>242&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ArrayList<float>&nbsp;floatList&nbsp;=&nbsp;new&nbsp;ArrayList<float>(2);<br>243&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ArrayList<string>&nbsp;stringList&nbsp;=&nbsp;new&nbsp;ArrayList<string>(4);<br>244&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ArrayList<boolean>&nbsp;boolList&nbsp;=&nbsp;new&nbsp;ArrayList<boolean>(3);<br>245&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parseArguments(inputLine.substring(start&nbsp;+&nbsp;1,&nbsp;end),<br>246&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList,&nbsp;floatList,&nbsp;stringList,&nbsp;boolList);<br>247&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;colon&nbsp;=&nbsp;inputLine.indexOf(':');<br>248&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;
+(colon&nbsp;&gt;&nbsp;1&nbsp;&amp;&amp;&nbsp;colon&nbsp;&lt;&nbsp;start)&nbsp;
+{<br>249&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+&nbsp;This&nbsp;is&nbsp;a&nbsp;regular&nbsp;function&nbsp;call.&nbsp;Look&nbsp;for&nbsp;the&nbsp;name&nbsp;and&nbsp;call&nbsp;it.<br>250&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;func&nbsp;=&nbsp;inputLine.substring(colon&nbsp;
++&nbsp;1,&nbsp;start);<br>251&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(func.equals("drawLine"))&nbsp;{<br>252&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).drawLine(intList.get(0),&nbsp;intList.get(1),<br>253&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(2),&nbsp;intList.get(3));<br>254&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("createPolyline"))&nbsp;{<br>255&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).createPolyline(intList.get(0));<br>256&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("drawPolyline"))&nbsp;{<br>257&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).drawPolyline();<br>258&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("drawRectangle"))&nbsp;{<br>259&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).drawRectangle(intList.get(0),&nbsp;intList.get(1),<br>260&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(2),&nbsp;intList.get(3));<br>261&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("setVisible"))&nbsp;{<br>262&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).setVisible(boolList.get(0));<br>263&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("setAlwaysOnTop"))&nbsp;{<br>264&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).setAlwaysOnTop(boolList.get(0));<br>265&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("addMessage"))&nbsp;{<br>266&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).addMessage(stringList.get(0));<br>267&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("addMessageBox"))&nbsp;{<br>268&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).addMessageBox();<br>269&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("clear"))&nbsp;{<br>270&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).clear();<br>271&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("setStrokeWidth"))&nbsp;{<br>272&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).setStrokeWidth(floatList.get(0));<br>273&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("drawEllipse"))&nbsp;{<br>274&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).drawEllipse(intList.get(0),&nbsp;intList.get(1),<br>275&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(2),&nbsp;intList.get(3));<br>276&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("pen"))&nbsp;{<br>277&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(intList.size()&nbsp;==&nbsp;4)&nbsp;{<br>278&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).pen(intList.get(0),&nbsp;intList.get(1),<br>279&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(2),&nbsp;intList.get(3));<br>280&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br>281&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).pen(intList.get(0),&nbsp;intList.get(1),<br>282&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(2));<br>283&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>284&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("brush"))&nbsp;{<br>285&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(intList.size()&nbsp;==&nbsp;4)&nbsp;{<br>286&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).brush(intList.get(0),&nbsp;intList.get(1),<br>287&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(2),&nbsp;intList.get(3));<br>288&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br>289&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).brush(intList.get(0),&nbsp;intList.get(1),<br>290&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(2));<br>291&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>292&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("textAttributes"))&nbsp;{<br>293&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).textAttributes(stringList.get(0),<br>294&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(0),<br>295&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolList.get(0),<br>296&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolList.get(1),<br>297&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolList.get(2));<br>298&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("drawText"))&nbsp;{<br>299&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).drawText(intList.get(0),&nbsp;intList.get(1),<br>300&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stringList.get(0));<br>301&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("openImage"))&nbsp;{<br>302&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).openImage(stringList.get(0));<br>303&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("drawImage"))&nbsp;{<br>304&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).drawImage(stringList.get(0),<br>305&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(0),&nbsp;intList.get(1));<br>306&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("addMenuBarItem"))&nbsp;{<br>307&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(boolList.size()&nbsp;&gt;&nbsp;0)&nbsp;{<br>308&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).addMenuBarItem(stringList.get(0),<br>309&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stringList.get(1),<br>310&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(0),<br>311&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolList.get(0));<br>312&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;else&nbsp;if&nbsp;(intList.size()&nbsp;&gt;&nbsp;0)&nbsp;{<br>313&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).addMenuBarItem(stringList.get(0),<br>314&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stringList.get(1),<br>315&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(0));<br>316&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br>317&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).addMenuBarItem(stringList.get(0),<br>318&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stringList.get(1));<br>319&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>320&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("addPopupMenuItem"))&nbsp;{<br>321&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(stringList.size()&nbsp;==&nbsp;4)&nbsp;{<br>322&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).addPopupMenuItem(stringList.get(0),<br>323&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stringList.get(1),<br>324&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(0),<br>325&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stringList.get(2),<br>326&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stringList.get(3));<br>327&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br>328&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).addPopupMenuItem(stringList.get(0),<br>329&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stringList.get(1));<br>330&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>331&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("update"))&nbsp;{<br>332&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).update();<br>333&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("showInputDialog"))&nbsp;{<br>334&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).showInputDialog(stringList.get(0));<br>335&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("showYesNoDialog"))&nbsp;{<br>336&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).showYesNoDialog(stringList.get(0));<br>337&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("zoomRectangle"))&nbsp;{<br>338&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).zoomRectangle(intList.get(0),&nbsp;intList.get(1),<br>339&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(2),&nbsp;intList.get(3));<br>340&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("createImage"))&nbsp;{<br>341&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).createImage(stringList.get(0),&nbsp;intList.get(0),<br>342&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(1),&nbsp;intList.get(2));<br>343&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("drawImage"))&nbsp;{<br>344&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).drawImage(stringList.get(0),<br>345&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(0),&nbsp;intList.get(1));<br>346&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("destroy"))&nbsp;{<br>347&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).destroy();<br>348&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>349&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+&nbsp;else&nbsp;for&nbsp;forward&nbsp;compatibility&nbsp;purposes,&nbsp;silently&nbsp;ignore&nbsp;any<br>350&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;unrecognized&nbsp;function&nbsp;call.<br>351&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br>352&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;No&nbsp;colon.&nbsp;Check&nbsp;for&nbsp;create&nbsp;window.<br>353&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(idStrs[1].startsWith("=&nbsp;luajava.newInstance"))&nbsp;{<br>354&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(windows.size()&nbsp;&lt;=&nbsp;windowID)&nbsp;{<br>355&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.add(null);<br>356&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>357&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.set(windowID,&nbsp;new&nbsp;SVWindow(stringList.get(1),<br>358&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(0),&nbsp;intList.get(1),<br>359&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(2),&nbsp;intList.get(3),<br>360&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(4),&nbsp;intList.get(5),<br>361&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(6)));<br>362&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>363&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+&nbsp;else&nbsp;for&nbsp;forward&nbsp;compatibility&nbsp;purposes,&nbsp;silently&nbsp;ignore&nbsp;any<br>364&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;unrecognized&nbsp;function&nbsp;call.<br>365&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>366&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(inputLine.startsWith("svmain"))&nbsp;{<br>367&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+&nbsp;Startup&nbsp;or&nbsp;end.&nbsp;Startup&nbsp;is&nbsp;a&nbsp;lua&nbsp;bind,&nbsp;which&nbsp;is&nbsp;now&nbsp;a&nbsp;no-
+op.<br>368&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(inputLine.startsWith("svmain:exit"))&nbsp;{<br>369&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit();<br>370&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>371&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+&nbsp;else&nbsp;for&nbsp;forward&nbsp;compatibility&nbsp;purposes,&nbsp;silently&nbsp;ignore&nbsp;any<br>372&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;unrecognized&nbsp;function&nbsp;call.<br>373&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>374&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+&nbsp;else&nbsp;for&nbsp;forward&nbsp;compatibility&nbsp;purposes,&nbsp;silently&nbsp;ignore&nbsp;any<br>375&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;unrecognized&nbsp;function&nbsp;call.<br>376&nbsp;&nbsp;&nbsp;}<br>377&nbsp;<br>378&nbsp;&nbsp;&nbsp;/**&nbsp;Called&nbsp;from&nbsp;the&nbsp;client&nbsp;to&nbsp;make&nbsp;the&nbsp;server&nbsp;exit.&nbsp;*/<br></boolean></boolean></string></string></float></float></integer></integer></a>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        <a class="clickable-link" href="https://github.com/tesseract-ocr/tesseract/commit/99e1f059521a9c3cb031350712ed09c1bfb194f7" target="_blank">208&nbsp;&nbsp;&nbsp;}<br>209&nbsp;<br>210&nbsp;&nbsp;&nbsp;/**&nbsp;Executes&nbsp;the&nbsp;LUA&nbsp;command&nbsp;parsed&nbsp;as&nbsp;parameter.&nbsp;*/<br>211&nbsp;&nbsp;&nbsp;private&nbsp;static&nbsp;void&nbsp;processInput(String&nbsp;inputLine)&nbsp;{<br>212&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(inputLine&nbsp;==&nbsp;null)&nbsp;{<br>213&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;<br>214&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>215&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+&nbsp;Execute&nbsp;a&nbsp;function&nbsp;encoded&nbsp;as&nbsp;a&nbsp;LUA&nbsp;statement!
+&nbsp;Yuk!<br>216&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(inputLine.charAt(0)&nbsp;==&nbsp;'w')&nbsp;{<br>217&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+&nbsp;This&nbsp;is&nbsp;a&nbsp;method&nbsp;call&nbsp;on&nbsp;a&nbsp;window.&nbsp;Parse&nbsp;it.<br>218&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;noWLine&nbsp;=&nbsp;inputLine.substring(1);<br>219&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String[]&nbsp;idStrs&nbsp;=&nbsp;noWLine.split("[&nbsp;:]",&nbsp;2);<br>220&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;windowID&nbsp;=&nbsp;Integer.parseInt(idStrs[0]);<br>221&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Find&nbsp;the&nbsp;parentheses.<br>222&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;start&nbsp;=&nbsp;inputLine.indexOf('(');<br>223&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;end&nbsp;=&nbsp;inputLine.lastIndexOf(')');<br>224&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Parse&nbsp;the&nbsp;args.<br>225&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ArrayList<integer>&nbsp;intList&nbsp;=&nbsp;new&nbsp;ArrayList<integer>(4);<br>226&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ArrayList<float>&nbsp;floatList&nbsp;=&nbsp;new&nbsp;ArrayList<float>(2);<br>227&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ArrayList<string>&nbsp;stringList&nbsp;=&nbsp;new&nbsp;ArrayList<string>(4);<br>228&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ArrayList<boolean>&nbsp;boolList&nbsp;=&nbsp;new&nbsp;ArrayList<boolean>(3);<br>229&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parseArguments(inputLine.substring(start&nbsp;+&nbsp;1,&nbsp;end),<br>230&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList,&nbsp;floatList,&nbsp;stringList,&nbsp;boolList);<br>231&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;colon&nbsp;=&nbsp;inputLine.indexOf(':');<br>232&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;
+(colon&nbsp;&gt;&nbsp;1&nbsp;&amp;&amp;&nbsp;colon&nbsp;&lt;&nbsp;start)&nbsp;
+{<br>233&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+&nbsp;This&nbsp;is&nbsp;a&nbsp;regular&nbsp;function&nbsp;call.&nbsp;Look&nbsp;for&nbsp;the&nbsp;name&nbsp;and&nbsp;call&nbsp;it.<br>234&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;func&nbsp;=&nbsp;inputLine.substring(colon&nbsp;
++&nbsp;1,&nbsp;start);<br>235&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(func.equals("drawLine"))&nbsp;{<br>236&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).drawLine(intList.get(0),&nbsp;intList.get(1),<br>237&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(2),&nbsp;intList.get(3));<br>238&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("createPolyline"))&nbsp;{<br>239&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).createPolyline(intList.get(0));<br>240&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("drawPolyline"))&nbsp;{<br>241&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).drawPolyline();<br>242&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("drawRectangle"))&nbsp;{<br>243&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).drawRectangle(intList.get(0),&nbsp;intList.get(1),<br>244&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(2),&nbsp;intList.get(3));<br>245&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("setVisible"))&nbsp;{<br>246&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).setVisible(boolList.get(0));<br>247&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("setAlwaysOnTop"))&nbsp;{<br>248&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).setAlwaysOnTop(boolList.get(0));<br>249&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("addMessage"))&nbsp;{<br>250&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).addMessage(stringList.get(0));<br>251&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("addMessageBox"))&nbsp;{<br>252&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).addMessageBox();<br>253&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("clear"))&nbsp;{<br>254&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).clear();<br>255&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("setStrokeWidth"))&nbsp;{<br>256&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).setStrokeWidth(floatList.get(0));<br>257&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("drawEllipse"))&nbsp;{<br>258&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).drawEllipse(intList.get(0),&nbsp;intList.get(1),<br>259&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(2),&nbsp;intList.get(3));<br>260&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("pen"))&nbsp;{<br>261&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(intList.size()&nbsp;==&nbsp;4)&nbsp;{<br>262&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).pen(intList.get(0),&nbsp;intList.get(1),<br>263&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(2),&nbsp;intList.get(3));<br>264&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br>265&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).pen(intList.get(0),&nbsp;intList.get(1),<br>266&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(2));<br>267&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>268&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("brush"))&nbsp;{<br>269&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(intList.size()&nbsp;==&nbsp;4)&nbsp;{<br>270&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).brush(intList.get(0),&nbsp;intList.get(1),<br>271&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(2),&nbsp;intList.get(3));<br>272&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br>273&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).brush(intList.get(0),&nbsp;intList.get(1),<br>274&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(2));<br>275&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>276&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("textAttributes"))&nbsp;{<br>277&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).textAttributes(stringList.get(0),<br>278&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(0),<br>279&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolList.get(0),<br>280&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolList.get(1),<br>281&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolList.get(2));<br>282&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("drawText"))&nbsp;{<br>283&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).drawText(intList.get(0),&nbsp;intList.get(1),<br>284&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stringList.get(0));<br>285&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("addMenuBarItem"))&nbsp;{<br>286&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(boolList.size()&nbsp;&gt;&nbsp;0)&nbsp;{<br>287&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).addMenuBarItem(stringList.get(0),<br>288&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stringList.get(1),<br>289&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(0),<br>290&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolList.get(0));<br>291&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;else&nbsp;if&nbsp;(intList.size()&nbsp;&gt;&nbsp;0)&nbsp;{<br>292&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).addMenuBarItem(stringList.get(0),<br>293&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stringList.get(1),<br>294&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(0));<br>295&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br>296&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).addMenuBarItem(stringList.get(0),<br>297&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stringList.get(1));<br>298&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>299&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("addPopupMenuItem"))&nbsp;{<br>300&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(stringList.size()&nbsp;==&nbsp;4)&nbsp;{<br>301&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).addPopupMenuItem(stringList.get(0),<br>302&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stringList.get(1),<br>303&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(0),<br>304&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stringList.get(2),<br>305&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stringList.get(3));<br>306&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br>307&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).addPopupMenuItem(stringList.get(0),<br>308&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stringList.get(1));<br>309&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>310&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("update"))&nbsp;{<br>311&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).update();<br>312&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("showInputDialog"))&nbsp;{<br>313&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).showInputDialog(stringList.get(0));<br>314&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("showYesNoDialog"))&nbsp;{<br>315&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).showYesNoDialog(stringList.get(0));<br>316&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("zoomRectangle"))&nbsp;{<br>317&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).zoomRectangle(intList.get(0),&nbsp;intList.get(1),<br>318&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(2),&nbsp;intList.get(3));<br>319&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("readImage"))&nbsp;{<br>320&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PImage&nbsp;image&nbsp;=&nbsp;SVImageHandler.readImage(intList.get(2),&nbsp;in);<br>321&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).drawImage(image,&nbsp;intList.get(0),&nbsp;intList.get(1));<br>322&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("drawImage"))&nbsp;{<br>323&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PImage&nbsp;image&nbsp;=&nbsp;new&nbsp;PImage(stringList.get(0));<br>324&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).drawImage(image,&nbsp;intList.get(0),&nbsp;intList.get(1));<br>325&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("destroy"))&nbsp;{<br>326&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).destroy();<br>327&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>328&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+&nbsp;else&nbsp;for&nbsp;forward&nbsp;compatibility&nbsp;purposes,&nbsp;silently&nbsp;ignore&nbsp;any<br>329&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;unrecognized&nbsp;function&nbsp;call.<br>330&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br>331&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;No&nbsp;colon.&nbsp;Check&nbsp;for&nbsp;create&nbsp;window.<br>332&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(idStrs[1].startsWith("=&nbsp;luajava.newInstance"))&nbsp;{<br>333&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(windows.size()&nbsp;&lt;=&nbsp;windowID)&nbsp;{<br>334&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.add(null);<br>335&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>336&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.set(windowID,&nbsp;new&nbsp;SVWindow(stringList.get(1),<br>337&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(0),&nbsp;intList.get(1),<br>338&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(2),&nbsp;intList.get(3),<br>339&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(4),&nbsp;intList.get(5),<br>340&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(6)));<br>341&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>342&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+&nbsp;else&nbsp;for&nbsp;forward&nbsp;compatibility&nbsp;purposes,&nbsp;silently&nbsp;ignore&nbsp;any<br>343&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;unrecognized&nbsp;function&nbsp;call.<br>344&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>345&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(inputLine.startsWith("svmain"))&nbsp;{<br>346&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+&nbsp;Startup&nbsp;or&nbsp;end.&nbsp;Startup&nbsp;is&nbsp;a&nbsp;lua&nbsp;bind,&nbsp;which&nbsp;is&nbsp;now&nbsp;a&nbsp;no-
+op.<br>347&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(inputLine.startsWith("svmain:exit"))&nbsp;{<br>348&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit();<br>349&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>350&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+&nbsp;else&nbsp;for&nbsp;forward&nbsp;compatibility&nbsp;purposes,&nbsp;silently&nbsp;ignore&nbsp;any<br>351&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;unrecognized&nbsp;function&nbsp;call.<br>352&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>353&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+&nbsp;else&nbsp;for&nbsp;forward&nbsp;compatibility&nbsp;purposes,&nbsp;silently&nbsp;ignore&nbsp;any<br>354&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;unrecognized&nbsp;function&nbsp;call.<br>355&nbsp;&nbsp;&nbsp;}<br>356&nbsp;<br>357&nbsp;&nbsp;&nbsp;/**&nbsp;Called&nbsp;from&nbsp;the&nbsp;client&nbsp;to&nbsp;make&nbsp;the&nbsp;server&nbsp;exit.&nbsp;*/<br></boolean></boolean></string></string></float></float></integer></integer></a>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        Before: 340, 341, 342<br>After: 319, 320, 321
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>simplify the code in scrollview.java</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>Fixed bugs in scrollview and upgraded piccolo to 3.0</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                            
+                                
+                                <td>
+                                    
+                                        <pre>java/com/google/scrollview/ScrollView.java</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                            
+                                
+                            
+                                
+                                <td>
+                                    
+                                        <pre>0</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>3403</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'program': 1,
+'ERROR': 1,
+'}': 44,
+'block_comment': 1,
+'method_declaration': 1,
+'modifiers': 1,
+'private': 1,
+'static': 1,
+'void_type': 1,
+'identifier': 405,
+'formal_parameters': 1,
+'(': 233,
+'formal_parameter': 1,
+'type_identifier': 21,
+')': 233,
+'block': 43,
+'{': 43,
+'line_comment': 15,
+'if_statement': 36,
+'if': 36,
+'condition': 37,
+'binary_expression': 12,
+'method_invocation': 190,
+'.': 188,
+'argument_list': 195,
+'decimal_integer_literal': 97,
+'==': 4,
+'character_literal': 4,
+'local_variable_declaration': 11,
+'variable_declarator': 11,
+'=': 11,
+';': 46,
+'array_type': 1,
+'dimensions': 1,
+'[': 3,
+']': 3,
+'string_literal': 30,
+'"': 60,
+'string_fragment': 30,
+',': 61,
+'integral_type': 4,
+'int': 4,
+'array_access': 2,
+'generic_type': 8,
+'type_arguments': 8,
+'&lt;': 9,
+'&gt;': 11,
+'object_creation_expression': 5,
+'new': 5,
+'expression_statement': 35,
+'+': 2,
+'&amp;&amp;': 1,
+'else': 32,
+'while_statement': 1,
+'while': 1,
+'&lt;=': 1,
+'null_literal': 1}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'cyclomatic_complexity': 4,
+'nloc': 19,
+'token_count': 129,
+'name': 'ScrollView::addMessage',
+'long_name': 'ScrollView::addMessage( SVEvent e)',
+'start_line': 60,
+'end_line': 80,
+'full_parameters': ['SVEvent e'],
+'filename': '/home/student/.local/lib/python3.8/site-packages/Minecpp/tesseract/prev/java/com/google/scrollview/ScrollView.java',
+'top_nesting_level': 1,
+'fan_in': 0,
+'fan_out': 0,
+'general_fan_out': 0}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'cyclomatic_complexity': 4,
+'nloc': 19,
+'token_count': 129,
+'name': 'ScrollView::addMessage',
+'long_name': 'ScrollView::addMessage( SVEvent e)',
+'start_line': 60,
+'end_line': 80,
+'full_parameters': ['SVEvent e'],
+'filename': '/home/student/.local/lib/python3.8/site-packages/Minecpp/tesseract/curr/java/com/google/scrollview/ScrollView.java',
+'top_nesting_level': 1,
+'fan_in': 0,
+'fan_out': 0,
+'general_fan_out': 0}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        0.77
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        0.761
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        
+                                        0.96
+                                    
+                                </td>
+                            
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        <a class="clickable-link" href="https://github.com/tesseract-ocr/tesseract/commit/ad149844f07ce629eaf45cc303cdf033064ec8db" target="_blank">227&nbsp;&nbsp;&nbsp;}<br>228&nbsp;<br>229&nbsp;&nbsp;&nbsp;/**&nbsp;Executes&nbsp;the&nbsp;LUA&nbsp;command&nbsp;parsed&nbsp;as&nbsp;parameter.&nbsp;*/<br>230&nbsp;&nbsp;&nbsp;private&nbsp;static&nbsp;void&nbsp;processInput(String&nbsp;inputLine)&nbsp;{<br>231&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+&nbsp;Execute&nbsp;a&nbsp;function&nbsp;encoded&nbsp;as&nbsp;a&nbsp;LUA&nbsp;statement!
+&nbsp;Yuk!<br>232&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(inputLine.charAt(0)&nbsp;==&nbsp;'w')&nbsp;{<br>233&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+&nbsp;This&nbsp;is&nbsp;a&nbsp;method&nbsp;call&nbsp;on&nbsp;a&nbsp;window.&nbsp;Parse&nbsp;it.<br>234&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;noWLine&nbsp;=&nbsp;inputLine.substring(1);<br>235&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String[]&nbsp;idStrs&nbsp;=&nbsp;noWLine.split("[&nbsp;:]",&nbsp;2);<br>236&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;windowID&nbsp;=&nbsp;Integer.parseInt(idStrs[0]);<br>237&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Find&nbsp;the&nbsp;parentheses.<br>238&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;start&nbsp;=&nbsp;inputLine.indexOf('(');<br>239&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;end&nbsp;=&nbsp;inputLine.lastIndexOf(')');<br>240&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Parse&nbsp;the&nbsp;args.<br>241&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ArrayList<integer>&nbsp;intList&nbsp;=&nbsp;new&nbsp;ArrayList<integer>(4);<br>242&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ArrayList<float>&nbsp;floatList&nbsp;=&nbsp;new&nbsp;ArrayList<float>(2);<br>243&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ArrayList<string>&nbsp;stringList&nbsp;=&nbsp;new&nbsp;ArrayList<string>(4);<br>244&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ArrayList<boolean>&nbsp;boolList&nbsp;=&nbsp;new&nbsp;ArrayList<boolean>(3);<br>245&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parseArguments(inputLine.substring(start&nbsp;+&nbsp;1,&nbsp;end),<br>246&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList,&nbsp;floatList,&nbsp;stringList,&nbsp;boolList);<br>247&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;colon&nbsp;=&nbsp;inputLine.indexOf(':');<br>248&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;
+(colon&nbsp;&gt;&nbsp;1&nbsp;&amp;&amp;&nbsp;colon&nbsp;&lt;&nbsp;start)&nbsp;
+{<br>249&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+&nbsp;This&nbsp;is&nbsp;a&nbsp;regular&nbsp;function&nbsp;call.&nbsp;Look&nbsp;for&nbsp;the&nbsp;name&nbsp;and&nbsp;call&nbsp;it.<br>250&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;func&nbsp;=&nbsp;inputLine.substring(colon&nbsp;
++&nbsp;1,&nbsp;start);<br>251&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(func.equals("drawLine"))&nbsp;{<br>252&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).drawLine(intList.get(0),&nbsp;intList.get(1),<br>253&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(2),&nbsp;intList.get(3));<br>254&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("createPolyline"))&nbsp;{<br>255&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).createPolyline(intList.get(0));<br>256&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("drawPolyline"))&nbsp;{<br>257&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).drawPolyline();<br>258&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("drawRectangle"))&nbsp;{<br>259&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).drawRectangle(intList.get(0),&nbsp;intList.get(1),<br>260&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(2),&nbsp;intList.get(3));<br>261&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("setVisible"))&nbsp;{<br>262&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).setVisible(boolList.get(0));<br>263&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("setAlwaysOnTop"))&nbsp;{<br>264&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).setAlwaysOnTop(boolList.get(0));<br>265&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("addMessage"))&nbsp;{<br>266&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).addMessage(stringList.get(0));<br>267&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("addMessageBox"))&nbsp;{<br>268&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).addMessageBox();<br>269&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("clear"))&nbsp;{<br>270&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).clear();<br>271&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("setStrokeWidth"))&nbsp;{<br>272&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).setStrokeWidth(floatList.get(0));<br>273&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("drawEllipse"))&nbsp;{<br>274&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).drawEllipse(intList.get(0),&nbsp;intList.get(1),<br>275&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(2),&nbsp;intList.get(3));<br>276&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("pen"))&nbsp;{<br>277&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(intList.size()&nbsp;==&nbsp;4)&nbsp;{<br>278&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).pen(intList.get(0),&nbsp;intList.get(1),<br>279&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(2),&nbsp;intList.get(3));<br>280&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br>281&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).pen(intList.get(0),&nbsp;intList.get(1),<br>282&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(2));<br>283&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>284&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("brush"))&nbsp;{<br>285&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(intList.size()&nbsp;==&nbsp;4)&nbsp;{<br>286&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).brush(intList.get(0),&nbsp;intList.get(1),<br>287&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(2),&nbsp;intList.get(3));<br>288&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br>289&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).brush(intList.get(0),&nbsp;intList.get(1),<br>290&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(2));<br>291&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>292&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("textAttributes"))&nbsp;{<br>293&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).textAttributes(stringList.get(0),<br>294&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(0),<br>295&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolList.get(0),<br>296&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolList.get(1),<br>297&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolList.get(2));<br>298&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("drawText"))&nbsp;{<br>299&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).drawText(intList.get(0),&nbsp;intList.get(1),<br>300&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stringList.get(0));<br>301&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("openImage"))&nbsp;{<br>302&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).openImage(stringList.get(0));<br>303&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("drawImage"))&nbsp;{<br>304&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).drawImage(stringList.get(0),<br>305&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(0),&nbsp;intList.get(1));<br>306&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("addMenuBarItem"))&nbsp;{<br>307&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(boolList.size()&nbsp;&gt;&nbsp;0)&nbsp;{<br>308&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).addMenuBarItem(stringList.get(0),<br>309&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stringList.get(1),<br>310&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(0),<br>311&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolList.get(0));<br>312&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;else&nbsp;if&nbsp;(intList.size()&nbsp;&gt;&nbsp;0)&nbsp;{<br>313&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).addMenuBarItem(stringList.get(0),<br>314&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stringList.get(1),<br>315&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(0));<br>316&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br>317&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).addMenuBarItem(stringList.get(0),<br>318&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stringList.get(1));<br>319&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>320&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("addPopupMenuItem"))&nbsp;{<br>321&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(stringList.size()&nbsp;==&nbsp;4)&nbsp;{<br>322&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).addPopupMenuItem(stringList.get(0),<br>323&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stringList.get(1),<br>324&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(0),<br>325&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stringList.get(2),<br>326&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stringList.get(3));<br>327&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br>328&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).addPopupMenuItem(stringList.get(0),<br>329&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stringList.get(1));<br>330&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>331&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("update"))&nbsp;{<br>332&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).update();<br>333&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("showInputDialog"))&nbsp;{<br>334&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).showInputDialog(stringList.get(0));<br>335&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("showYesNoDialog"))&nbsp;{<br>336&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).showYesNoDialog(stringList.get(0));<br>337&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("zoomRectangle"))&nbsp;{<br>338&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).zoomRectangle(intList.get(0),&nbsp;intList.get(1),<br>339&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(2),&nbsp;intList.get(3));<br>340&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("createImage"))&nbsp;{<br>341&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).createImage(stringList.get(0),&nbsp;intList.get(0),<br>342&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(1),&nbsp;intList.get(2));<br>343&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("drawImage"))&nbsp;{<br>344&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).drawImage(stringList.get(0),<br>345&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(0),&nbsp;intList.get(1));<br>346&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("destroy"))&nbsp;{<br>347&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).destroy();<br>348&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>349&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+&nbsp;else&nbsp;for&nbsp;forward&nbsp;compatibility&nbsp;purposes,&nbsp;silently&nbsp;ignore&nbsp;any<br>350&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;unrecognized&nbsp;function&nbsp;call.<br>351&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br>352&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;No&nbsp;colon.&nbsp;Check&nbsp;for&nbsp;create&nbsp;window.<br>353&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(idStrs[1].startsWith("=&nbsp;luajava.newInstance"))&nbsp;{<br>354&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(windows.size()&nbsp;&lt;=&nbsp;windowID)&nbsp;{<br>355&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.add(null);<br>356&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>357&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.set(windowID,&nbsp;new&nbsp;SVWindow(stringList.get(1),<br>358&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(0),&nbsp;intList.get(1),<br>359&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(2),&nbsp;intList.get(3),<br>360&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(4),&nbsp;intList.get(5),<br>361&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(6)));<br>362&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>363&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+&nbsp;else&nbsp;for&nbsp;forward&nbsp;compatibility&nbsp;purposes,&nbsp;silently&nbsp;ignore&nbsp;any<br>364&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;unrecognized&nbsp;function&nbsp;call.<br>365&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>366&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(inputLine.startsWith("svmain"))&nbsp;{<br>367&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+&nbsp;Startup&nbsp;or&nbsp;end.&nbsp;Startup&nbsp;is&nbsp;a&nbsp;lua&nbsp;bind,&nbsp;which&nbsp;is&nbsp;now&nbsp;a&nbsp;no-
+op.<br>368&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(inputLine.startsWith("svmain:exit"))&nbsp;{<br>369&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit();<br>370&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>371&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+&nbsp;else&nbsp;for&nbsp;forward&nbsp;compatibility&nbsp;purposes,&nbsp;silently&nbsp;ignore&nbsp;any<br>372&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;unrecognized&nbsp;function&nbsp;call.<br>373&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>374&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+&nbsp;else&nbsp;for&nbsp;forward&nbsp;compatibility&nbsp;purposes,&nbsp;silently&nbsp;ignore&nbsp;any<br>375&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;unrecognized&nbsp;function&nbsp;call.<br>376&nbsp;&nbsp;&nbsp;}<br>377&nbsp;<br>378&nbsp;&nbsp;&nbsp;/**&nbsp;Called&nbsp;from&nbsp;the&nbsp;client&nbsp;to&nbsp;make&nbsp;the&nbsp;server&nbsp;exit.&nbsp;*/<br></boolean></boolean></string></string></float></float></integer></integer></a>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        <a class="clickable-link" href="https://github.com/tesseract-ocr/tesseract/commit/99e1f059521a9c3cb031350712ed09c1bfb194f7" target="_blank">208&nbsp;&nbsp;&nbsp;}<br>209&nbsp;<br>210&nbsp;&nbsp;&nbsp;/**&nbsp;Executes&nbsp;the&nbsp;LUA&nbsp;command&nbsp;parsed&nbsp;as&nbsp;parameter.&nbsp;*/<br>211&nbsp;&nbsp;&nbsp;private&nbsp;static&nbsp;void&nbsp;processInput(String&nbsp;inputLine)&nbsp;{<br>212&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(inputLine&nbsp;==&nbsp;null)&nbsp;{<br>213&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;<br>214&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>215&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+&nbsp;Execute&nbsp;a&nbsp;function&nbsp;encoded&nbsp;as&nbsp;a&nbsp;LUA&nbsp;statement!
+&nbsp;Yuk!<br>216&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(inputLine.charAt(0)&nbsp;==&nbsp;'w')&nbsp;{<br>217&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+&nbsp;This&nbsp;is&nbsp;a&nbsp;method&nbsp;call&nbsp;on&nbsp;a&nbsp;window.&nbsp;Parse&nbsp;it.<br>218&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;noWLine&nbsp;=&nbsp;inputLine.substring(1);<br>219&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String[]&nbsp;idStrs&nbsp;=&nbsp;noWLine.split("[&nbsp;:]",&nbsp;2);<br>220&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;windowID&nbsp;=&nbsp;Integer.parseInt(idStrs[0]);<br>221&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Find&nbsp;the&nbsp;parentheses.<br>222&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;start&nbsp;=&nbsp;inputLine.indexOf('(');<br>223&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;end&nbsp;=&nbsp;inputLine.lastIndexOf(')');<br>224&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Parse&nbsp;the&nbsp;args.<br>225&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ArrayList<integer>&nbsp;intList&nbsp;=&nbsp;new&nbsp;ArrayList<integer>(4);<br>226&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ArrayList<float>&nbsp;floatList&nbsp;=&nbsp;new&nbsp;ArrayList<float>(2);<br>227&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ArrayList<string>&nbsp;stringList&nbsp;=&nbsp;new&nbsp;ArrayList<string>(4);<br>228&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ArrayList<boolean>&nbsp;boolList&nbsp;=&nbsp;new&nbsp;ArrayList<boolean>(3);<br>229&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parseArguments(inputLine.substring(start&nbsp;+&nbsp;1,&nbsp;end),<br>230&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList,&nbsp;floatList,&nbsp;stringList,&nbsp;boolList);<br>231&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;colon&nbsp;=&nbsp;inputLine.indexOf(':');<br>232&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;
+(colon&nbsp;&gt;&nbsp;1&nbsp;&amp;&amp;&nbsp;colon&nbsp;&lt;&nbsp;start)&nbsp;
+{<br>233&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+&nbsp;This&nbsp;is&nbsp;a&nbsp;regular&nbsp;function&nbsp;call.&nbsp;Look&nbsp;for&nbsp;the&nbsp;name&nbsp;and&nbsp;call&nbsp;it.<br>234&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;func&nbsp;=&nbsp;inputLine.substring(colon&nbsp;
++&nbsp;1,&nbsp;start);<br>235&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(func.equals("drawLine"))&nbsp;{<br>236&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).drawLine(intList.get(0),&nbsp;intList.get(1),<br>237&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(2),&nbsp;intList.get(3));<br>238&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("createPolyline"))&nbsp;{<br>239&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).createPolyline(intList.get(0));<br>240&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("drawPolyline"))&nbsp;{<br>241&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).drawPolyline();<br>242&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("drawRectangle"))&nbsp;{<br>243&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).drawRectangle(intList.get(0),&nbsp;intList.get(1),<br>244&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(2),&nbsp;intList.get(3));<br>245&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("setVisible"))&nbsp;{<br>246&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).setVisible(boolList.get(0));<br>247&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("setAlwaysOnTop"))&nbsp;{<br>248&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).setAlwaysOnTop(boolList.get(0));<br>249&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("addMessage"))&nbsp;{<br>250&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).addMessage(stringList.get(0));<br>251&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("addMessageBox"))&nbsp;{<br>252&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).addMessageBox();<br>253&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("clear"))&nbsp;{<br>254&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).clear();<br>255&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("setStrokeWidth"))&nbsp;{<br>256&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).setStrokeWidth(floatList.get(0));<br>257&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("drawEllipse"))&nbsp;{<br>258&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).drawEllipse(intList.get(0),&nbsp;intList.get(1),<br>259&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(2),&nbsp;intList.get(3));<br>260&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("pen"))&nbsp;{<br>261&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(intList.size()&nbsp;==&nbsp;4)&nbsp;{<br>262&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).pen(intList.get(0),&nbsp;intList.get(1),<br>263&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(2),&nbsp;intList.get(3));<br>264&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br>265&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).pen(intList.get(0),&nbsp;intList.get(1),<br>266&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(2));<br>267&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>268&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("brush"))&nbsp;{<br>269&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(intList.size()&nbsp;==&nbsp;4)&nbsp;{<br>270&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).brush(intList.get(0),&nbsp;intList.get(1),<br>271&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(2),&nbsp;intList.get(3));<br>272&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br>273&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).brush(intList.get(0),&nbsp;intList.get(1),<br>274&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(2));<br>275&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>276&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("textAttributes"))&nbsp;{<br>277&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).textAttributes(stringList.get(0),<br>278&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(0),<br>279&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolList.get(0),<br>280&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolList.get(1),<br>281&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolList.get(2));<br>282&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("drawText"))&nbsp;{<br>283&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).drawText(intList.get(0),&nbsp;intList.get(1),<br>284&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stringList.get(0));<br>285&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("addMenuBarItem"))&nbsp;{<br>286&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(boolList.size()&nbsp;&gt;&nbsp;0)&nbsp;{<br>287&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).addMenuBarItem(stringList.get(0),<br>288&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stringList.get(1),<br>289&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(0),<br>290&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolList.get(0));<br>291&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;else&nbsp;if&nbsp;(intList.size()&nbsp;&gt;&nbsp;0)&nbsp;{<br>292&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).addMenuBarItem(stringList.get(0),<br>293&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stringList.get(1),<br>294&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(0));<br>295&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br>296&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).addMenuBarItem(stringList.get(0),<br>297&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stringList.get(1));<br>298&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>299&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("addPopupMenuItem"))&nbsp;{<br>300&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(stringList.size()&nbsp;==&nbsp;4)&nbsp;{<br>301&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).addPopupMenuItem(stringList.get(0),<br>302&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stringList.get(1),<br>303&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(0),<br>304&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stringList.get(2),<br>305&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stringList.get(3));<br>306&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br>307&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).addPopupMenuItem(stringList.get(0),<br>308&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stringList.get(1));<br>309&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>310&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("update"))&nbsp;{<br>311&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).update();<br>312&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("showInputDialog"))&nbsp;{<br>313&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).showInputDialog(stringList.get(0));<br>314&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("showYesNoDialog"))&nbsp;{<br>315&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).showYesNoDialog(stringList.get(0));<br>316&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("zoomRectangle"))&nbsp;{<br>317&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).zoomRectangle(intList.get(0),&nbsp;intList.get(1),<br>318&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(2),&nbsp;intList.get(3));<br>319&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("readImage"))&nbsp;{<br>320&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PImage&nbsp;image&nbsp;=&nbsp;SVImageHandler.readImage(intList.get(2),&nbsp;in);<br>321&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).drawImage(image,&nbsp;intList.get(0),&nbsp;intList.get(1));<br>322&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("drawImage"))&nbsp;{<br>323&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PImage&nbsp;image&nbsp;=&nbsp;new&nbsp;PImage(stringList.get(0));<br>324&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).drawImage(image,&nbsp;intList.get(0),&nbsp;intList.get(1));<br>325&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(func.equals("destroy"))&nbsp;{<br>326&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.get(windowID).destroy();<br>327&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>328&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+&nbsp;else&nbsp;for&nbsp;forward&nbsp;compatibility&nbsp;purposes,&nbsp;silently&nbsp;ignore&nbsp;any<br>329&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;unrecognized&nbsp;function&nbsp;call.<br>330&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br>331&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;No&nbsp;colon.&nbsp;Check&nbsp;for&nbsp;create&nbsp;window.<br>332&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(idStrs[1].startsWith("=&nbsp;luajava.newInstance"))&nbsp;{<br>333&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(windows.size()&nbsp;&lt;=&nbsp;windowID)&nbsp;{<br>334&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.add(null);<br>335&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>336&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windows.set(windowID,&nbsp;new&nbsp;SVWindow(stringList.get(1),<br>337&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(0),&nbsp;intList.get(1),<br>338&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(2),&nbsp;intList.get(3),<br>339&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(4),&nbsp;intList.get(5),<br>340&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intList.get(6)));<br>341&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>342&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+&nbsp;else&nbsp;for&nbsp;forward&nbsp;compatibility&nbsp;purposes,&nbsp;silently&nbsp;ignore&nbsp;any<br>343&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;unrecognized&nbsp;function&nbsp;call.<br>344&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>345&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(inputLine.startsWith("svmain"))&nbsp;{<br>346&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+&nbsp;Startup&nbsp;or&nbsp;end.&nbsp;Startup&nbsp;is&nbsp;a&nbsp;lua&nbsp;bind,&nbsp;which&nbsp;is&nbsp;now&nbsp;a&nbsp;no-
+op.<br>347&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(inputLine.startsWith("svmain:exit"))&nbsp;{<br>348&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit();<br>349&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>350&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+&nbsp;else&nbsp;for&nbsp;forward&nbsp;compatibility&nbsp;purposes,&nbsp;silently&nbsp;ignore&nbsp;any<br>351&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;unrecognized&nbsp;function&nbsp;call.<br>352&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>353&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+&nbsp;else&nbsp;for&nbsp;forward&nbsp;compatibility&nbsp;purposes,&nbsp;silently&nbsp;ignore&nbsp;any<br>354&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;unrecognized&nbsp;function&nbsp;call.<br>355&nbsp;&nbsp;&nbsp;}<br>356&nbsp;<br>357&nbsp;&nbsp;&nbsp;/**&nbsp;Called&nbsp;from&nbsp;the&nbsp;client&nbsp;to&nbsp;make&nbsp;the&nbsp;server&nbsp;exit.&nbsp;*/<br></boolean></boolean></string></string></float></float></integer></integer></a>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        Before: 344, 345<br>After: 323, 324
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>simplify the code in scrollview.java</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>Fixed bugs in scrollview and upgraded piccolo to 3.0</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                            
+                                
+                                <td>
+                                    
+                                        <pre>java/com/google/scrollview/ScrollView.java</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                            
+                                
+                            
+                                
+                                <td>
+                                    
+                                        <pre>0</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>3487</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'program': 1,
+'ERROR': 1,
+'}': 44,
+'block_comment': 1,
+'method_declaration': 1,
+'modifiers': 1,
+'private': 1,
+'static': 1,
+'void_type': 1,
+'identifier': 405,
+'formal_parameters': 1,
+'(': 233,
+'formal_parameter': 1,
+'type_identifier': 21,
+')': 233,
+'block': 43,
+'{': 43,
+'line_comment': 15,
+'if_statement': 36,
+'if': 36,
+'condition': 37,
+'binary_expression': 12,
+'method_invocation': 190,
+'.': 188,
+'argument_list': 195,
+'decimal_integer_literal': 97,
+'==': 4,
+'character_literal': 4,
+'local_variable_declaration': 11,
+'variable_declarator': 11,
+'=': 11,
+';': 46,
+'array_type': 1,
+'dimensions': 1,
+'[': 3,
+']': 3,
+'string_literal': 30,
+'"': 60,
+'string_fragment': 30,
+',': 61,
+'integral_type': 4,
+'int': 4,
+'array_access': 2,
+'generic_type': 8,
+'type_arguments': 8,
+'&lt;': 9,
+'&gt;': 11,
+'object_creation_expression': 5,
+'new': 5,
+'expression_statement': 35,
+'+': 2,
+'&amp;&amp;': 1,
+'else': 32,
+'while_statement': 1,
+'while': 1,
+'&lt;=': 1,
+'null_literal': 1}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'cyclomatic_complexity': 4,
+'nloc': 19,
+'token_count': 129,
+'name': 'ScrollView::addMessage',
+'long_name': 'ScrollView::addMessage( SVEvent e)',
+'start_line': 60,
+'end_line': 80,
+'full_parameters': ['SVEvent e'],
+'filename': '/home/student/.local/lib/python3.8/site-packages/Minecpp/tesseract/prev/java/com/google/scrollview/ScrollView.java',
+'top_nesting_level': 1,
+'fan_in': 0,
+'fan_out': 0,
+'general_fan_out': 0}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'cyclomatic_complexity': 4,
+'nloc': 19,
+'token_count': 129,
+'name': 'ScrollView::addMessage',
+'long_name': 'ScrollView::addMessage( SVEvent e)',
+'start_line': 60,
+'end_line': 80,
+'full_parameters': ['SVEvent e'],
+'filename': '/home/student/.local/lib/python3.8/site-packages/Minecpp/tesseract/curr/java/com/google/scrollview/ScrollView.java',
+'top_nesting_level': 1,
+'fan_in': 0,
+'fan_out': 0,
+'general_fan_out': 0}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        0.77
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        0.761
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        
+                                        0.96
+                                    
+                                </td>
+                            
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        <a class="clickable-link" href="https://github.com/tesseract-ocr/tesseract/commit/ad149844f07ce629eaf45cc303cdf033064ec8db" target="_blank">23&nbsp;import&nbsp;java.awt.event.WindowEvent;<br>24&nbsp;import&nbsp;java.awt.event.WindowListener;<br>25&nbsp;<br>26&nbsp;import&nbsp;javax.swing.Timer;<br>27&nbsp;<br>28&nbsp;import&nbsp;edu.umd.cs.piccolo.PCamera;<br>29&nbsp;import&nbsp;edu.umd.cs.piccolo.PNode;<br>30&nbsp;import&nbsp;edu.umd.cs.piccolo.event.PBasicInputEventHandler;<br>31&nbsp;import&nbsp;edu.umd.cs.piccolo.event.PInputEvent;<br>32&nbsp;import&nbsp;edu.umd.cs.piccolo.nodes.PPath;<br></a>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        <a class="clickable-link" href="https://github.com/tesseract-ocr/tesseract/commit/99e1f059521a9c3cb031350712ed09c1bfb194f7" target="_blank">23&nbsp;import&nbsp;java.awt.event.WindowEvent;<br>24&nbsp;import&nbsp;java.awt.event.WindowListener;<br>25&nbsp;<br>26&nbsp;import&nbsp;javax.swing.Timer;<br>27&nbsp;<br>28&nbsp;import&nbsp;org.piccolo2d.PCamera;<br>29&nbsp;import&nbsp;org.piccolo2d.PNode;<br>30&nbsp;import&nbsp;org.piccolo2d.event.PBasicInputEventHandler;<br>31&nbsp;import&nbsp;org.piccolo2d.event.PInputEvent;<br>32&nbsp;import&nbsp;org.piccolo2d.nodes.PPath;<br></a>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        Before: 28, 29, 30, 31, 32<br>After: 28, 29, 30, 31, 32
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>add org.piccolo2d.cs to sveventhandler</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>Fixed bugs in scrollview and upgraded piccolo to 3.0</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                            
+                                
+                                <td>
+                                    
+                                        <pre>java/com/google/scrollview/events/SVEventHandler.java</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                            
+                                
+                            
+                                
+                                <td>
+                                    
+                                        <pre>0</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>199</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'program': 1,
+'import_declaration': 7,
+'import': 7,
+'scoped_identifier': 26,
+'identifier': 33,
+'.': 26,
+';': 7}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'cyclomatic_complexity': 1,
+'nloc': 4,
+'token_count': 21,
+'name': 'SVEventHandler::SVEventHandler',
+'long_name': 'SVEventHandler::SVEventHandler( SVWindow wdw)',
+'start_line': 75,
+'end_line': 78,
+'full_parameters': ['SVWindow wdw'],
+'filename': '/home/student/.local/lib/python3.8/site-packages/Minecpp/tesseract/prev/java/com/google/scrollview/events/SVEventHandler.java',
+'top_nesting_level': 1,
+'fan_in': 0,
+'fan_out': 0,
+'general_fan_out': 0}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'cyclomatic_complexity': 1,
+'nloc': 4,
+'token_count': 21,
+'name': 'SVEventHandler::SVEventHandler',
+'long_name': 'SVEventHandler::SVEventHandler( SVWindow wdw)',
+'start_line': 75,
+'end_line': 78,
+'full_parameters': ['SVWindow wdw'],
+'filename': '/home/student/.local/lib/python3.8/site-packages/Minecpp/tesseract/curr/java/com/google/scrollview/events/SVEventHandler.java',
+'top_nesting_level': 1,
+'fan_in': 0,
+'fan_out': 0,
+'general_fan_out': 0}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        0.612
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        0.535
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        
+                                        0.939
+                                    
+                                </td>
+                            
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        <a class="clickable-link" href="https://github.com/tesseract-ocr/tesseract/commit/ad149844f07ce629eaf45cc303cdf033064ec8db" target="_blank">1&nbsp;//&nbsp;Copyright&nbsp;2007&nbsp;Google&nbsp;Inc.&nbsp;All&nbsp;Rights&nbsp;Reserved.<br>2&nbsp;//&nbsp;<br>3&nbsp;//
+&nbsp;Licensed&nbsp;under&nbsp;the&nbsp;Apache&nbsp;License,&nbsp;Version&nbsp;2.0&nbsp;
+(the&nbsp;"License");&nbsp;You&nbsp;may&nbsp;not<br>4&nbsp;//
+&nbsp;use&nbsp;this&nbsp;file&nbsp;except&nbsp;in&nbsp;compliance&nbsp;with&nbsp;the&nbsp;License.&nbsp;You&nbsp;may&nbsp;obtain&nbsp;a&nbsp;copy&nbsp;of<br>5&nbsp;//&nbsp;the&nbsp;License&nbsp;at&nbsp;http://www.apache.org/licenses/LICENSE-2.0&nbsp;Unless&nbsp;required&nbsp;by<br>6&nbsp;//
+&nbsp;applicable&nbsp;law&nbsp;or&nbsp;agreed&nbsp;to&nbsp;in&nbsp;writing,&nbsp;software&nbsp;distributed&nbsp;under&nbsp;the<br></a>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        <a class="clickable-link" href="https://github.com/tesseract-ocr/tesseract/commit/99e1f059521a9c3cb031350712ed09c1bfb194f7" target="_blank">1&nbsp;//&nbsp;Copyright&nbsp;2007&nbsp;Google&nbsp;Inc.&nbsp;All&nbsp;Rights&nbsp;Reserved.<br>2&nbsp;//<br>3&nbsp;//
+&nbsp;Licensed&nbsp;under&nbsp;the&nbsp;Apache&nbsp;License,&nbsp;Version&nbsp;2.0&nbsp;
+(the&nbsp;"License");&nbsp;You&nbsp;may&nbsp;not<br>4&nbsp;//
+&nbsp;use&nbsp;this&nbsp;file&nbsp;except&nbsp;in&nbsp;compliance&nbsp;with&nbsp;the&nbsp;License.&nbsp;You&nbsp;may&nbsp;obtain&nbsp;a&nbsp;copy&nbsp;of<br>5&nbsp;//&nbsp;the&nbsp;License&nbsp;at&nbsp;http://www.apache.org/licenses/LICENSE-2.0&nbsp;Unless&nbsp;required&nbsp;by<br>6&nbsp;//
+&nbsp;applicable&nbsp;law&nbsp;or&nbsp;agreed&nbsp;to&nbsp;in&nbsp;writing,&nbsp;software&nbsp;distributed&nbsp;under&nbsp;the<br></a>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        Before: 2<br>After: 2
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>move svimagehandler to its own file</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>Fixed bugs in scrollview and upgraded piccolo to 3.0</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                            
+                                
+                                <td>
+                                    
+                                        <pre>java/com/google/scrollview/ui/SVImageHandler.java</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                            
+                                
+                            
+                                
+                                <td>
+                                    
+                                        <pre>0</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>4</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'program': 1,
+'line_comment': 5}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'cyclomatic_complexity': 1,
+'nloc': 2,
+'token_count': 5,
+'name': 'SVImageHandler::SVImageHandler',
+'long_name': 'SVImageHandler::SVImageHandler()',
+'start_line': 49,
+'end_line': 50,
+'full_parameters': [],
+'filename': '/home/student/.local/lib/python3.8/site-packages/Minecpp/tesseract/prev/java/com/google/scrollview/ui/SVImageHandler.java',
+'top_nesting_level': 1,
+'fan_in': 0,
+'fan_out': 0,
+'general_fan_out': 0}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'cyclomatic_complexity': 1,
+'nloc': 2,
+'token_count': 5,
+'name': 'SVImageHandler::SVImageHandler',
+'long_name': 'SVImageHandler::SVImageHandler()',
+'start_line': 31,
+'end_line': 32,
+'full_parameters': [],
+'filename': '/home/student/.local/lib/python3.8/site-packages/Minecpp/tesseract/curr/java/com/google/scrollview/ui/SVImageHandler.java',
+'top_nesting_level': 1,
+'fan_in': 0,
+'fan_out': 0,
+'general_fan_out': 0}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        1.0
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        1.0
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        
+                                        0.998
+                                    
+                                </td>
+                            
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        <a class="clickable-link" href="https://github.com/tesseract-ocr/tesseract/commit/ad149844f07ce629eaf45cc303cdf033064ec8db" target="_blank">8&nbsp;//
+&nbsp;OF&nbsp;ANY&nbsp;KIND,&nbsp;either&nbsp;express&nbsp;or&nbsp;implied.&nbsp;See&nbsp;the&nbsp;License&nbsp;for&nbsp;the&nbsp;specific<br>9&nbsp;//&nbsp;language&nbsp;governing&nbsp;permissions&nbsp;and&nbsp;limitations&nbsp;under&nbsp;the&nbsp;License.<br>10&nbsp;<br>11&nbsp;package&nbsp;com.google.scrollview.ui;<br>12&nbsp;<br>13&nbsp;import&nbsp;edu.umd.cs.piccolo.nodes.PImage;<br>14&nbsp;<br>15&nbsp;import&nbsp;java.awt.image.BufferedImage;<br>16&nbsp;import&nbsp;java.util.HashMap;<br>17&nbsp;<br></a>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        <a class="clickable-link" href="https://github.com/tesseract-ocr/tesseract/commit/99e1f059521a9c3cb031350712ed09c1bfb194f7" target="_blank">8&nbsp;//
+&nbsp;OF&nbsp;ANY&nbsp;KIND,&nbsp;either&nbsp;express&nbsp;or&nbsp;implied.&nbsp;See&nbsp;the&nbsp;License&nbsp;for&nbsp;the&nbsp;specific<br>9&nbsp;//&nbsp;language&nbsp;governing&nbsp;permissions&nbsp;and&nbsp;limitations&nbsp;under&nbsp;the&nbsp;License.<br>10&nbsp;<br>11&nbsp;package&nbsp;com.google.scrollview.ui;<br>12&nbsp;<br>13&nbsp;import&nbsp;org.piccolo2d.nodes.PImage;<br>14&nbsp;<br>15&nbsp;import&nbsp;java.io.BufferedReader;<br>16&nbsp;import&nbsp;java.io.ByteArrayInputStream;<br>17&nbsp;import&nbsp;java.io.IOException;<br></a>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        Before: 13<br>After: 13
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>move svimagehandler to its own file</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>Fixed bugs in scrollview and upgraded piccolo to 3.0</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                            
+                                
+                                <td>
+                                    
+                                        <pre>java/com/google/scrollview/ui/SVImageHandler.java</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                            
+                                
+                            
+                                
+                                <td>
+                                    
+                                        <pre>0</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>43</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'program': 1,
+'line_comment': 2,
+'package_declaration': 1,
+'package': 1,
+'scoped_identifier': 13,
+'identifier': 17,
+'.': 13,
+';': 4,
+'import_declaration': 3,
+'import': 3}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'cyclomatic_complexity': 1,
+'nloc': 2,
+'token_count': 5,
+'name': 'SVImageHandler::SVImageHandler',
+'long_name': 'SVImageHandler::SVImageHandler()',
+'start_line': 49,
+'end_line': 50,
+'full_parameters': [],
+'filename': '/home/student/.local/lib/python3.8/site-packages/Minecpp/tesseract/prev/java/com/google/scrollview/ui/SVImageHandler.java',
+'top_nesting_level': 1,
+'fan_in': 0,
+'fan_out': 0,
+'general_fan_out': 0}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'cyclomatic_complexity': 1,
+'nloc': 2,
+'token_count': 5,
+'name': 'SVImageHandler::SVImageHandler',
+'long_name': 'SVImageHandler::SVImageHandler()',
+'start_line': 31,
+'end_line': 32,
+'full_parameters': [],
+'filename': '/home/student/.local/lib/python3.8/site-packages/Minecpp/tesseract/curr/java/com/google/scrollview/ui/SVImageHandler.java',
+'top_nesting_level': 1,
+'fan_in': 0,
+'fan_out': 0,
+'general_fan_out': 0}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        0.789
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        0.783
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        
+                                        0.947
+                                    
+                                </td>
+                            
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        <a class="clickable-link" href="https://github.com/tesseract-ocr/tesseract/commit/ad149844f07ce629eaf45cc303cdf033064ec8db" target="_blank">10&nbsp;<br>11&nbsp;package&nbsp;com.google.scrollview.ui;<br>12&nbsp;<br>13&nbsp;import&nbsp;edu.umd.cs.piccolo.nodes.PImage;<br>14&nbsp;<br>15&nbsp;import&nbsp;java.awt.image.BufferedImage;<br>16&nbsp;import&nbsp;java.util.HashMap;<br>17&nbsp;<br>18&nbsp;/**<br>19&nbsp;&nbsp;*&nbsp;The&nbsp;ScrollViewImageHandler&nbsp;is&nbsp;a&nbsp;helper&nbsp;class&nbsp;which&nbsp;takes&nbsp;care&nbsp;of&nbsp;image<br></a>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        <a class="clickable-link" href="https://github.com/tesseract-ocr/tesseract/commit/99e1f059521a9c3cb031350712ed09c1bfb194f7" target="_blank">10&nbsp;<br>11&nbsp;package&nbsp;com.google.scrollview.ui;<br>12&nbsp;<br>13&nbsp;import&nbsp;org.piccolo2d.nodes.PImage;<br>14&nbsp;<br>15&nbsp;import&nbsp;java.io.BufferedReader;<br>16&nbsp;import&nbsp;java.io.ByteArrayInputStream;<br>17&nbsp;import&nbsp;java.io.IOException;<br>18&nbsp;import&nbsp;javax.imageio.ImageIO;<br>19&nbsp;import&nbsp;javax.xml.bind.DatatypeConverter;<br></a>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        Before: 15, 16<br>After: 15, 16, 17, 18, 19
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>move svimagehandler to its own file</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>Fixed bugs in scrollview and upgraded piccolo to 3.0</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                            
+                                
+                                <td>
+                                    
+                                        <pre>java/com/google/scrollview/ui/SVImageHandler.java</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                            
+                                
+                            
+                                
+                                <td>
+                                    
+                                        <pre>0</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>56</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'program': 1,
+'package_declaration': 1,
+'package': 1,
+'scoped_identifier': 13,
+'identifier': 17,
+'.': 13,
+';': 4,
+'import_declaration': 3,
+'import': 3,
+'ERROR': 1,
+'/': 1,
+'*': 2}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'cyclomatic_complexity': 1,
+'nloc': 2,
+'token_count': 5,
+'name': 'SVImageHandler::SVImageHandler',
+'long_name': 'SVImageHandler::SVImageHandler()',
+'start_line': 49,
+'end_line': 50,
+'full_parameters': [],
+'filename': '/home/student/.local/lib/python3.8/site-packages/Minecpp/tesseract/prev/java/com/google/scrollview/ui/SVImageHandler.java',
+'top_nesting_level': 1,
+'fan_in': 0,
+'fan_out': 0,
+'general_fan_out': 0}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'cyclomatic_complexity': 1,
+'nloc': 2,
+'token_count': 5,
+'name': 'SVImageHandler::SVImageHandler',
+'long_name': 'SVImageHandler::SVImageHandler()',
+'start_line': 31,
+'end_line': 32,
+'full_parameters': [],
+'filename': '/home/student/.local/lib/python3.8/site-packages/Minecpp/tesseract/curr/java/com/google/scrollview/ui/SVImageHandler.java',
+'top_nesting_level': 1,
+'fan_in': 0,
+'fan_out': 0,
+'general_fan_out': 0}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        0.3
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        0.279
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        
+                                        0.847
+                                    
+                                </td>
+                            
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        <a class="clickable-link" href="https://github.com/tesseract-ocr/tesseract/commit/ad149844f07ce629eaf45cc303cdf033064ec8db" target="_blank">18&nbsp;/**<br>19&nbsp;&nbsp;*&nbsp;The&nbsp;ScrollViewImageHandler&nbsp;is&nbsp;a&nbsp;helper&nbsp;class&nbsp;which&nbsp;takes&nbsp;care&nbsp;of&nbsp;image<br>20&nbsp;&nbsp;*&nbsp;processing.&nbsp;It&nbsp;is&nbsp;used&nbsp;to&nbsp;construct&nbsp;an&nbsp;Image&nbsp;from&nbsp;the&nbsp;message-
+stream&nbsp;and<br>21&nbsp;&nbsp;*&nbsp;basically&nbsp;consists&nbsp;of&nbsp;a&nbsp;number&nbsp;of&nbsp;utility&nbsp;functions&nbsp;to&nbsp;process&nbsp;the&nbsp;input<br>22&nbsp;&nbsp;*&nbsp;stream.<br>23&nbsp;&nbsp;*&nbsp;<br>24&nbsp;&nbsp;*&nbsp;@author&nbsp;wanke@google.com<br>25&nbsp;&nbsp;*/<br>26&nbsp;public&nbsp;class&nbsp;SVImageHandler&nbsp;{<br>27&nbsp;&nbsp;&nbsp;/**<br></a>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        <a class="clickable-link" href="https://github.com/tesseract-ocr/tesseract/commit/99e1f059521a9c3cb031350712ed09c1bfb194f7" target="_blank">21&nbsp;/**<br>22&nbsp;&nbsp;*&nbsp;The&nbsp;ScrollViewImageHandler&nbsp;is&nbsp;a&nbsp;helper&nbsp;class&nbsp;which&nbsp;takes&nbsp;care&nbsp;of&nbsp;image<br>23&nbsp;&nbsp;*&nbsp;processing.&nbsp;It&nbsp;is&nbsp;used&nbsp;to&nbsp;construct&nbsp;an&nbsp;Image&nbsp;from&nbsp;the&nbsp;message-
+stream&nbsp;and<br>24&nbsp;&nbsp;*&nbsp;basically&nbsp;consists&nbsp;of&nbsp;a&nbsp;number&nbsp;of&nbsp;utility&nbsp;functions&nbsp;to&nbsp;process&nbsp;the&nbsp;input<br>25&nbsp;&nbsp;*&nbsp;stream.<br>26&nbsp;&nbsp;*<br>27&nbsp;&nbsp;*&nbsp;@author&nbsp;wanke@google.com<br>28&nbsp;&nbsp;*/<br>29&nbsp;public&nbsp;class&nbsp;SVImageHandler&nbsp;{<br>30&nbsp;&nbsp;&nbsp;/
+*&nbsp;All&nbsp;methods&nbsp;are&nbsp;static,&nbsp;so&nbsp;we&nbsp;forbid&nbsp;to&nbsp;construct&nbsp;SVImageHandler&nbsp;objects&nbsp;*/<br></a>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        Before: 23<br>After: 26
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>move svimagehandler to its own file</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>Fixed bugs in scrollview and upgraded piccolo to 3.0</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                            
+                                
+                                <td>
+                                    
+                                        <pre>java/com/google/scrollview/ui/SVImageHandler.java</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                            
+                                
+                            
+                                
+                                <td>
+                                    
+                                        <pre>0</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>124</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'program': 1,
+'block_comment': 1,
+'class_declaration': 1,
+'modifiers': 1,
+'public': 1,
+'class': 1,
+'identifier': 1,
+'class_body': 1,
+'{': 1,
+'}': 1}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'cyclomatic_complexity': 1,
+'nloc': 2,
+'token_count': 5,
+'name': 'SVImageHandler::SVImageHandler',
+'long_name': 'SVImageHandler::SVImageHandler()',
+'start_line': 49,
+'end_line': 50,
+'full_parameters': [],
+'filename': '/home/student/.local/lib/python3.8/site-packages/Minecpp/tesseract/prev/java/com/google/scrollview/ui/SVImageHandler.java',
+'top_nesting_level': 1,
+'fan_in': 0,
+'fan_out': 0,
+'general_fan_out': 0}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'cyclomatic_complexity': 1,
+'nloc': 2,
+'token_count': 5,
+'name': 'SVImageHandler::SVImageHandler',
+'long_name': 'SVImageHandler::SVImageHandler()',
+'start_line': 31,
+'end_line': 32,
+'full_parameters': [],
+'filename': '/home/student/.local/lib/python3.8/site-packages/Minecpp/tesseract/curr/java/com/google/scrollview/ui/SVImageHandler.java',
+'top_nesting_level': 1,
+'fan_in': 0,
+'fan_out': 0,
+'general_fan_out': 0}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        0.577
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        0.561
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        
+                                        0.955
+                                    
+                                </td>
+                            
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        <a class="clickable-link" href="https://github.com/tesseract-ocr/tesseract/commit/ad149844f07ce629eaf45cc303cdf033064ec8db" target="_blank">22&nbsp;&nbsp;*&nbsp;stream.<br>23&nbsp;&nbsp;*&nbsp;<br>24&nbsp;&nbsp;*&nbsp;@author&nbsp;wanke@google.com<br>25&nbsp;&nbsp;*/<br>26&nbsp;public&nbsp;class&nbsp;SVImageHandler&nbsp;{<br>27&nbsp;&nbsp;&nbsp;/**<br>28&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Stores&nbsp;a&nbsp;mapping&nbsp;from&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;string&nbsp;to&nbsp;its&nbsp;actual&nbsp;image.&nbsp;It<br>29&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;enables&nbsp;us&nbsp;to&nbsp;re-
+use&nbsp;images&nbsp;without&nbsp;having&nbsp;to&nbsp;load&nbsp;or&nbsp;transmit&nbsp;them&nbsp;again<br>30&nbsp;&nbsp;&nbsp;&nbsp;*/<br>31&nbsp;&nbsp;&nbsp;static&nbsp;HashMap<string,&nbsp;pimage>&nbsp;images&nbsp;=&nbsp;new&nbsp;HashMap<string,&nbsp;pimage>();<br></string,&nbsp;pimage></string,&nbsp;pimage></a>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        <a class="clickable-link" href="https://github.com/tesseract-ocr/tesseract/commit/99e1f059521a9c3cb031350712ed09c1bfb194f7" target="_blank">30&nbsp;&nbsp;&nbsp;/
+*&nbsp;All&nbsp;methods&nbsp;are&nbsp;static,&nbsp;so&nbsp;we&nbsp;forbid&nbsp;to&nbsp;construct&nbsp;SVImageHandler&nbsp;objects&nbsp;*/<br>31&nbsp;&nbsp;&nbsp;private&nbsp;SVImageHandler()&nbsp;{<br>32&nbsp;&nbsp;&nbsp;}<br>33&nbsp;<br>34&nbsp;&nbsp;&nbsp;/**<br>35&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Reads&nbsp;size&nbsp;bytes&nbsp;from&nbsp;the&nbsp;stream&nbsp;in&nbsp;and&nbsp;interprets&nbsp;it&nbsp;as&nbsp;an&nbsp;image&nbsp;file,<br>36&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;encoded&nbsp;as&nbsp;png,&nbsp;and&nbsp;then&nbsp;text-
+encoded&nbsp;as&nbsp;base&nbsp;64,&nbsp;returning&nbsp;the&nbsp;decoded<br>37&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;bitmap.<br>38&nbsp;&nbsp;&nbsp;&nbsp;*<br>39&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;size&nbsp;The&nbsp;size&nbsp;of&nbsp;the&nbsp;image&nbsp;file.<br></a>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        Before: 27, 28, 29, 30, 31, 32, 
+33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 53, 54<br>After: 35, 36, 37, 38, 39, 40
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>move svimagehandler to its own file</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>Fixed bugs in scrollview and upgraded piccolo to 3.0</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                            
+                                
+                                <td>
+                                    
+                                        <pre>java/com/google/scrollview/ui/SVImageHandler.java</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                            
+                                
+                            
+                                
+                                <td>
+                                    
+                                        <pre>0</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>76</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'program': 1,
+'ERROR': 4,
+'*': 4,
+'binary_expression': 1,
+'identifier': 6,
+'.': 2,
+'marker_annotation': 2,
+'@': 2,
+'type_identifier': 2,
+'scoped_identifier': 1,
+'/': 1,
+'{': 1,
+'block_comment': 1}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'cyclomatic_complexity': 1,
+'nloc': 2,
+'token_count': 5,
+'name': 'SVImageHandler::SVImageHandler',
+'long_name': 'SVImageHandler::SVImageHandler()',
+'start_line': 49,
+'end_line': 50,
+'full_parameters': [],
+'filename': '/home/student/.local/lib/python3.8/site-packages/Minecpp/tesseract/prev/java/com/google/scrollview/ui/SVImageHandler.java',
+'top_nesting_level': 1,
+'fan_in': 0,
+'fan_out': 0,
+'general_fan_out': 0}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'cyclomatic_complexity': 1,
+'nloc': 2,
+'token_count': 5,
+'name': 'SVImageHandler::SVImageHandler',
+'long_name': 'SVImageHandler::SVImageHandler()',
+'start_line': 31,
+'end_line': 32,
+'full_parameters': [],
+'filename': '/home/student/.local/lib/python3.8/site-packages/Minecpp/tesseract/curr/java/com/google/scrollview/ui/SVImageHandler.java',
+'top_nesting_level': 1,
+'fan_in': 0,
+'fan_out': 0,
+'general_fan_out': 0}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        0.0
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        0.0
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        
+                                        0.756
+                                    
+                                </td>
+                            
+                            
+                        </tr>
+                    
+                        <tr>
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        <a class="clickable-link" href="https://github.com/tesseract-ocr/tesseract/commit/ad149844f07ce629eaf45cc303cdf033064ec8db" target="_blank">53&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Takes&nbsp;a&nbsp;binary&nbsp;input&nbsp;string&nbsp;
+(consisting&nbsp;of&nbsp;'0'&nbsp;and&nbsp;'1'&nbsp;characters)&nbsp;and<br>54&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;converts&nbsp;it&nbsp;to&nbsp;an&nbsp;integer&nbsp;representation&nbsp;usable&nbsp;as&nbsp;image&nbsp;data.<br>55&nbsp;&nbsp;&nbsp;&nbsp;*/<br>56&nbsp;&nbsp;&nbsp;private&nbsp;static&nbsp;int[]&nbsp;processBinaryImage(String&nbsp;inputLine)&nbsp;{<br>57&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;BLACK&nbsp;=&nbsp;0;<br>58&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;WHITE&nbsp;=&nbsp;Integer.MAX_VALUE;<br>59&nbsp;<br>60&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int[]&nbsp;imgData&nbsp;=&nbsp;new&nbsp;int[inputLine.length()];<br>61&nbsp;<br>62&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;inputLine.length();&nbsp;i++)&nbsp;{<br>63&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(inputLine.charAt(i)&nbsp;==&nbsp;'0')&nbsp;{<br>64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;imgData[i]&nbsp;=&nbsp;WHITE;<br>65&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(inputLine.charAt(i)&nbsp;==&nbsp;'1')&nbsp;{<br>66&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;imgData[i]&nbsp;=&nbsp;BLACK;<br>67&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;//&nbsp;BLACK&nbsp;is&nbsp;default&nbsp;anyway<br>68&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;
+{&nbsp;//
+&nbsp;Something&nbsp;is&nbsp;wrong:&nbsp;We&nbsp;did&nbsp;get&nbsp;unexpected&nbsp;data<br>69&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Error:&nbsp;unexpected&nbsp;non-image-data:&nbsp;("<br>70&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
++&nbsp;SVImageHandler.bytesRead&nbsp;+&nbsp;","&nbsp;
++&nbsp;inputLine.length()&nbsp;+&nbsp;","<br>71&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
++&nbsp;(SVImageHandler.height&nbsp;*&nbsp;SVImageHandler.width)&nbsp;
++&nbsp;")");<br>72&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.exit(1);<br>73&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>74&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>75&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;imgData;<br>76&nbsp;&nbsp;&nbsp;}<br>77&nbsp;<br>78&nbsp;&nbsp;&nbsp;/**<br></a>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        <a class="clickable-link" href="https://github.com/tesseract-ocr/tesseract/commit/99e1f059521a9c3cb031350712ed09c1bfb194f7" target="_blank">39&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;size&nbsp;The&nbsp;size&nbsp;of&nbsp;the&nbsp;image&nbsp;file.<br>40&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;in&nbsp;The&nbsp;input&nbsp;stream&nbsp;from&nbsp;which&nbsp;to&nbsp;read&nbsp;the&nbsp;bytes.<br>41&nbsp;&nbsp;&nbsp;&nbsp;*/<br>42&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;PImage&nbsp;readImage(int&nbsp;size,&nbsp;BufferedReader&nbsp;in)&nbsp;{<br>43&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char[]&nbsp;charbuffer&nbsp;=&nbsp;new&nbsp;char[size];<br>44&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;numRead&nbsp;=&nbsp;0;<br>45&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(numRead&nbsp;&lt;&nbsp;size)&nbsp;{<br>46&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;newRead&nbsp;=&nbsp;-1;<br>47&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{<br>48&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newRead&nbsp;=&nbsp;in.read(charbuffer,&nbsp;numRead,&nbsp;size&nbsp;-
+&nbsp;numRead);<br>49&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;catch&nbsp;(IOException&nbsp;e)&nbsp;{<br>50&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Failed&nbsp;to&nbsp;read&nbsp;image&nbsp;data&nbsp;from&nbsp;socket"&nbsp;
++&nbsp;e.getMessage());<br>51&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>52&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(newRead&nbsp;&lt;&nbsp;0)&nbsp;{<br>53&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;null;<br>54&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>55&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numRead&nbsp;+=&nbsp;newRead;<br>56&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>57&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Convert&nbsp;the&nbsp;character&nbsp;data&nbsp;to&nbsp;binary.<br>58&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;byte[]&nbsp;binarydata&nbsp;=&nbsp;DatatypeConverter.parseBase64Binary(new&nbsp;String(charbuffer));<br>59&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+&nbsp;Convert&nbsp;the&nbsp;binary&nbsp;data&nbsp;to&nbsp;a&nbsp;byte&nbsp;stream&nbsp;and&nbsp;parse&nbsp;to&nbsp;image.<br>60&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ByteArrayInputStream&nbsp;byteStream&nbsp;=&nbsp;new&nbsp;ByteArrayInputStream(binarydata);<br>61&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{<br>62&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PImage&nbsp;img&nbsp;=&nbsp;new&nbsp;PImage(ImageIO.read(byteStream));<br>63&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;img;<br>64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;catch&nbsp;(IOException&nbsp;e)&nbsp;{<br>65&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Failed&nbsp;to&nbsp;decode&nbsp;image&nbsp;data&nbsp;from&nbsp;socket"&nbsp;
++&nbsp;e.getMessage());<br>66&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>67&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;null;<br>68&nbsp;&nbsp;&nbsp;}<br>69&nbsp;}<br></a>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        Before: 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72<br>After: 42, 43, 44, 45, 46, 47, 48, 49, 50, 52, 53, 54, 55
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>move svimagehandler to its own file</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>Fixed bugs in scrollview and upgraded piccolo to 3.0</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                            
+                                
+                                <td>
+                                    
+                                        <pre>java/com/google/scrollview/ui/SVImageHandler.java</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                            
+                                
+                            
+                                
+                                <td>
+                                    
+                                        <pre>0</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        <pre>224</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'program': 1,
+'ERROR': 8,
+'*': 4,
+'local_variable_declaration': 4,
+'type_identifier': 8,
+'variable_declarator': 4,
+'identifier': 54,
+';': 12,
+'method_declaration': 1,
+'formal_parameters': 2,
+'(': 13,
+'formal_parameter': 2,
+'character_literal': 4,
+')': 13,
+'expression_statement': 5,
+'binary_expression': 12,
+'to': 1,
+'.': 13,
+'/': 1,
+'array_type': 2,
+'int': 6,
+'dimensions': 2,
+'[': 5,
+']': 5,
+'{': 5,
+'integral_type': 5,
+'assignment_expression': 3,
+'=': 6,
+'decimal_integer_literal': 3,
+'field_access': 5,
+'array_creation_expression': 1,
+'new': 1,
+'dimensions_expr': 1,
+'method_invocation': 7,
+'argument_list': 7,
+'for_statement': 1,
+'for': 1,
+'&lt;': 1,
+'update_expression': 1,
+'++': 1,
+'block': 4,
+'if_statement': 2,
+'if': 2,
+'condition': 2,
+'==': 2,
+'array_access': 2,
+'}': 5,
+'else': 2,
+'line_comment': 2,
+'string_literal': 4,
+'"': 8,
+'string_fragment': 4,
+'+': 6,
+'parenthesized_expression': 1,
+'return_statement': 1,
+'return': 1}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'cyclomatic_complexity': 1,
+'nloc': 2,
+'token_count': 5,
+'name': 'SVImageHandler::SVImageHandler',
+'long_name': 'SVImageHandler::SVImageHandler()',
+'start_line': 49,
+'end_line': 50,
+'full_parameters': [],
+'filename': '/home/student/.local/lib/python3.8/site-packages/Minecpp/tesseract/prev/java/com/google/scrollview/ui/SVImageHandler.java',
+'top_nesting_level': 1,
+'fan_in': 0,
+'fan_out': 0,
+'general_fan_out': 0}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                       <pre>{'cyclomatic_complexity': 1,
+'nloc': 2,
+'token_count': 5,
+'name': 'SVImageHandler::SVImageHandler',
+'long_name': 'SVImageHandler::SVImageHandler()',
+'start_line': 31,
+'end_line': 32,
+'full_parameters': [],
+'filename': '/home/student/.local/lib/python3.8/site-packages/Minecpp/tesseract/curr/java/com/google/scrollview/ui/SVImageHandler.java',
+'top_nesting_level': 1,
+'fan_in': 0,
+'fan_out': 0,
+'general_fan_out': 0}</pre>
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        0.0
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        0.0
+                                    
+                                </td>
+                            
+                            
+                                
+                                <td>
+                                    
+                                        
+                                        
+                                        0.733
+                                    
+                                </td>
+                            
+                            
+                        </tr>
+                    
+                </tbody>
+            </table>
+        
+        
+            <a href="http://127.0.0.1:5000/visualization/2" class="btn btn-primary mt-3">More</a>
+        
+    <thead class="fixed-header" style="margin-left: 0px;">
+                    <tr>
+                        
+                            
+                                
+                                    <th>Before Bug fix</th>
+                                
+                            
+                        
+                            
+                                
+                                    <th>After Bug fix</th>
+                                
+                            
+                        
+                            
+                                
+                                    <th>Location</th>
+                                
+                            
+                        
+                            
+                                
+                                    <th>Bug type</th>
+                                
+                            
+                        
+                            
+                                
+                                    <th>Commit Message</th>
+                                
+                            
+                        
+                            
+                        
+                            
+                                
+                                    <th>File Path</th>
+                                
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                
+                                    <th>Test File</th>
+                                
+                            
+                        
+                            
+                                
+                                    <th>Coding Effort</th>
+                                
+                            
+                        
+                            
+                                
+                                    <th><a class="clickable-link" href="https://en.wikipedia.org/wiki/Language_construct" target="_blank">Constructs</a></th>
+                                
+                            
+                        
+                            
+                                
+                                    <th><a class="clickable-link" href="https://en.wikipedia.org/wiki/Cyclomatic_complexity" target="_blank">Lizard Features Buggy</a></th>
+                                
+                            
+                        
+                            
+                                
+                                    <th><a class="clickable-link" href="https://en.wikipedia.org/wiki/Cyclomatic_complexity" target="_blank">Lizard Features Fixed</a></th>
+                                
+                            
+                        
+                            
+                                
+                                    <th>BLEU</th>
+                                
+                            
+                        
+                            
+                                
+                                    <th>crystalBLEU_score</th>
+                                
+                            
+                        
+                            
+                                
+                                    <th>BERT_score</th>
+                                
+                            
+                        
+                    </tr>
+                </thead></div>
+
+</body></html>
